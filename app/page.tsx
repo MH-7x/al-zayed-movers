@@ -1,69 +1,305 @@
+import { Services } from "@/components/Services";
+import { PricingSection } from "@/components/PricingSection";
+import { ProcessSection } from "@/components/ProcessSection";
+import { AreasSection } from "@/components/AreasSection";
+import { Button } from "@/components/ui/button";
+import { HeroSection } from "@/components/ui/HeroSection";
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { FAQSection } from "@/components/utils/FaqsSection";
+import { ContactSection } from "@/components/ContactSection";
+import { ReviewsSection } from "@/components/ReviewsSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      <HeroSection />
+      <section className=" overflow-hidden  pt-16 lg:pt-28">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            {/* Left Column: Content & Description */}
+            <div className="flex flex-col items-start text-right lg:col-span-6">
+              {/* Sub-heading / Eyebrow with decorative bars */}
+              <div className="mb-3 inline-flex items-center gap-2 text-xs font-bold tracking-widest text-primary uppercase sm:text-sm">
+                <div className="flex items-center gap-1">
+                  <span className="h-4 w-1.5 -skew-x-12 rounded-xs bg-primary" />
+                  <span className="h-4 w-1.5 -skew-x-12 rounded-xs bg-primary" />
+                </div>
+                <span>من نحن</span>
+              </div>
+
+              {/* Main Heading */}
+              <h2 className="text-3xl font-black leading-tight md:text-4xl md:pl-28 sm:pl-0 ">
+                نحن افضل شركة نقل اثاث في دبي والإمارات
+              </h2>
+
+              {/* Description */}
+              <p className="mt-5 text-base leading-relaxed sm:text-lg text-muted-foreground">
+                كل عملية نقل عندنا تشمل تأمين شامل على المنقولات، شاحنات مغلقة
+                ومكيّفة، وفريق ثابت ومدرب يتعامل مع كل قطعة بعناية من أول صندوق
+                حتى آخر قطعة. أسعارنا واضحة من البداية. ما نتفق عليه هو ما
+                تدفعه. بدون رسوم خفية، وبدون دفعة مقدمة.
+              </p>
+
+              {/* CTA Button using the provided Button component */}
+              <div className="mt-8">
+                <Button size="lg">
+                  <span>تواصل معنا لـ نقل اثاث</span>
+                  <ArrowLeft className="mr-2 size-4 " />
+                </Button>
+              </div>
+            </div>
+            {/* Right Column: Image with Experience Badge */}
+            <div className="relative mx-auto w-full max-w-lg lg:col-span-6 lg:max-w-none">
+              {/* Experience Floating Badge */}
+              <div className="absolute -top-5 md:-end-5 -end-2 z-20 flex size-28 flex-col items-center justify-center rounded-full bg-primary p-2 text-center text-primary-foreground shadow-xl ring-4 ring-background sm:-top-7 sm:-end-7 sm:size-36">
+                <span className="text-2xl font-black leading-none sm:text-4xl">
+                  +12
+                </span>
+                <span className="mt-1 text-[11px] font-medium leading-tight sm:text-xs">
+                  عاماً من الخبرة والتميز
+                </span>
+              </div>
+
+              {/* Main Image Container */}
+              <div className="relative overflow-hidden rounded-2xl border-card bg-card aspect-4/3">
+                <Image
+                  src="/الزايد-نقل-اثاث-دبي.jpg"
+                  alt="الزايد نقل اثاث دبي"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+      <section className={"pt-16 lg:pt-28"}>
+        <div className="max-w-6xl mx-auto md:px-0 px-4 ">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="md:text-4xl text-3xl font-extrabold leading-tight">
+              لماذا الزايد نقل اثاث من <br /> افضل شركات نقل الاثاث في دبي؟
+            </h2>
+          </div>
+
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature, i) => (
+              <div
+                key={i}
+                className="flex flex-col bg-white drop-shadow-lg p-5 items-center text-center rounded-2xl"
+              >
+                <div className="mb-5 relative overflow-hidden size-16 ">
+                  <Image
+                    src={feature.image}
+                    alt={feature.title}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <h3 className="mb-2 text-xl font-bold">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm mt-2">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+      <Services />
+      <PricingSection />
+      <ProcessSection />
+      <AreasSection />
+      <section className="max-w-5xl mx-auto md:px-0 px-4 pt-16 lg:pt-28">
+        <h2 className="md:text-4xl text-3xl font-extrabold leading-tight ">
+          متطلبات وتصاريح نقل الاثاث في دبي — دليل عملي
+        </h2>
+        <p className="border-b pb-5 text-muted-foreground mt-5">
+          كثير من الناس لا يعرفون إن النقل في دبي يحتاج إجراءات رسمية مع المبنى.
+          لو ما سويتها مسبقاً، ممكن تتفاجأ إن الأمن يمنعك من إدخال أو إخراج
+          الاثاث.
+        </p>
+
+        <div className="w-full bg-primary/20 aspect-video mt-10 rounded-2xl relative overflow-hidden">
+          <Image
+            src={"/شركة-الزايد-نقل-اثاث-دبي.jpg"}
+            alt="شركة الزايد نقل اثاث دبي"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        <div className="mt-10 grid md:grid-cols-2 grid-cols-1 gap-10">
+          <div className="md:col-span-2">
+            <h3 className="font-bold md:text-2xl text-xl">
+              تصريح الانتقال (Move-in / Move-out Permit)
+            </h3>
+            <p className="mt-2 text-muted-foreground text-sm">
+              أغلب المباني والمجمعات في دبي تطلب تصريح خروج أو دخول قبل يوم
+              النقل. المطورين الكبار مثل إعمار ونخيل وداماك لهم إجراءات خاصة:
+              تسوية فواتير الخدمات، تقديم نسخة من عقد الإيجار الجديد، وأحياناً
+              دفع وديعة مؤقتة. فريقنا يساعدك في كل هذه الخطوات ويتواصل مع إدارة
+              المبنى نيابةً عنك.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold md:text-2xl text-xl">
+              حجز مصعد الخدمة وتنسيق المبنى
+            </h3>
+            <p className="mt-2 text-muted-foreground text-sm">
+              في الأبراج السكنية، لازم تحجز مصعد الخدمة مسبقاً. عادة قبل 48 إلى
+              72 ساعة من موعد النقل. لو ما حجزت، ممكن يكون المصعد محجوز لساكن
+              ثاني وتضطر تأجل. نحن نتولى الحجز والتنسيق مع أمن المبنى.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold md:text-2xl text-xl">
+              إجراءات ديوا (DEWA) وإيجاري (Ejari)
+            </h3>
+            <p className="mt-2 text-muted-foreground text-sm">
+              قبل ما تغادر بيتك القديم، تأكد من تسوية فواتير ديوا (الكهرباء
+              والماء) وقدم طلب نقل الخدمة أو إلغائها. وكمان انقل عقد إيجاري إلى
+              عنوانك الجديد عشان ما يصير عندك مشاكل مع الإيجار أو تجديد التأشيرة
+              لاحقاً.
+            </p>
+          </div>
+        </div>
+      </section>
+      <FAQSection
+        title="الأسئلة الشائعة حول نقل الاثاث في دبي"
+        faqs={[
+          {
+            question: "كم تكلفة نقل الاثاث في دبي؟",
+            answer: (
+              <>
+                <p>
+                  تبدأ أسعار نقل الاثاث في دبي من 400 درهم للاستوديو وتوصل إلى
+                  4,500 درهم للفلل الكبيرة. السعر يعتمد على حجم الاثاث والطابق
+                  والمسافة والخدمات المطلوبة
+                </p>
+                <p>
+                  في الزايد نقل اثاث، نقدم معاينة مجانية وعرض سعر ثابت ومكتوب
+                  بدون رسوم خفية.
+                </p>
+              </>
+            ),
+          },
+          {
+            question: "ما هي افضل شركة نقل اثاث في دبي؟",
+            answer: (
+              <p>
+                افضل شركة نقل اثاث هي اللي توفر تأمين شامل وأسعار مكتوبة وشفافة
+                وفريق عمل ثابت ومدرب وشاحنات مغلقة ومكيّفة. الزايد نقل اثاث دبي
+                تقدم كل هذه المميزات بخبرة +12 سنة وبدون دفعة مقدمة.
+              </p>
+            ),
+          },
+          {
+            question: "كيف أختار شركة نقل اثاث موثوقة في دبي؟",
+            answer: (
+              <p>
+                تأكد إن الشركة مرخصة وتقدم عرض سعر مكتوب وثابت. اسأل عن التأمين:
+                هل يغطي الكسر والخدش؟ وكيف تكون عملية التعويض؟ تأكد إنهم
+                يستخدمون شاحنات مغلقة وإن الفريق ثابت ومتدرب، مو عمالة يومية
+                تتغير كل مرة. واقرأ تقييمات العملاء السابقين.
+              </p>
+            ),
+          },
+          {
+            question: "هل يوجد تأمين على الاثاث أثناء النقل؟",
+            answer: (
+              <p>
+                نعم. في الزايد، كل عملية نقل مشمولة بتأمين شامل ضد الكسر والخدش.
+                نقدم ضمان مكتوب مع كل عرض سعر. لو صار أي ضرر، نتحمل المسؤولية
+                بالكامل ونصلح أو نعوض.
+              </p>
+            ),
+          },
+          {
+            question: "كم يستغرق نقل الاثاث داخل دبي؟",
+            answer: (
+              <p>
+                الشقة الصغيرة (استوديو أو غرفة وصالة) تاخذ من 2 إلى 5 ساعات.
+                الفلل الكبيرة تحتاج من 7 إلى 10 ساعات. الوقت يعتمد على حجم
+                الاثاث والمسافة والطابق.
+              </p>
+            ),
+          },
+          {
+            question: "هل تقدمون خدمة نقل قطعة أثاث واحدة؟",
+            answer: (
+              <p>
+                نعم. ننقل قطعة واحدة: ثلاجة، غسالة، أريكة، أو حتى خزنة. عندنا
+                سيارات بأحجام مختلفة تناسب كل طلب.
+              </p>
+            ),
+          },
+          {
+            question: "هل توفرون مواد التغليف والكراتين مجاناً؟",
+            answer: (
+              <p>
+                نعم. كل مواد التغليف (كراتين مقواة، بابل رول، فوم، نايلون،
+                بطانيات حماية) مشمولة في عرض السعر المتفق عليه. ما في تكلفة
+                إضافية.
+              </p>
+            ),
+          },
+          {
+            question: "هل تنقلون الاثاث بين إمارات الدولة؟",
+            answer: (
+              <p>
+                نعم. بالإضافة لنقل الاثاث داخل دبي، ننقل الاثاث لكل إمارات
+                الدولة: أبوظبي، الشارقة، عجمان، رأس الخيمة، الفجيرة، أم القيوين،
+                والعين
+              </p>
+            ),
+          },
+        ]}
+      />
+      <ReviewsSection />
+      <ContactSection
+        title="تواصل معنا الآن — الزايد نقل اثاث دبي"
+        description="جاهز للانتقال؟ تواصل مع الزايد نقل اثاث دبي واحصل على عرض سعر مجاني خلال دقائق."
+      />
+    </main>
   );
 }
+
+const features = [
+  {
+    title: "خبرة تزيد عن 12 سنة في نقل الاثاث بدبي",
+    description:
+      "فريقنا يشتغل في دبي كل يوم. نعرف أبراج داون تاون ومارينا والخليج التجاري، ونعرف فلل المرابع ودبي هيلز ونخلة جميرا. والأهم، نعرف إجراءات كل مطور عقاري: إعمار، نخيل، داماك، ودبي للعقارات. هذه الخبرة توفر عليك وقت ومتاعب كثيرة يوم النقل.",
+    image: "/12-icon.jpg",
+  },
+  {
+    title: "تأمين شامل وضمان مكتوب ضد التلف",
+    description:
+      'كثير من شركات نقل الاثاث في دبي تقول "مؤمنة" بدون ما توضح شنو يعني هذا الكلام. عندنا، التأمين يغطي الكسر والخدش أثناء النقل. لو صار أي ضرر — وهو شيء نادر — نصلح أو نعوض وفق سياسة مكتوبة وواضحة تستلمها مع عرض السعر. مو كلام عام. ضمان مكتوب وموقع.',
+    image: "/Insurance.jpg",
+  },
+  {
+    title: "أسعار ثابتة ومكتوبة — بدون دفعة مقدمة",
+    description:
+      'السعر اللي نتفق عليه هو السعر النهائي. ما في رسوم تُضاف يوم النقل، ولا تكاليف "مفاجئة" للسلالم أو الكراتين. وما نطلب أي دفعة مقدمة. تدفع بعد ما ننتهي وأنت راضي عن كل شيء.',
+    image: "/Pricing.jpg",
+  },
+
+  {
+    title: "فريق عمل مدرب ومتفرغ — ليسوا عمالة يومية",
+    description:
+      "الفرق بيننا وبين كثير من شركات نقل الاثاث هو إن فريقنا ثابت. نفس الأشخاص يشتغلون معنا بشكل دائم، مو عمال مياومة يتغيرون كل يوم. كل واحد فيهم متدرب على التعامل مع الاثاث الحساس والثقيل، ويلبس زي موحد ويحمل بطاقة تعريف.",
+    image: "/team.jpg",
+  },
+  {
+    title: "خدمة 7 أيام في الأسبوع مع تنظيف بعد النقل",
+    description:
+      "متاحين كل أيام الأسبوع، بما فيها الجمعة والعطلات. وبعد ما ننتهي من النقل والتركيب، فريقنا ينظف الموقع ويرفع كل مخلفات التغليف والكراتين. تستلم بيتك الجديد نظيف وجاهز.",
+    image: "/7-service.jpg",
+  },
+  {
+    title: "شاحنات مغلقة ومكيّفة",
+    description:
+      "عندنا أسطول سيارات نقل اثاث مغلقة بأحجام مختلفة (1.5 طن، 3 طن، 7 طن). كلها مجهزة بأنظمة تثبيت تمنع الاثاث من الحركة أثناء الطريق. والأهم إنها مغلقة ومكيّفة، فاثاثك محمي من حرارة دبي والغبار.",
+    image: "/truck.jpg",
+  },
+];
