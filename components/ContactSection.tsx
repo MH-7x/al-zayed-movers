@@ -13,7 +13,11 @@ export function ContactSection({
   description = "جاهز للانتقال؟ تواصل مع الزايد نقل اثاث دبي واحصل على عرض سعر مجاني خلال دقائق.",
 }: ContactSectionProps) {
   return (
-    <section dir="rtl" className="relative overflow-hidden pt-16 md:pt-28">
+    <section
+      dir="rtl"
+      className="relative overflow-hidden pt-16 md:pt-28"
+      id="contact"
+    >
       <div className="container mx-auto max-w-6xl px-4 md:px-0 grid grid-cols-1 gap-16 md:grid-cols-2 items-center">
         {/* Contact Card (Inspired by the reference image) */}
         <div className="overflow-hidden rounded-2xl bg-white">

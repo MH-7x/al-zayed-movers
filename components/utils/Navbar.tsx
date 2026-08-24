@@ -1,9 +1,6 @@
 import { locationItems, serviceItems } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-
-// Structure of navigation items with Arabic labels and paths
 
 const dubaiAreaItems = [
   { title: "نقل اثاث دبي مارينا", href: "/مناطق-دبي/نقل-اثاث-دبي-مارينا" },

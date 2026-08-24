@@ -9,6 +9,7 @@ import Image from "next/image";
 import { FAQSection } from "@/components/utils/FaqsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { dubaiFaqs } from "@/lib/faqsData";
 
 export default function Home() {
   return (
@@ -75,7 +76,7 @@ export default function Home() {
         </div>
       </section>
       <section className={"pt-16 lg:pt-28"}>
-        <div className="max-w-6xl mx-auto md:px-0 px-4 ">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <h2 className="md:text-4xl text-3xl font-extrabold leading-tight">
               لماذا الزايد نقل اثاث من <br /> افضل شركات نقل الاثاث في دبي؟
@@ -86,7 +87,7 @@ export default function Home() {
             {features.map((feature, i) => (
               <div
                 key={i}
-                className="flex flex-col bg-white drop-shadow-lg p-5 items-center text-center rounded-2xl"
+                className="flex flex-col bg-card text-card-foreground shadow-lg p-5 items-center text-center rounded-2xl"
               >
                 <div className="mb-5 relative overflow-hidden size-16 ">
                   <Image
@@ -109,7 +110,7 @@ export default function Home() {
       <PricingSection />
       <ProcessSection />
       <AreasSection />
-      <section className="max-w-5xl mx-auto md:px-0 px-4 pt-16 lg:pt-28">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-28">
         <h2 className="md:text-4xl text-3xl font-extrabold leading-tight ">
           متطلبات وتصاريح نقل الاثاث في دبي — دليل عملي
         </h2>
@@ -166,94 +167,7 @@ export default function Home() {
       </section>
       <FAQSection
         title="الأسئلة الشائعة حول نقل الاثاث في دبي"
-        faqs={[
-          {
-            question: "كم تكلفة نقل الاثاث في دبي؟",
-            answer: (
-              <>
-                <p>
-                  تبدأ أسعار نقل الاثاث في دبي من 400 درهم للاستوديو وتوصل إلى
-                  4,500 درهم للفلل الكبيرة. السعر يعتمد على حجم الاثاث والطابق
-                  والمسافة والخدمات المطلوبة
-                </p>
-                <p>
-                  في الزايد نقل اثاث، نقدم معاينة مجانية وعرض سعر ثابت ومكتوب
-                  بدون رسوم خفية.
-                </p>
-              </>
-            ),
-          },
-          {
-            question: "ما هي افضل شركة نقل اثاث في دبي؟",
-            answer: (
-              <p>
-                افضل شركة نقل اثاث هي اللي توفر تأمين شامل وأسعار مكتوبة وشفافة
-                وفريق عمل ثابت ومدرب وشاحنات مغلقة ومكيّفة. الزايد نقل اثاث دبي
-                تقدم كل هذه المميزات بخبرة +12 سنة وبدون دفعة مقدمة.
-              </p>
-            ),
-          },
-          {
-            question: "كيف أختار شركة نقل اثاث موثوقة في دبي؟",
-            answer: (
-              <p>
-                تأكد إن الشركة مرخصة وتقدم عرض سعر مكتوب وثابت. اسأل عن التأمين:
-                هل يغطي الكسر والخدش؟ وكيف تكون عملية التعويض؟ تأكد إنهم
-                يستخدمون شاحنات مغلقة وإن الفريق ثابت ومتدرب، مو عمالة يومية
-                تتغير كل مرة. واقرأ تقييمات العملاء السابقين.
-              </p>
-            ),
-          },
-          {
-            question: "هل يوجد تأمين على الاثاث أثناء النقل؟",
-            answer: (
-              <p>
-                نعم. في الزايد، كل عملية نقل مشمولة بتأمين شامل ضد الكسر والخدش.
-                نقدم ضمان مكتوب مع كل عرض سعر. لو صار أي ضرر، نتحمل المسؤولية
-                بالكامل ونصلح أو نعوض.
-              </p>
-            ),
-          },
-          {
-            question: "كم يستغرق نقل الاثاث داخل دبي؟",
-            answer: (
-              <p>
-                الشقة الصغيرة (استوديو أو غرفة وصالة) تاخذ من 2 إلى 5 ساعات.
-                الفلل الكبيرة تحتاج من 7 إلى 10 ساعات. الوقت يعتمد على حجم
-                الاثاث والمسافة والطابق.
-              </p>
-            ),
-          },
-          {
-            question: "هل تقدمون خدمة نقل قطعة أثاث واحدة؟",
-            answer: (
-              <p>
-                نعم. ننقل قطعة واحدة: ثلاجة، غسالة، أريكة، أو حتى خزنة. عندنا
-                سيارات بأحجام مختلفة تناسب كل طلب.
-              </p>
-            ),
-          },
-          {
-            question: "هل توفرون مواد التغليف والكراتين مجاناً؟",
-            answer: (
-              <p>
-                نعم. كل مواد التغليف (كراتين مقواة، بابل رول، فوم، نايلون،
-                بطانيات حماية) مشمولة في عرض السعر المتفق عليه. ما في تكلفة
-                إضافية.
-              </p>
-            ),
-          },
-          {
-            question: "هل تنقلون الاثاث بين إمارات الدولة؟",
-            answer: (
-              <p>
-                نعم. بالإضافة لنقل الاثاث داخل دبي، ننقل الاثاث لكل إمارات
-                الدولة: أبوظبي، الشارقة، عجمان، رأس الخيمة، الفجيرة، أم القيوين،
-                والعين
-              </p>
-            ),
-          },
-        ]}
+        faqs={dubaiFaqs}
       />
       <ReviewsSection />
       <ContactSection

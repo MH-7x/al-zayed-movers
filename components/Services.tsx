@@ -8,23 +8,25 @@ import {
   Warehouse,
   Wrench,
 } from "lucide-react";
-import React from "react";
+import React, { ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface ExperienceItem {
   title: string;
-  description: React.ReactNode;
-  icon?: React.ReactNode;
+  description: ReactNode;
+  icon?: ReactNode;
 }
 
 interface Experience1Props {
   heading?: string;
+  desc?: ReactNode;
   buttonText?: string;
   buttonUrl?: string;
   experience?: ExperienceItem[];
   className?: string;
+  nums?: number;
 }
 
 export const Services = ({
@@ -161,16 +163,33 @@ export const Services = ({
     },
   ],
   className,
+  desc,
+  nums,
+  heading,
 }: Experience1Props) => {
   return (
     <section className={cn("pt-16 lg:pt-28 md:px-0 px-4", className)}>
       <div className="max-w-6xl mx-auto space-y-10 ">
-        <h2 className="md:text-4xl font-extrabold text-3xl">
-          خدمات نقل الاثاث في دبي
-        </h2>
-
+        {heading ? (
+          <>
+            <h2 className="md:text-4xl font-extrabold text-3xl">{heading}</h2>
+          </>
+        ) : (
+          <>
+            <h2 className="md:text-4xl font-extrabold text-3xl">
+              خدمات نقل الاثاث في دبي
+            </h2>{" "}
+          </>
+        )}
+        {desc && (
+          <>
+            <div className="mt-5 text-muted-foreground max-w-4xl flex flex-wrap gap-y-1">
+              {desc}
+            </div>
+          </>
+        )}
         <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
-          {experience.slice(0, 4).map((exp, index) => (
+          {experience.slice(0, nums || 4).map((exp, index) => (
             <div
               key={index}
               className="flex flex-col justify-between border-b pb-10"
@@ -190,7 +209,7 @@ export const Services = ({
           ))}
         </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
-          {experience.slice(4, 7).map((exp, index) => (
+          {experience.slice(nums || 4, 7).map((exp, index) => (
             <div
               key={index}
               className="flex flex-col justify-between border-b pb-10"
