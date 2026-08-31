@@ -70,7 +70,7 @@ const AbuDhabiPage = () => {
             <div>
               <p className="font-bold text-lg sm:text-xl">الهاتف</p>
               <a
-                href="tel:+971501234567"
+                href="tel:+971556461731"
                 className="text-primary font-bold text-lg sm:text-xl block mt-1"
                 dir="ltr"
               >

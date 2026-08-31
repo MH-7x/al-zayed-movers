@@ -10,9 +10,15 @@ interface processSteps {
     description: string;
   }[];
   headline: React.ReactNode;
+  desc?: string;
 }
 
-const LocProcessSection = ({ className, process, headline }: processSteps) => {
+const LocProcessSection = ({
+  className,
+  process,
+  headline,
+  desc,
+}: processSteps) => {
   return (
     <section className={cn("pt-16 md:pt-32", className)}>
       <div className="max-w-6xl mx-auto px-4 md:px-0">
@@ -22,9 +28,16 @@ const LocProcessSection = ({ className, process, headline }: processSteps) => {
             <h2 className=" relative font-extrabold">{headline}</h2>
           </div>
           <p className="text-base text-muted-foreground">
-            عندما تختار شركة نقل اثاث في أبوظبي، فإنك تحتاج إلى عملية واضحة
-            ومنظمة. في الزايد نقل اثاث، صممنا خطوات نقل اثاث ابوظبي لتكون بسيطة
-            ومريحة:
+            {desc ? (
+              desc
+            ) : (
+              <>
+                {" "}
+                عندما تختار شركة نقل اثاث في أبوظبي، فإنك تحتاج إلى عملية واضحة
+                ومنظمة. في الزايد نقل اثاث، صممنا خطوات نقل اثاث ابوظبي لتكون
+                بسيطة ومريحة:
+              </>
+            )}
           </p>
           <div className="flex justify-center">
             <Button className={"md:px-5"} size={"lg"}>
@@ -32,7 +45,7 @@ const LocProcessSection = ({ className, process, headline }: processSteps) => {
             </Button>
           </div>
         </div>
-        <ul className="relative w-full grid mt-10 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
+        <ol className="relative w-full grid mt-10 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
           {process.map((step, index) => (
             <li
               key={index}
@@ -42,14 +55,14 @@ const LocProcessSection = ({ className, process, headline }: processSteps) => {
                 0{index + 1}
               </div>
               <div className="">
-                <h3 className="mb-4 md:text-2xl text-xl font-bold ">
+                <p className="mb-4 md:text-2xl text-xl font-bold text-secondary">
                   {step.title}
-                </h3>
+                </p>
                 <p className="text-muted-foreground">{step.description}</p>
               </div>
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </section>
   );
