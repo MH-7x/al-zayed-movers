@@ -11,6 +11,7 @@ interface processSteps {
   }[];
   headline: React.ReactNode;
   desc?: string;
+  grid?: number;
 }
 
 const LocProcessSection = ({
@@ -18,6 +19,7 @@ const LocProcessSection = ({
   process,
   headline,
   desc,
+  grid,
 }: processSteps) => {
   return (
     <section className={cn("pt-16 md:pt-32", className)}>
@@ -45,7 +47,9 @@ const LocProcessSection = ({
             </Button>
           </div>
         </div>
-        <ol className="relative w-full grid mt-10 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
+        <ol
+          className={`relative w-full grid mt-10 ${grid ? `lg:grid-cols-2` : "lg:grid-cols-3"} md:grid-cols-2 grid-cols-1 gap-10`}
+        >
           {process.map((step, index) => (
             <li
               key={index}

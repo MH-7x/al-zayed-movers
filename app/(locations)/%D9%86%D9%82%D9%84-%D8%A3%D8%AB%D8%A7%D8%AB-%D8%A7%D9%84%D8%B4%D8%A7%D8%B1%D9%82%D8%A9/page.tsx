@@ -9,7 +9,6 @@ import {
   Castle,
   Clock,
   HouseIcon,
-  Mail,
   Phone,
   Truck,
   Warehouse,

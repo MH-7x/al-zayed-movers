@@ -148,4 +148,7 @@
   main {
     @apply max-w-350 mx-auto overflow-hidden;
   }
+  .fLi {
+    @apply flex bg-card text-card-foreground text-sm p-3 items-center text-center rounded-2xl;
+  }
 }
