@@ -17,7 +17,7 @@ import {
   SubServices,
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
-import HeroImage from "@/public/فك-وتغليف-اثاث-احترافي-الزايد-دبي.jpg";
+import HeroImage from "@/public/img/تغليف-اثاث-في-دبي.jpg";
 import SurveyImage from "@/public/معاينة-مجانية-نقل-اثاث-الزايد-دبي.jpg";
 import LoadingImage from "@/public/تحميل-ونقل-اثاث-امن-شاحنة-الزايد-دبي.jpg";
 
@@ -47,7 +47,7 @@ export default function PackingPage() {
       hero={{
         title: "تغليف اثاث في دبي",
         image: HeroImage,
-        imageAlt: "عمال الزايد نقل اثاث يغلفون الأثاث بالبابل رول والبطانيات في دبي",
+        imageAlt: "فريق الزايد يغلف الاثاث بالفقاعات والصناديق في دبي",
         intro: (
           <>
             <p>

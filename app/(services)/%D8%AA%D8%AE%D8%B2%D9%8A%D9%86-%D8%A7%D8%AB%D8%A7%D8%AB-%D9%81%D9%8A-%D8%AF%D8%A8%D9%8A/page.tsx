@@ -17,7 +17,7 @@ import {
   SubServices,
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
-import HeroImage from "@/public/شركة-الزايد-نقل-اثاث-دبي.jpg";
+import HeroImage from "@/public/img/تخزين-اثاث-في-دبي.jpg";
 import PackingImage from "@/public/فك-وتغليف-اثاث-احترافي-الزايد-دبي.jpg";
 import VillaImage from "@/public/الزايد-نقل-اثاث-دبي.jpg";
 
@@ -37,7 +37,7 @@ export default function StoragePage() {
       hero={{
         title: "تخزين اثاث في دبي",
         image: HeroImage,
-        imageAlt: "شاحنة الزايد نقل اثاث المغلقة لنقل الأثاث إلى مستودع التخزين في دبي",
+        imageAlt: "مستودع تخزين اثاث مغلف على رفوف في دبي",
         intro: (
           <>
             <p>

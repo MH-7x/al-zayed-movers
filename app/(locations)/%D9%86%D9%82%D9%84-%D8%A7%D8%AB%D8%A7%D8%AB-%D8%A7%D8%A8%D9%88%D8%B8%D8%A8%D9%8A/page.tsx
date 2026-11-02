@@ -1,5 +1,9 @@
 import Image from "next/image";
 import HeroImage from "@/public/نقل-اثاث-ابوظبي.jpg";
+import SurveyImage from "@/public/img/معاينة-نقل-اثاث-شقة-ابوظبي.jpg";
+import AreasImage from "@/public/img/مناطق-نقل-اثاث-ابوظبي-مدينة-خليفة.jpg";
+import FleetImage from "@/public/img/شاحنات-ومعدات-نقل-اثاث-ابوظبي.jpg";
+import { ImageBanner } from "@/components/location/ImageBanner";
 import { Button } from "@/components/ui/button";
 import {
   Phone,
@@ -148,9 +152,11 @@ const AbuDhabiPage = () => {
               {/* Main Image Container */}
               <div className="relative overflow-hidden rounded-2xl border-card bg-card aspect-4/3">
                 <Image
-                  src="/الزايد-نقل-اثاث-دبي.jpg"
-                  alt="الزايد نقل اثاث دبي"
+                  src={SurveyImage}
+                  alt="مشرف الزايد نقل اثاث يعاين اثاث شقة مع العميل في أبوظبي"
                   fill
+                  placeholder="blur"
+                  sizes="(min-width: 1024px) 540px, (min-width: 512px) 512px, 100vw"
                   className="object-cover"
                 />
               </div>
@@ -527,14 +533,11 @@ const AbuDhabiPage = () => {
           مناطق خدمة نقل الاثاث في ابوظبي
         </h2>
 
-        <div className="w-full bg-primary/20 aspect-video mt-10 rounded-2xl relative overflow-hidden">
-          <Image
-            src={"/شركة-الزايد-نقل-اثاث-دبي.jpg"}
-            alt="شركة الزايد نقل اثاث دبي"
-            fill
-            className="object-cover"
-          />
-        </div>
+        <ImageBanner
+          src={AreasImage}
+          alt="شاحنة الزايد نقل اثاث في مدينة خليفة بأبوظبي"
+          className="mt-10"
+        />
 
         <div className="mt-10 grid md:grid-cols-2 grid-cols-1 gap-10">
           <div>
@@ -642,14 +645,11 @@ const AbuDhabiPage = () => {
           سيارات ومعدات نقل الاثاث في ابوظبي
         </h2>
 
-        <div className="w-full bg-primary/20 aspect-video mt-10 rounded-2xl relative overflow-hidden">
-          <Image
-            src={"/شركة-الزايد-نقل-اثاث-دبي.jpg"}
-            alt="شركة الزايد نقل اثاث دبي"
-            fill
-            className="object-cover"
-          />
-        </div>
+        <ImageBanner
+          src={FleetImage}
+          alt="شاحنات ومعدات الزايد نقل اثاث في أبوظبي"
+          className="mt-10"
+        />
 
         <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
           <div>

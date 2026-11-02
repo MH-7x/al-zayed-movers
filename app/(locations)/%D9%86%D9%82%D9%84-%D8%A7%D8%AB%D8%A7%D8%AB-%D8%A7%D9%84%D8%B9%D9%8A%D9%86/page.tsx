@@ -16,7 +16,10 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import HeroImage from "@/public/نقل-اثاث-ابوظبي.jpg";
+import HeroImage from "@/public/img/نقل-اثاث-العين-امام-المنزل.jpg";
+import QuoteImage from "@/public/img/معاينة-نقل-اثاث-فيلا-العين.jpg";
+import RoadImage from "@/public/img/نقل-اثاث-من-العين-الى-دبي.jpg";
+import AreasImage from "@/public/img/نقل-اثاث-الجيمي-العين.jpg";
 import { Services } from "@/components/Services";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
 import { FAQSection } from "@/components/utils/FaqsSection";
@@ -37,6 +40,9 @@ import { InfoCardGrid } from "@/components/location/InfoCardGrid";
 import { AreaChips } from "@/components/location/AreaChips";
 import { ChecklistCard } from "@/components/location/ChecklistCard";
 import { CtaBand } from "@/components/location/CtaBand";
+import { ImageBand } from "@/components/location/ImageBand";
+import { ImageBanner } from "@/components/location/ImageBanner";
+import { QuoteImageSection } from "@/components/location/QuoteImageSection";
 
 export const metadata: Metadata = {
   title: "نقل اثاث العين | شركة نقل اثاث مرخصة ومؤمّنة – الزايد",
@@ -52,7 +58,7 @@ export const AlAinPage = () => {
       <section className="w-full relative overflow-hidden">
         <Image
           src={HeroImage}
-          alt="نقل اثاث العين مع الزايد"
+          alt="شاحنة الزايد نقل اثاث أمام منزل في العين مع جبل حفيت في الخلفية"
           fill
           loading="eager"
           placeholder="blur"
@@ -143,6 +149,21 @@ export const AlAinPage = () => {
           </a>
         </div>
       </section>
+
+      <QuoteImageSection
+        title="احصل على عرض سعر لنقل الأثاث في العين خلال دقائق"
+        image={QuoteImage}
+        imageAlt="معاينة نقل اثاث فيلا في العين"
+      >
+        <p>
+          أرسل صور الأثاث على واتساب ونرد عليك بتقدير سعر فوري، أو نأتي لمعاينة
+          مجانية في فيلتك أو شقتك بالعين ونعطيك السعر في الموقع.
+        </p>
+        <p>
+          السعر الذي نتفق عليه هو ما تدفعه في النهاية، بدون دفعة مقدمة وبدون
+          رسوم مخفية. تواصل معنا اليوم على واتساب على الرقم 0556461731.
+        </p>
+      </QuoteImageSection>
 
       <Services
         nums={6}
@@ -365,6 +386,11 @@ export const AlAinPage = () => {
       <ReviewsSection />
 
       <LocationSection>
+        <ImageBanner
+          src={AreasImage}
+          alt="تحميل اثاث في حي الجيمي بمدينة العين"
+          className="mb-10 lg:mb-14"
+        />
         <SectionHeading
           title="نقل اثاث داخل العين وفي جميع مناطقها"
           desc={
@@ -384,8 +410,12 @@ export const AlAinPage = () => {
         </div>
       </LocationSection>
 
-      <LocationSection>
-        <SectionHeading title="نقل اثاث بين العين وباقي الإمارات" />
+      <ImageBand
+        src={RoadImage}
+        alt="شاحنة الزايد نقل اثاث على طريق العين دبي"
+        title="نقل اثاث بين العين وباقي الإمارات"
+      />
+      <LocationSection className="pt-10 lg:pt-14">
         <InfoCardGrid
           cols={2}
           items={[

@@ -39,6 +39,7 @@ export function RouteSection({
               alt={imageAlt}
               fill
               placeholder="blur"
+              sizes="(min-width: 1024px) 460px, 100vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-t from-secondary/80 via-secondary/10 to-transparent" />

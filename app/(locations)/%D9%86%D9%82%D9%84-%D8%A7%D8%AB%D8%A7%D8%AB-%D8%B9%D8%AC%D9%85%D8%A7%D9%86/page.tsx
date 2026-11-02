@@ -9,14 +9,14 @@ import {
   Truck,
 } from "lucide-react";
 import Image from "next/image";
-// TODO: VERIFY THIS IMAGE — filename references Abu Dhabi ("ابوظبي"), not Ajman.
-// This is the AJMAN page hero — confirm the correct Ajman-specific hero image is used here.
-import HeroImage from "@/public/نقل-اثاث-ابوظبي.jpg";
+import HeroImage from "@/public/img/نقل-اثاث-عجمان-كورنيش.jpg";
+import QuoteImage from "@/public/img/عرض-سعر-نقل-اثاث-عجمان.jpg";
+import AreasImage from "@/public/img/مناطق-نقل-اثاث-عجمان.jpg";
+import CostImage from "@/public/img/تكلفة-نقل-اثاث-عجمان-تحميل.jpg";
 import { Services } from "@/components/Services";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
-// TODO: VERIFY THIS IMAGE — filename references Sharjah ("الشارقة"), not Ajman.
-// Used in the "areas we cover in Ajman" section — confirm this is the intended image.
-import InterEmirateImage from "@/public/نقل الأثاث-بين-الشارقة.jpg";
+import { ImageBanner } from "@/components/location/ImageBanner";
+import { QuoteImageSection } from "@/components/location/QuoteImageSection";
 import { FAQSection } from "@/components/utils/FaqsSection";
 import { AjmanFaqs } from "@/lib/faqsData";
 import { ContactSection } from "@/components/ContactSection";
@@ -26,7 +26,7 @@ export const AjmanPage = () => {
       <section className="w-full relative overflow-hidden">
         <Image
           src={HeroImage}
-          alt="نقل اثاث عجمان مع الزايد نقل اثاث "
+          alt="شاحنة الزايد نقل اثاث أمام أبراج كورنيش عجمان"
           fill
           loading="eager"
           placeholder="blur"
@@ -105,6 +105,25 @@ export const AjmanPage = () => {
           </a>
         </div>
       </section>
+
+      <QuoteImageSection
+        title="احصل على عرض سعر لنقل الأثاث في عجمان خلال دقائق"
+        image={QuoteImage}
+        imageAlt="عرض سعر نقل اثاث على باب شقة في برج بعجمان"
+      >
+        <p>
+          لديك طريقتان سريعتان للحصول على عرض السعر: تقدير فوري عبر الواتساب من
+          صور أثاثك دون الحاجة لزيارة الموقع، أو معاينة ميدانية مجانية يطّلع
+          خلالها فريقنا على أثاثك في شقتك أو فيلتك ليمنحك سعرًا دقيقًا على
+          الفور.
+        </p>
+        <p>
+          سواء كنت في برج على كورنيش عجمان أو في فيلا بمشيرف، تواصل معنا اليوم
+          عبر واتساب على الرقم 0556461731، وسنرتب لك خطوتك القادمة بتسعير فوري،
+          وبدون أي دفعة مقدمة أو رسوم مخفية.
+        </p>
+      </QuoteImageSection>
+
       <Services
         nums={4}
         heading="خدماتنا لنقل الأثاث في عجمان"
@@ -161,9 +180,8 @@ export const AjmanPage = () => {
       </section>
 
       <section className="pt-16 lg:pt-28">
-        <div className="max-w-6xl mx-auto px-4 md:px-0 grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* Content Column */}
-          <div className="flex flex-col text-right lg:col-span-7">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col text-right max-w-4xl">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight mb-5">
               التوصيل في نفس اليوم من عجمان <br /> إلى باقي الإمارات
             </h2>
@@ -207,11 +225,6 @@ export const AjmanPage = () => {
               نحدد إمكانية التوصيل في نفس اليوم بعد معرفة حجم الأثاث والوجهة،
               لذلك يُفضّل التواصل معنا مبكرًا في يوم الانتقال لتأكيد الموعد.
             </p>
-          </div>
-
-          {/* 4:3 Image Placeholder Column */}
-          <div className="w-full lg:col-span-5">
-            <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-red-300"></div>
           </div>
         </div>
       </section>
@@ -284,9 +297,10 @@ export const AjmanPage = () => {
 
       <section className="w-full relative overflow-hidden mt-16 md:mt-24 py-20 md:py-28">
         <Image
-          src={InterEmirateImage}
-          alt="المناطق التي نغطيها في عجمان"
+          src={AreasImage}
+          alt="مناطق عجمان وشاحنة الزايد نقل اثاث في الطريق"
           fill
+          sizes="100vw"
           placeholder="blur"
           className="object-cover absolute inset-0 -z-20"
         />
@@ -325,15 +339,11 @@ export const AjmanPage = () => {
           لهذا نوفر معاينة مجانية أو تقدير أونلاين لتحديد السعر الفعلي بدقة، لكن
           من المفيد معرفة العوامل التي تؤثر عادة على التكلفة قبل طلب عرض السعر:
         </p>
-        <div className="w-full bg-primary/20 aspect-video mt-10 rounded-2xl relative overflow-hidden">
-          {/* TODO: VERIFY THIS IMAGE — filename/alt references Dubai ("دبي"), not Ajman. */}
-          <Image
-            src={"/شركة-الزايد-نقل-اثاث-دبي.jpg"}
-            alt="شركة الزايد نقل اثاث دبي"
-            fill
-            className="object-cover"
-          />
-        </div>
+        <ImageBanner
+          src={CostImage}
+          alt="فريق الزايد نقل اثاث يحمل الاثاث عبر الدرج والمصعد في عجمان"
+          className="mt-10"
+        />
 
         <div className="mt-10 grid md:grid-cols-2 grid-cols-1 gap-10">
           <div>

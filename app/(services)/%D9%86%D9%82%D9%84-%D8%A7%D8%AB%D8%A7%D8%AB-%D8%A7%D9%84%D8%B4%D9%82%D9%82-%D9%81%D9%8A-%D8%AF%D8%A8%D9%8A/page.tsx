@@ -16,7 +16,7 @@ import {
   SubServices,
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
-import HeroImage from "@/public/معاينة-مجانية-نقل-اثاث-الزايد-دبي.jpg";
+import HeroImage from "@/public/img/نقل-اثاث-الشقق-في-دبي.jpg";
 import LoadingImage from "@/public/تحميل-ونقل-اثاث-امن-شاحنة-الزايد-دبي.jpg";
 import AssemblyImage from "@/public/تركيب-وتنظيف-اثاث-بعد-النقل-الزايد-دبي.jpg";
 
@@ -36,7 +36,7 @@ export default function ApartmentMovingPage() {
       hero={{
         title: "نقل اثاث الشقق في دبي",
         image: HeroImage,
-        imageAlt: "فني الزايد نقل اثاث يعاين أثاث شقة في دبي مع العميلة",
+        imageAlt: "فريق الزايد نقل اثاث يدخل مدخل برج سكني في دبي",
         intro: (
           <>
             <p>

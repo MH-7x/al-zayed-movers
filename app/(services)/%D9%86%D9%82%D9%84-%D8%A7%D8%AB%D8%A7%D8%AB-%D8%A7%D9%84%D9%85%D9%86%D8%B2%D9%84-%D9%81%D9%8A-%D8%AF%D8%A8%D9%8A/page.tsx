@@ -18,7 +18,7 @@ import {
   SubServices,
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
-import HeroImage from "@/public/شركة-الزايد-نقل-اثاث-دبي.jpg";
+import HeroImage from "@/public/img/نقل-اثاث-المنزل-في-دبي.jpg";
 import LoadingImage from "@/public/تحميل-ونقل-اثاث-امن-شاحنة-الزايد-دبي.jpg";
 import PackingImage from "@/public/فك-وتغليف-اثاث-احترافي-الزايد-دبي.jpg";
 
@@ -38,7 +38,7 @@ export default function HouseMovingPage() {
       hero={{
         title: "نقل اثاث المنزل في دبي",
         image: HeroImage,
-        imageAlt: "شاحنة الزايد نقل اثاث دبي لنقل اثاث المنزل",
+        imageAlt: "شاحنة الزايد نقل اثاث أمام منزل في دبي",
         intro: (
           <>
             <p>

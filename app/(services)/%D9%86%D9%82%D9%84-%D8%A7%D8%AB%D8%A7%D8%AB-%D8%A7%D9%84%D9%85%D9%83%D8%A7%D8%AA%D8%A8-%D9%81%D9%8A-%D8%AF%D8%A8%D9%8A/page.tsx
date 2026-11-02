@@ -17,7 +17,7 @@ import {
   SubServices,
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
-import HeroImage from "@/public/تحميل-ونقل-اثاث-امن-شاحنة-الزايد-دبي.jpg";
+import HeroImage from "@/public/img/نقل-اثاث-المكاتب-في-دبي.jpg";
 import AssemblyImage from "@/public/تركيب-وتنظيف-اثاث-بعد-النقل-الزايد-دبي.jpg";
 import SurveyImage from "@/public/معاينة-مجانية-نقل-اثاث-الزايد-دبي.jpg";
 
@@ -37,7 +37,7 @@ export default function OfficeMovingPage() {
       hero={{
         title: "نقل اثاث المكاتب في دبي",
         image: HeroImage,
-        imageAlt: "شاحنة الزايد نقل اثاث تنقل أثاث مكتب في دبي",
+        imageAlt: "فريق الزايد نقل اثاث يفك مكاتب ومحطات عمل في مكتب بدبي",
         intro: (
           <>
             <p>

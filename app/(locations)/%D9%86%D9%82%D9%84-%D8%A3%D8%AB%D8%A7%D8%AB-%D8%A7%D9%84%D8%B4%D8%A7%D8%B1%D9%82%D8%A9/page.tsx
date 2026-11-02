@@ -1,8 +1,11 @@
 import { Services } from "@/components/Services";
 import { Button } from "@/components/ui/button";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
-import HeroImage from "@/public/نقل-اثاث-ابوظبي.jpg";
-import InterEmirateImage from "@/public/نقل الأثاث-بين-الشارقة.jpg";
+import HeroImage from "@/public/img/نقل-اثاث-الشارقة-كورنيش-المجاز.jpg";
+import SurveyImage from "@/public/img/معاينة-نقل-اثاث-شقة-الشارقة.jpg";
+import InterEmirateImage from "@/public/img/نقل-اثاث-من-الشارقة-الى-دبي-طريق.jpg";
+import PrepImage from "@/public/img/تجهيز-نقل-اثاث-مبنى-الشارقة.jpg";
+import { ImageBanner } from "@/components/location/ImageBanner";
 import {
   Boxes,
   Building2,
@@ -24,7 +27,7 @@ const SharjahPage = () => {
       <section className="w-full relative overflow-hidden">
         <Image
           src={HeroImage}
-          alt="نقل أثاث الشارقة مع الزايد نقل اثاث"
+          alt="شاحنة الزايد نقل اثاث على كورنيش المجاز في الشارقة"
           fill
           loading="eager"
           placeholder="blur"
@@ -141,9 +144,11 @@ const SharjahPage = () => {
               {/* Main Image Container */}
               <div className="relative overflow-hidden rounded-2xl border-card bg-card aspect-4/3">
                 <Image
-                  src="/الزايد-نقل-اثاث-دبي.jpg"
-                  alt="الزايد نقل اثاث دبي"
+                  src={SurveyImage}
+                  alt="مشرف الزايد نقل اثاث يعاين اثاث شقة مع العميل في الشارقة"
                   fill
+                  placeholder="blur"
+                  sizes="(min-width: 1024px) 540px, (min-width: 512px) 512px, 100vw"
                   className="object-cover"
                 />
               </div>
@@ -316,8 +321,9 @@ const SharjahPage = () => {
       <section className="w-full relative overflow-hidden mt-16 md:mt-24 py-20 md:py-28">
         <Image
           src={InterEmirateImage}
-          alt="نقل الأثاث بين الشارقة ودبي والإمارات الأخرى"
+          alt="شاحنة الزايد نقل اثاث على طريق الشارقة دبي"
           fill
+          sizes="100vw"
           placeholder="blur"
           className="object-cover absolute inset-0 -z-20"
         />
@@ -352,14 +358,11 @@ const SharjahPage = () => {
           قبل موعد النقل، هناك بعض الأمور العملية التي تساعد على إتمام العملية
           بسلاسة:
         </p>
-        <div className="w-full bg-primary/20 aspect-video mt-10 rounded-2xl relative overflow-hidden">
-          <Image
-            src={"/شركة-الزايد-نقل-اثاث-دبي.jpg"}
-            alt="شركة الزايد نقل اثاث دبي"
-            fill
-            className="object-cover"
-          />
-        </div>
+        <ImageBanner
+          src={PrepImage}
+          alt="صناديق مرقمة وحماية مدخل المبنى قبل نقل الاثاث في الشارقة"
+          className="mt-10"
+        />
 
         <div className="mt-10 grid md:grid-cols-2 grid-cols-1 gap-10">
           <div>

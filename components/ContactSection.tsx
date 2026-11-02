@@ -6,11 +6,13 @@ import { MapPin, Phone, Clock, ExternalLink, PhoneCall } from "lucide-react";
 export interface ContactSectionProps {
   title?: string;
   description?: string;
+  rev?: boolean;
 }
 
 export function ContactSection({
   title = "تواصل معنا الآن — الزايد نقل اثاث دبي",
   description = "جاهز للانتقال؟ تواصل مع الزايد نقل اثاث دبي واحصل على عرض سعر مجاني خلال دقائق.",
+  rev = false,
 }: ContactSectionProps) {
   return (
     <section
@@ -18,9 +20,13 @@ export function ContactSection({
       className="relative overflow-hidden pt-16 md:pt-28"
       id="contact"
     >
-      <div className="container mx-auto max-w-6xl px-4 md:px-0 grid grid-cols-1 gap-16 md:grid-cols-2 items-center">
+      <div
+        className={`container mx-auto max-w-6xl px-4 md:px-0 grid grid-cols-1 gap-16 md:grid-cols-2 items-center`}
+      >
         {/* Contact Card (Inspired by the reference image) */}
-        <div className="overflow-hidden rounded-2xl bg-white">
+        <div
+          className={`overflow-hidden rounded-2xl bg-white ${rev ? "order-2" : ""}`}
+        >
           {/* Card Map Header / Image */}
           <div className="relative aspect-video w-full overflow-hidden bg-primary/20 ">
             <iframe

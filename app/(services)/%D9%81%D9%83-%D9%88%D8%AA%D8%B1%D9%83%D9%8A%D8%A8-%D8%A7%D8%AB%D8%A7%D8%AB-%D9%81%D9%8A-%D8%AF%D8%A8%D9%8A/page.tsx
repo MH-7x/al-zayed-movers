@@ -17,7 +17,7 @@ import {
   SubServices,
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
-import HeroImage from "@/public/تركيب-وتنظيف-اثاث-بعد-النقل-الزايد-دبي.jpg";
+import HeroImage from "@/public/img/فك-وتركيب-اثاث-في-دبي.jpg";
 import PackingImage from "@/public/فك-وتغليف-اثاث-احترافي-الزايد-دبي.jpg";
 import SurveyImage from "@/public/معاينة-مجانية-نقل-اثاث-الزايد-دبي.jpg";
 
@@ -37,7 +37,7 @@ export default function AssemblyPage() {
       hero={{
         title: "فك وتركيب اثاث في دبي",
         image: HeroImage,
-        imageAlt: "نجارو الزايد نقل اثاث يركبون سريراً ويثبتون شاشة في شقة بدبي",
+        imageAlt: "فريق الزايد نقل اثاث يفك ويركب اثاث غرفة نوم في دبي",
         intro: (
           <>
             <p>

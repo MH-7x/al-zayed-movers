@@ -11,8 +11,10 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import HeroImage from "@/public/نقل-اثاث-ابوظبي.jpg";
-import InterEmirateImage from "@/public/نقل الأثاث-بين-الشارقة.jpg";
+import HeroImage from "@/public/img/نقل-اثاث-راس-الخيمة-امام-المنزل.jpg";
+import QuoteImage from "@/public/img/معاينة-نقل-اثاث-فيلا-راس-الخيمة.jpg";
+import RouteImage from "@/public/img/نقل-اثاث-دبي-راس-الخيمة-طريق-الامارات.jpg";
+import AreasImage from "@/public/img/نقل-اثاث-ميناء-العرب-راس-الخيمة.jpg";
 import { Services } from "@/components/Services";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
 import { FAQSection } from "@/components/utils/FaqsSection";
@@ -24,6 +26,8 @@ import { SectionHeading } from "@/components/location/SectionHeading";
 import { QuoteActions } from "@/components/location/QuoteActions";
 import { FactsStrip } from "@/components/location/FactsStrip";
 import { RouteSection } from "@/components/location/RouteSection";
+import { ImageBanner } from "@/components/location/ImageBanner";
+import { QuoteImageSection } from "@/components/location/QuoteImageSection";
 import { InfoCardGrid } from "@/components/location/InfoCardGrid";
 import { AreaChips } from "@/components/location/AreaChips";
 import { DataTable } from "@/components/location/DataTable";
@@ -46,7 +50,7 @@ export const RasAlKhaimahPage = () => {
       <section className="w-full relative overflow-hidden">
         <Image
           src={HeroImage}
-          alt="نقل اثاث راس الخيمة مع الزايد لنقل الاثاث"
+          alt="شاحنة الزايد نقل اثاث أمام منزل في رأس الخيمة مع جبل جيس في الخلفية"
           fill
           loading="eager"
           placeholder="blur"
@@ -138,6 +142,23 @@ export const RasAlKhaimahPage = () => {
 
       <FactsStrip facts={facts} />
 
+      <QuoteImageSection
+        title="احصل على عرض سعر لنقل الأثاث في رأس الخيمة خلال دقائق"
+        image={QuoteImage}
+        imageAlt="معاينة نقل اثاث فيلا في رأس الخيمة"
+      >
+        <p>
+          أرسل صور غرفك وعنواني الانطلاق والوصول على واتساب، ونرد عليك بتقدير
+          فوري للسعر. وإذا كنت تفضّل أن نرى المكان بأنفسنا، نأتيك بمعاينة مجانية
+          في الفيلا أو الشقة ونعطيك السعر في الموقع.
+        </p>
+        <p>
+          عرض السعر واضح قبل الحجز، وما نتفق عليه هو ما تدفعه في النهاية، بدون
+          دفعة مقدمة وبدون رسوم خفية. تواصل معنا اليوم على واتساب على الرقم
+          0556461731.
+        </p>
+      </QuoteImageSection>
+
       <Services
         nums={4}
         heading="خدمات نقل اثاث رأس الخيمة حسب نوع العقار"
@@ -146,8 +167,8 @@ export const RasAlKhaimahPage = () => {
 
       <RouteSection
         title="نقل اثاث من دبي إلى رأس الخيمة (والعكس)"
-        image={InterEmirateImage}
-        imageAlt="نقل اثاث من دبي إلى رأس الخيمة والعكس"
+        image={RouteImage}
+        imageAlt="شاحنة الزايد نقل اثاث على طريق الإمارات بين دبي ورأس الخيمة"
         badge="دبي ⇄ رأس الخيمة: نحو 110 – 120 كم في الاتجاهين"
       >
         <p>
@@ -199,6 +220,11 @@ export const RasAlKhaimahPage = () => {
       </RouteSection>
 
       <LocationSection>
+        <ImageBanner
+          src={AreasImage}
+          alt="تحميل اثاث فيلا في ميناء العرب برأس الخيمة"
+          className="mb-10 lg:mb-14"
+        />
         <SectionHeading
           title="مناطق رأس الخيمة التي ننقل منها وإليها"
           desc={

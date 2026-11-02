@@ -41,7 +41,7 @@ export function ServiceHero({
         priority
         placeholder="blur"
         sizes="100vw"
-        className="-z-20 object-cover"
+        className="-z-20 object-cover object-[25%_50%] lg:object-center"
       />
       {/* Navy wash: solid enough on the text side, lets the photo show through on the other */}
       <div className="absolute inset-0 -z-10 bg-secondary/70 bg-linear-to-l from-secondary/95 via-secondary/80 to-secondary/30" />

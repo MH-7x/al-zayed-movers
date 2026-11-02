@@ -17,7 +17,7 @@ import {
   SubServices,
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
-import HeroImage from "@/public/الزايد-نقل-اثاث-دبي.jpg";
+import HeroImage from "@/public/img/نقل-اثاث-الفلل-في-دبي.jpg";
 import TruckImage from "@/public/شركة-الزايد-نقل-اثاث-دبي.jpg";
 import PackingImage from "@/public/فك-وتغليف-اثاث-احترافي-الزايد-دبي.jpg";
 
@@ -37,7 +37,7 @@ export default function VillaMovingPage() {
       hero={{
         title: "نقل اثاث الفلل في دبي",
         image: HeroImage,
-        imageAlt: "عمال الزايد نقل اثاث يحملون أثاث فيلا في دبي إلى الشاحنة",
+        imageAlt: "فريق الزايد نقل اثاث ينقل اثاث فيلا في مجمع سكني بدبي",
         intro: (
           <>
             <p>
