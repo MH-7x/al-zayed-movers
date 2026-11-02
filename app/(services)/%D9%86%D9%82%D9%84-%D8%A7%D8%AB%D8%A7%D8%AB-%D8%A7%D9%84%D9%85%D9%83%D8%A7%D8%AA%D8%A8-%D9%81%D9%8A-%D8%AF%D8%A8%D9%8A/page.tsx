@@ -55,9 +55,9 @@ export default function OfficeMovingPage() {
         ),
       }}
       below={
-        <>
+        <>          <ReviewsSection />
+
           <FAQSection title="أسئلة متكررة عن نقل اثاث المكاتب" faqs={faqs} />
-          <ReviewsSection />
           <ContactSection
             title="احجز زيارة ميدانية لنقل مكتبك في دبي"
             description="نزور المكتبين القديم والجديد، ونرسل لك خطة نقل وعرض سعر مكتوباً، ثم ننفذ النقل خارج ساعات الدوام دون أي دفعة مقدمة."

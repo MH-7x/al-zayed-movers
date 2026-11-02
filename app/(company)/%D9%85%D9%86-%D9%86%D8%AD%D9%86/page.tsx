@@ -17,7 +17,6 @@ import {
   MapPin,
   MessageCircle,
   PackageCheck,
-  Quote,
   Search,
   ShieldCheck,
   Snowflake,
@@ -36,6 +35,7 @@ import FleetPhoto from "@/public/img/اسطول-شاحنات-الزايد-نقل
 import CrewPhoto from "@/public/img/عامل-نقل-اثاث-الزايد-بطاقة-تعريف.jpg";
 import CarpenterPhoto from "@/public/img/نجار-فك-وتركيب-اثاث-الزايد.jpg";
 import { SectionHeading } from "@/components/location/SectionHeading";
+import { LocationSection } from "@/components/location/LocationSection";
 import { QuoteActions } from "@/components/location/QuoteActions";
 import { CtaBand } from "@/components/location/CtaBand";
 import { FAQSection } from "@/components/utils/FaqsSection";
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 const linkClass =
-  "font-bold text-primary underline underline-offset-4 hover:text-primary/80";
+  "font-bold text-brand underline underline-offset-4 hover:no-underline";
 
 const quickFacts = [
   {
@@ -279,7 +279,7 @@ export default function AboutPage() {
       />
 
       {/* ───────── Hero ───────── */}
-      <section className="relative overflow-hidden bg-secondary px-4 pt-14 pb-32 sm:px-6 md:pt-20 md:pb-36 lg:px-8">
+      <section className="relative overflow-hidden bg-secondary [--outline:#ffffff] [--outline-inv:var(--color-secondary)] px-4 pt-14 pb-32 sm:px-6 md:pt-20 md:pb-36 lg:px-8">
         <Truck
           className="pointer-events-none absolute -bottom-10 -start-10 size-72 text-white/5"
           strokeWidth={1}
@@ -301,10 +301,10 @@ export default function AboutPage() {
 
           <div className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
             <div className="absolute -top-5 -end-2 z-20 flex size-28 flex-col items-center justify-center rounded-full bg-primary p-2 text-center text-primary-foreground shadow-xl ring-4 ring-secondary sm:-top-7 sm:-end-6 sm:size-32">
-              <span className="text-3xl font-black leading-none sm:text-4xl">
+              <span className="text-3xl font-extrabold leading-none sm:text-4xl">
                 +12
               </span>
-              <span className="mt-1 text-[11px] font-medium leading-tight sm:text-xs">
+              <span className="mt-1 text-[11px] font-medium leading-snug sm:text-xs">
                 سنة خبرة
               </span>
             </div>
@@ -331,7 +331,7 @@ export default function AboutPage() {
                 key={text}
                 className="flex flex-col items-center gap-3 rounded-2xl bg-muted/60 p-5 text-center"
               >
-                <span className="rounded-full bg-primary/10 p-3 text-primary">
+                <span className="rounded-full bg-brand-soft p-3 text-brand">
                   <Icon className="size-6" strokeWidth={1.5} />
                 </span>
                 <span className="text-sm font-medium leading-relaxed text-card-foreground">
@@ -344,10 +344,10 @@ export default function AboutPage() {
       </section>
 
       {/* ───────── ليش بدأنا؟ ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
-            <h2 className="text-3xl font-extrabold leading-tight md:text-4xl">
+            <h2 className="text-3xl font-extrabold leading-snug md:text-4xl">
               ليش بدأنا؟
             </h2>
             <div className="mt-6 space-y-4 leading-loose text-muted-foreground md:text-lg">
@@ -379,10 +379,10 @@ export default function AboutPage() {
             />
           </div>
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── رسالتنا ورؤيتنا ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="mx-auto max-w-6xl">
           <SectionHeading title="رسالتنا ورؤيتنا" />
           <div className="grid gap-6 md:grid-cols-2">
@@ -408,10 +408,10 @@ export default function AboutPage() {
                 strokeWidth={1}
               />
               <div className="relative">
-                <span className="inline-flex rounded-full bg-white/20 p-3 text-white">
+                <span className="inline-flex rounded-full bg-white/20 p-3 text-primary-foreground">
                   <Eye className="size-7" strokeWidth={1.5} />
                 </span>
-                <p className="mt-5 leading-loose text-white md:text-lg">
+                <p className="mt-5 leading-loose text-primary-foreground md:text-lg">
                   <strong>رؤيتنا:</strong> نبي نكون أول شركة تخطر ببالك لما تقول
                   «بنتنقل»، وأول شركة توصي فيها أهلك وجيرانك وزملاءك في العمل.
                 </p>
@@ -419,10 +419,10 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── قيمنا ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="mx-auto max-w-6xl">
           <SectionHeading title="قيمنا: وعود نكتبها ونلتزم فيها" />
           <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -433,11 +433,11 @@ export default function AboutPage() {
               >
                 <span
                   aria-hidden
-                  className="absolute top-4 end-5 text-5xl font-black text-secondary/5"
+                  className="absolute top-4 end-5 text-5xl font-extrabold text-secondary/5"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="inline-flex rounded-xl bg-primary/10 p-3 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <span className="inline-flex rounded-xl bg-brand-soft p-3 text-brand transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   <Icon className="size-6" strokeWidth={1.5} />
                 </span>
                 <p className="mt-4 leading-loose text-muted-foreground">
@@ -447,14 +447,14 @@ export default function AboutPage() {
             ))}
           </ul>
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── كيف يتم نقلك معنا؟ ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-8">
-              <h2 className="text-3xl font-extrabold leading-tight md:text-4xl">
+              <h2 className="text-3xl font-extrabold leading-snug md:text-4xl">
                 كيف يتم نقلك معنا؟
               </h2>
               <AboutPhoto
@@ -469,12 +469,12 @@ export default function AboutPage() {
           <ol className="relative space-y-8 before:absolute before:inset-y-2 before:start-5 before:w-px before:bg-border lg:col-span-7">
             {steps.map(({ icon: Icon, lead, text }, i) => (
               <li key={lead} className="relative flex gap-5">
-                <span className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-black text-primary-foreground ring-4 ring-background">
+                <span className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-extrabold text-primary-foreground ring-4 ring-background">
                   {i + 1}
                 </span>
                 <div className="flex-1 rounded-2xl bg-card p-5 ring-1 ring-border">
                   <div className="flex items-center gap-2 text-secondary">
-                    <Icon className="size-5 text-primary" strokeWidth={1.5} />
+                    <Icon className="size-5 text-brand" strokeWidth={1.5} />
                     <h3 className="text-lg font-bold">{lead}</h3>
                   </div>
                   <p className="mt-2 leading-loose text-muted-foreground">
@@ -485,10 +485,10 @@ export default function AboutPage() {
             ))}
           </ol>
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── لمن نشتغل؟ ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             title="لمن نشتغل؟"
@@ -510,10 +510,10 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── وش نقدم؟ ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             title="وش نقدم؟"
@@ -525,14 +525,14 @@ export default function AboutPage() {
                 key={lead}
                 className="relative flex items-start gap-4 rounded-2xl bg-card p-5 ring-1 ring-border transition-shadow focus-within:shadow-lg hover:shadow-lg"
               >
-                <span className="rounded-xl bg-primary/10 p-3 text-primary">
+                <span className="rounded-xl bg-brand-soft p-3 text-brand">
                   <Icon className="size-6" strokeWidth={1.5} />
                 </span>
                 <p className="leading-loose text-muted-foreground">
                   {href ? (
                     <Link
                       href={href}
-                      className="font-bold text-secondary after:absolute after:inset-0 hover:text-primary"
+                      className="font-bold text-secondary after:absolute after:inset-0 hover:text-brand"
                     >
                       {lead}
                     </Link>
@@ -545,13 +545,13 @@ export default function AboutPage() {
             ))}
           </ul>
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── شاحناتنا ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-3xl bg-secondary p-6 md:p-12 lg:grid-cols-2">
           <div className="relative">
-            <h2 className="text-3xl font-extrabold leading-tight text-white md:text-4xl">
+            <h2 className="text-3xl font-extrabold leading-snug text-white md:text-4xl">
               شاحناتنا
             </h2>
             <p className="mt-4 leading-loose text-white/85 md:text-lg">
@@ -581,10 +581,10 @@ export default function AboutPage() {
             sizes="(min-width: 1024px) 520px, 100vw"
           />
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── الناس اللي بيشتغلون على أغراضك ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="grid grid-cols-2 gap-4 lg:col-span-5">
             <AboutPhoto
@@ -602,7 +602,7 @@ export default function AboutPage() {
             />
           </div>
           <div className="lg:col-span-7">
-            <h2 className="text-3xl font-extrabold leading-tight md:text-4xl">
+            <h2 className="text-3xl font-extrabold leading-snug md:text-4xl">
               الناس اللي بيشتغلون على أغراضك
             </h2>
             <div className="mt-6 space-y-4 leading-loose text-muted-foreground md:text-lg">
@@ -619,16 +619,16 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── وين نخدم؟ ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="mx-auto max-w-6xl rounded-3xl bg-card p-6 ring-1 ring-border md:p-12">
           <div className="flex items-center gap-3">
-            <span className="rounded-full bg-primary/10 p-3 text-primary">
+            <span className="rounded-full bg-brand-soft p-3 text-brand">
               <MapPin className="size-6" strokeWidth={1.5} />
             </span>
-            <h2 className="text-3xl font-extrabold leading-tight md:text-4xl">
+            <h2 className="text-3xl font-extrabold leading-snug md:text-4xl">
               وين نخدم؟
             </h2>
           </div>
@@ -707,16 +707,16 @@ export default function AboutPage() {
               </Link>
               .
             </p>
-            <p className="rounded-2xl bg-primary/10 p-5 font-medium text-secondary">
+            <p className="rounded-2xl bg-brand-soft p-5 font-medium text-secondary">
               سواء كنت تنتقل بين طابقين في نفس المبنى، أو من إمارة إلى إمارة
               ثانية، نتولى التفاصيل كلها من أول صندوق إلى آخر قطعة.
             </p>
           </div>
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── وش يشمل السعر؟ ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             title="وش يشمل السعر؟"
@@ -742,13 +742,13 @@ export default function AboutPage() {
             النهائية.
           </p>
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── كيف تختار شركة نقل؟ ───────── */}
-      <section className="px-4 pt-16 sm:px-6 lg:px-8 lg:pt-28">
+      <LocationSection>
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-12">
           <div className="rounded-3xl bg-secondary p-8 text-white md:p-10 lg:col-span-5">
-            <h2 className="text-3xl font-extrabold leading-tight text-white md:text-4xl">
+            <h2 className="text-3xl font-extrabold leading-snug text-white md:text-4xl">
               كيف تختار شركة نقل؟
             </h2>
             <p className="mt-4 leading-loose text-white/85 md:text-lg">
@@ -764,7 +764,7 @@ export default function AboutPage() {
                 key={q}
                 className="flex items-center gap-4 rounded-2xl bg-card p-4 ring-1 ring-border md:p-5"
               >
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-black text-primary">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-soft text-sm font-extrabold text-brand">
                   {i + 1}
                 </span>
                 <span className="font-medium leading-relaxed text-card-foreground">
@@ -774,10 +774,10 @@ export default function AboutPage() {
             ))}
           </ul>
         </div>
-      </section>
+      </LocationSection>
 
       {/* ───────── FAQ ───────── */}
-      <FAQSection title="أسئلة يسألها عملاؤنا" subtitle="" faqs={AboutFaqs} />
+      <FAQSection tone="auto" title="أسئلة يسألها عملاؤنا" subtitle="" faqs={AboutFaqs} />
 
       {/* ───────── CTA ───────── */}
       <CtaBand
@@ -798,7 +798,6 @@ export default function AboutPage() {
           </span>
         }
       />
-      <div className="pb-16 lg:pb-28" />
     </main>
   );
 }

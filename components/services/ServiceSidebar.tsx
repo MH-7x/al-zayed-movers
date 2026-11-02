@@ -6,21 +6,14 @@ import {
   Castle,
   Clock,
   HouseIcon,
-  MessageCircle,
-  PhoneCall,
   Truck,
   Warehouse,
   Wrench,
   type LucideIcon,
 } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
+import { CallButton, WhatsAppButton } from "@/components/ui/ContactButtons";
 import { cn, serviceItems } from "@/lib/utils";
-import {
-  PHONE_DISPLAY,
-  PHONE_TEL,
-  SERVICE_HREF,
-  whatsappLink,
-} from "./constants";
+import { PHONE_DISPLAY, SERVICE_HREF } from "./constants";
 
 const serviceIcons: Record<string, LucideIcon> = {
   [SERVICE_HREF.house]: HouseIcon,
@@ -32,6 +25,10 @@ const serviceIcons: Record<string, LucideIcon> = {
   [SERVICE_HREF.storage]: Warehouse,
 };
 
+/**
+ * Former sticky sidebar, now an in-flow band (the round buttons and the hero already provide the
+ * persistent actions): a navy quote card + the "other services" navigation with the current page marked.
+ */
 export function ServiceSidebar({
   currentHref,
   whatsappText,
@@ -40,61 +37,25 @@ export function ServiceSidebar({
   whatsappText: string;
 }) {
   return (
-    <aside className="space-y-6 lg:sticky lg:top-6 lg:self-start">
-      <div className="relative isolate overflow-hidden rounded-2xl bg-secondary p-6 text-white shadow-xl">
-        <Truck
-          aria-hidden
-          className="absolute -bottom-6 -start-6 -z-10 size-36 text-white/5"
-          strokeWidth={1}
-        />
-        <span
-          aria-hidden
-          className="absolute -top-10 -end-10 -z-10 size-32 rounded-full bg-primary/30 blur-2xl"
-        />
-        <p className="text-xl font-extrabold">احصل على عرض سعر مجاني</p>
-        <p className="mt-2 text-sm leading-7 text-white/75">
+    <div className="grid items-start gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-8">
+      <aside className="rounded-lg bg-secondary p-6 text-white shadow-md md:p-8">
+        <p className="text-xl font-extrabold text-white">احصل على عرض سعر مجاني</p>
+        <p className="mt-2 text-sm text-white/85">
           أرسل صور الأثاث عبر واتساب وسنرد عليك بسعر واضح خلال دقائق.
         </p>
-
-        <div className="mt-5 space-y-3">
-          <a
-            href={whatsappLink(whatsappText)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              buttonVariants({ size: "lg" }),
-              "h-11 w-full gap-2 text-base font-bold",
-            )}
-          >
-            <MessageCircle className="size-5" aria-hidden />
-            واتساب
-          </a>
-          <a
-            href={PHONE_TEL}
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "h-11 w-full gap-2 border-white/25 bg-white/10 text-base font-bold text-white hover:bg-white/20 hover:text-white",
-            )}
-          >
-            <PhoneCall className="size-5" aria-hidden />
-            <span dir="ltr">{PHONE_DISPLAY}</span>
-          </a>
+        <div className="mt-5 grid gap-3">
+          <WhatsAppButton message={whatsappText}>واتساب</WhatsAppButton>
+          <CallButton variant="outlineLight">{PHONE_DISPLAY}</CallButton>
         </div>
-
-        <p className="mt-5 flex items-center gap-2 border-t border-white/15 pt-4 text-xs text-white/75">
+        <p className="mt-5 flex items-center gap-2 border-t border-white/15 pt-4 text-sm text-white/85">
           <Clock className="size-4 shrink-0 text-primary" aria-hidden />
           متاحون 7 أيام في الأسبوع على مدار الساعة
         </p>
-      </div>
+      </aside>
 
-      <nav
-        aria-label="خدماتنا"
-        className="rounded-2xl border bg-card p-3 shadow-sm"
-      >
-        <p className="px-3 pb-2 pt-1 text-sm font-extrabold text-secondary">
-          خدماتنا
-        </p>
-        <ul className="space-y-1">
+      <nav aria-label="خدماتنا" className="rounded-lg border border-border bg-card p-3 shadow-sm">
+        <p className="px-3 pt-1 pb-2 text-lg font-extrabold text-secondary">خدماتنا</p>
+        <ul className="grid gap-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
           {serviceItems.map((item) => {
             const Icon = serviceIcons[item.href] ?? Truck;
             const active = item.href === currentHref;
@@ -104,21 +65,19 @@ export function ServiceSidebar({
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors",
+                    "flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors",
                     active
-                      ? "bg-primary/10 font-bold text-primary"
-                      : "font-medium text-foreground/80 hover:bg-muted hover:text-secondary",
+                      ? "bg-brand-soft font-extrabold text-brand"
+                      : "font-bold text-secondary hover:bg-muted hover:text-brand",
                   )}
                 >
                   <span
                     className={cn(
-                      "flex size-8 shrink-0 items-center justify-center rounded-lg",
-                      active
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-secondary",
+                      "grid size-8 shrink-0 place-items-center rounded-md",
+                      active ? "bg-primary text-primary-foreground" : "bg-muted text-secondary",
                     )}
                   >
-                    <Icon className="size-4" strokeWidth={1.6} aria-hidden />
+                    <Icon className="size-4" strokeWidth={1.8} aria-hidden />
                   </span>
                   {item.title}
                 </Link>
@@ -127,6 +86,6 @@ export function ServiceSidebar({
           })}
         </ul>
       </nav>
-    </aside>
+    </div>
   );
 }

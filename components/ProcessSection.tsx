@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { Section, SectionHeading } from "@/components/ui/Section";
+import { WhatsAppButton } from "@/components/ui/ContactButtons";
 import { ReactNode } from "react";
 
 interface ProcessStep {
@@ -130,93 +130,47 @@ const steps: ProcessStep[] = [
   },
 ];
 
+/** Numbered timeline. Photos are 800×597 sources shown at ≈475×356 (≥1024) → never upscaled. */
 export function ProcessSection() {
   return (
-    <section className="pt-16 lg:pt-28" id="process">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ── Section Header ── */}
-        <div className="mb-10">
-          <h2 className="md:text-4xl text-3xl font-extrabold leading-tight">
-            خطوات عملية نقل الاثاث مع <br className="hidden md:block" /> الزايد
-            نقل اثاث دبي
-          </h2>
-          <p className="text-primary text-xl sm:text-2xl font-bold mt-1"></p>
-        </div>
+    <Section id="process">
+      <SectionHeading title="خطوات عملية نقل الاثاث مع الزايد نقل اثاث دبي" />
 
-        {/* ── Steps ── */}
-        <div className="space-y-0">
-          {steps.map((step, i) => {
-            const isEven = i % 2 === 0;
+      <ol className="space-y-8 md:space-y-12">
+        {steps.map((step, i) => (
+          <li key={step.number} className="grid gap-4 md:grid-cols-12 md:items-center md:gap-x-10 md:gap-y-4">
+            <div className="flex items-center gap-3 md:col-span-12">
+              <span className="grid size-11 place-items-center rounded-full bg-secondary text-sm font-extrabold text-white">
+                {step.number}
+              </span>
+              <span className="font-bold text-muted-foreground">{step.label}</span>
+            </div>
 
-            return (
-              <div key={step.number}>
-                {/* ── Separator line with step number + label ── */}
-                <div className="flex items-center justify-between border-t border-border py-4">
-                  <span className="text-sm font-bold text-primary tracking-wide">
-                    {step.number}
-                  </span>
-                  <span className="text-sm font-bold text-muted-foreground tracking-wide">
-                    {step.label}
-                  </span>
-                </div>
+            <div
+              className={`relative aspect-video overflow-hidden rounded-lg border border-border md:col-span-5 md:aspect-4/3 ${
+                i % 2 === 0 ? "md:order-1" : "md:order-2"
+              }`}
+            >
+              <Image
+                src={`/${processImages[i].name}`}
+                alt={processImages[i].alt}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 475px, (min-width: 768px) 40vw, 100vw"
+              />
+            </div>
 
-                {/* ── Content row: image + text, alternating ── */}
-                <div
-                  className={`
-                    grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-16
-                    pt-6 pb-14 lg:pb-20 items-center
-                  `}
-                >
-                  {/* Image placeholder */}
-                  <div
-                    className={`
-                      md:col-span-5
-                      ${isEven ? "md:order-1" : "md:order-2"}
-                    `}
-                  >
-                    {/* 4:3 aspect ratio placeholder — replace with your image */}
-                    <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden">
-                      <Image
-                        src={`/${processImages[i].name}`}
-                        alt={processImages[i].alt}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                    </div>
-                  </div>
+            <div className={`md:col-span-7 ${i % 2 === 0 ? "md:order-2" : "md:order-1"}`}>
+              <h3 className="mb-3 text-2xl leading-snug">{step.title}</h3>
+              <div className="space-y-3">{step.description}</div>
+            </div>
+          </li>
+        ))}
+      </ol>
 
-                  {/* Text content */}
-                  <div
-                    className={`
-                      md:col-span-7 flex flex-col justify-center
-                      ${isEven ? "md:order-2" : "md:order-1"}
-                    `}
-                  >
-                    <h3 className="text-2xl lg:text-[1.7rem] font-bold leading-snug">
-                      {step.title}
-                    </h3>
-                    <div className="mt-4 text-muted-foreground text-base leading-relaxed">
-                      {step.description}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* ── Bottom CTA ── */}
-        <div className="border-t border-border pt-10 pb-4 text-center">
-          <Button
-            size="lg"
-            className="gap-2 px-6 h-12 text-base cursor-pointer"
-          >
-            <span> تواصل معنا الآن عبر الواتساب</span>
-            <ArrowLeft className="size-4" />
-          </Button>
-        </div>
+      <div className="mt-10">
+        <WhatsAppButton className="max-sm:w-full">تواصل معنا الآن عبر الواتساب</WhatsAppButton>
       </div>
-    </section>
+    </Section>
   );
 }

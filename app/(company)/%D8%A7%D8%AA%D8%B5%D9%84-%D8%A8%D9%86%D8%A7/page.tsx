@@ -11,11 +11,11 @@ export default function ContactPage() {
   return (
     <main>
       <ContactSection
+        as="h1"
         title="تواصل معنا واحصل على عرض سعر فوري"
         description="أرسل لنا عدد الغرف ومنطقتك على الواتساب، ونرد عليك بعرض سعر فوري. المعاينة مجانية، وبدون دفعة مقدمة، ونخدم دبي وكل الإمارات 7 أيام في الأسبوع."
         rev
       />
-      <div className="pb-16 lg:pb-28" />
     </main>
   );
 }

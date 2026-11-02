@@ -1,5 +1,7 @@
+import { Plus } from "lucide-react";
 import { convertFaqsForSchema } from "@/lib/ConvertFaqsInRaw";
 import { generateFAQSchema } from "@/lib/GenerateFaqSchema";
+import { Section, SectionHeading } from "@/components/ui/Section";
 
 export interface FAQData {
   question: string;
@@ -11,7 +13,21 @@ export interface FAQProps {
   subtitle?: string;
   faqs: FAQData[];
   openFirst?: boolean;
+  tone?: "default" | "auto" | "alt";
 }
+
+/**
+ * Answers come from lib/faqsData.tsx as free-form JSX (links, tables, lists). Rather than editing
+ * ~1000 lines of copy, the answer container normalises them with descendant selectors:
+ * links → brand-text + underline, tables → scrollable bordered grid with start alignment.
+ */
+const answerCls =
+  "space-y-3 px-4 pb-5 text-foreground md:text-base text-sm " +
+  "[&_a]:font-bold [&_a]:text-brand [&_a]:underline [&_a]:underline-offset-4 " +
+  "[&_table]:w-full [&_table]:min-w-140 [&_table]:border-collapse [&_table]:text-start [&_table]:text-sm " +
+  "[&_th]:border [&_th]:border-border [&_th]:bg-muted [&_th]:p-2.5 [&_th]:text-start [&_th]:font-bold [&_th]:text-secondary " +
+  "[&_td]:border [&_td]:border-border [&_td]:p-2.5 [&_td]:text-start " +
+  "[&_ul]:list-disc [&_ul]:ps-5 [&_ol]:list-decimal [&_ol]:ps-5";
 
 export const FAQItem: React.FC<{ faq: FAQData; openFirst?: boolean }> = ({
   faq,
@@ -20,42 +36,26 @@ export const FAQItem: React.FC<{ faq: FAQData; openFirst?: boolean }> = ({
   return (
     <details
       open={openFirst}
-      className="group [&_summary::-webkit-details-marker]:hidden"
+      className="group rounded-md border border-border bg-card open:border-secondary"
     >
-      <summary className="flex cursor-pointer items-start between md:gap-6 py-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-4 rounded-sm">
-        <span className="me-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white transition-all duration-300 group-open:rotate-180 group-open:border-slate-300 group-open:bg-slate-50 group-hover:bg-slate-50">
-          <svg
-            className="h-4 w-4 text-slate-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2.5}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </span>
-        <h3 className="md:text-lg  font-bold">{faq.question}</h3>
+      <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-4 py-3">
+        <h3 className="text-base leading-snug font-extrabold md:text-lg">{faq.question}</h3>
+        <Plus
+          className="size-5 shrink-0 text-secondary transition-transform group-open:rotate-45 motion-reduce:transition-none"
+          aria-hidden="true"
+        />
       </summary>
-
-      {/* Answer Content */}
-      <div className="text-muted-foreground mb-4 space-y-2 leading-relaxed md:text-base text-sm ">
-        {faq.answer}
-      </div>
+      <div className={answerCls}>{faq.answer}</div>
     </details>
   );
 };
 
-/**
- * Main Reusable FAQ Section Component
- */
+/** Reusable FAQ section: bordered accordion, 56px summaries, FAQPage JSON-LD preserved. */
 export const FAQSection: React.FC<FAQProps> = ({
   title = "Frequently Asked Questions",
   subtitle = "كل ما تحتاج لمعرفته حول خدمات النقل وعملياتنا",
   faqs,
+  tone = "default",
 }) => {
   const FaqsSchema = generateFAQSchema(convertFaqsForSchema(faqs));
   return (
@@ -65,28 +65,14 @@ export const FAQSection: React.FC<FAQProps> = ({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: FaqsSchema }}
       />
-      <section id="faq" className="md:pt-28 pt-16 px-4 md:max-w-4xl mx-auto">
-        <div className="">
-          {/* Header */}
-          <div className="mb-14">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">
-              {title}
-            </h2>
-            {subtitle && (
-              <p className="text-lg text-muted-foreground max-w-2xl">
-                {subtitle}
-              </p>
-            )}
-          </div>
-
-          {/* FAQ List */}
-          <div className="border-t border-slate-200">
-            {faqs.map((faq, index) => (
-              <FAQItem key={`faq-${index}`} faq={faq} openFirst={index === 0} />
-            ))}
-          </div>
+      <Section id="faq" tone={tone} containerClassName="max-w-4xl 2xl:max-w-4xl">
+        <SectionHeading title={title} description={subtitle} />
+        <div className="grid gap-3">
+          {faqs.map((faq, index) => (
+            <FAQItem key={`faq-${index}`} faq={faq} openFirst={index === 0} />
+          ))}
         </div>
-      </section>
+      </Section>
     </>
   );
 };

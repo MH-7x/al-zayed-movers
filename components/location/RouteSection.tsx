@@ -2,38 +2,26 @@ import Image, { type StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import { Truck } from "lucide-react";
 import { LocationSection } from "./LocationSection";
+import { SectionHeading } from "@/components/ui/Section";
 
 interface RouteSectionProps {
   title: string;
   image: StaticImageData;
   imageAlt: string;
-  /** short line shown over the image */
+  /** short line shown under the image */
   badge?: string;
   children: ReactNode;
 }
 
-/** Text column + image column, for inter-emirate transfer content. */
-export function RouteSection({
-  title,
-  image,
-  imageAlt,
-  badge,
-  children,
-}: RouteSectionProps) {
+/** Copy at the start, sticky 4:3 photo at the end, for inter-emirate transfer content. */
+export function RouteSection({ title, image, imageAlt, badge, children }: RouteSectionProps) {
   return (
     <LocationSection>
-      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
-        <div className="lg:col-span-7">
-          <h2 className="mb-6 text-3xl font-extrabold leading-tight md:text-4xl">
-            {title}
-          </h2>
-          <div className="space-y-4 leading-relaxed text-muted-foreground">
-            {children}
-          </div>
-        </div>
+      <div className="grid items-start gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
+        <SectionHeading title={title} description={children} className="mb-0 md:mb-0" />
 
-        <div className="lg:sticky lg:top-24 lg:col-span-5">
-          <div className="relative aspect-4/3 overflow-hidden rounded-2xl shadow-lg lg:aspect-4/5">
+        <div className="lg:sticky lg:top-28">
+          <div className="relative aspect-4/3 overflow-hidden rounded-lg border border-border shadow-md">
             <Image
               src={image}
               alt={imageAlt}
@@ -42,17 +30,13 @@ export function RouteSection({
               sizes="(min-width: 1024px) 460px, 100vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-secondary/80 via-secondary/10 to-transparent" />
-            {badge && (
-              <div className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-xl bg-white/95 p-4 text-sm font-bold text-secondary">
-                <Truck
-                  className="size-6 shrink-0 text-primary"
-                  strokeWidth={1.5}
-                />
-                <span>{badge}</span>
-              </div>
-            )}
           </div>
+          {badge && (
+            <p className="mt-3 flex items-center gap-3 rounded-md border border-border bg-card p-4 text-sm font-bold text-secondary">
+              <Truck className="size-6 shrink-0 text-brand" strokeWidth={1.6} aria-hidden />
+              <span>{badge}</span>
+            </p>
+          )}
         </div>
       </div>
     </LocationSection>

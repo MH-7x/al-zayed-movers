@@ -56,9 +56,9 @@ export default function ApartmentMovingPage() {
         ),
       }}
       below={
-        <>
+        <>          <ReviewsSection />
+
           <FAQSection title="أسئلة متكررة عن نقل اثاث الشقق" faqs={faqs} />
-          <ReviewsSection />
           <ContactSection
             title="احجز خدمة نقل اثاث الشقق في دبي"
             description="أرسل لنا نوع شقتك والطابق والمنطقتين، وسنحجز مصعد الخدمة ونرسل لك عرض سعر واضحاً دون أي دفعة مقدمة."

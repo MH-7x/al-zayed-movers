@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 export interface Review {
   text: string;
@@ -11,121 +11,98 @@ export interface Review {
 
 interface ReviewsSliderProps {
   reviews: Review[];
-  autoPlayInterval?: number; // الوقت بالملي ثانية، القيمة الافتراضية 5000 (5 ثوانٍ)
+  autoPlayInterval?: number; // ms, default 5000
 }
 
+/**
+ * One review at a time with dot navigation.
+ * Accessibility: autoplay is OFF for users who prefer reduced motion, and pauses while the
+ * pointer is over the card or focus is inside it (WCAG 2.2.2). Dots are 44px targets.
+ */
 export default function ReviewsSlider({
   reviews,
   autoPlayInterval = 5000,
 }: ReviewsSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false);
-
-  const handleNext = useCallback(() => {
-    setIsFading(true);
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
-      setIsFading(false);
-    }, 300); // يتوافق مع مدة تلاشي الـ transition (duration-300)
-  }, [reviews.length]);
+  const [paused, setPaused] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
-    if (!reviews || reviews.length <= 1) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduceMotion(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
-    const interval = setInterval(() => {
-      handleNext();
-    }, autoPlayInterval);
+  useEffect(() => {
+    if (reviews.length <= 1 || paused || reduceMotion) return;
+    const id = setInterval(
+      () => setCurrentIndex((i) => (i + 1) % reviews.length),
+      autoPlayInterval,
+    );
+    return () => clearInterval(id);
+  }, [reviews.length, autoPlayInterval, paused, reduceMotion]);
 
-    return () => clearInterval(interval);
-  }, [reviews, autoPlayInterval, handleNext]);
+  if (!reviews || reviews.length === 0) return null;
 
-  // التحقق من وجود بيانات لتفادي أخطاء الرندر
-  if (!reviews || reviews.length === 0) {
-    return null;
-  }
-
-  const currentReview = reviews[currentIndex];
-  // استخراج الحرف الأول من الاسم للصورة الرمزية
-  const firstLetter = currentReview.name
-    ? currentReview.name.trim().charAt(0)
-    : "ع";
+  const review = reviews[currentIndex];
+  const firstLetter = review.name ? review.name.trim().charAt(0) : "ع";
 
   return (
-    <div className="w-full py-10 px-4">
-      <div className="max-w-2xl mx-auto flex flex-col items-center text-center relative">
-        {/* رمز اقتباس خلفي ناعم وجمالي */}
-        <div className="absolute -top-6 text-primary/10 text-8xl font-serif select-none pointer-events-none">
-          ”
+    <div
+      className="mx-auto w-full max-w-2xl"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+    >
+      <figure
+        aria-live={paused ? "polite" : "off"}
+        className="rounded-lg border border-border border-t-[3px] border-t-primary bg-card p-6 shadow-sm md:p-8"
+      >
+        <div className="mb-3 flex items-center gap-3">
+          <Image src="/google-icon.svg" alt="google svg icon" width={30} height={30} />
+          <span className="text-xl tracking-widest text-primary select-none" aria-hidden="true">
+            ★★★★★
+          </span>
         </div>
+        <blockquote className="text-base font-medium text-foreground md:text-lg">
+          {review.text}
+        </blockquote>
+        <figcaption className="mt-5 flex items-center gap-3.5">
+          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-secondary text-lg font-extrabold text-white select-none">
+            {firstLetter}
+          </span>
+          <span>
+            <span className="block text-sm font-extrabold text-secondary md:text-base">
+              {review.name}
+            </span>
+            <span className="block text-xs text-muted-foreground">{review.time}</span>
+          </span>
+        </figcaption>
+      </figure>
 
-        {/* حاوية التقييم النشط مع تأثير تلاشي ناعم */}
-        <div
-          className={`w-full flex flex-col items-center gap-3 transition-opacity duration-300 ${
-            isFading ? "opacity-0" : "opacity-100"
-          }`}
-        >
-          {/* نجوم التقييم الخماسية بلون الهوية */}
-          <div className="flex items-center gap-1 text-primary select-none">
-            {[...Array(5)].map((_, i) => (
-              <span key={i} className="text-xl">
-                ★
-              </span>
-            ))}
-          </div>
-          <Image
-            src={"/google-icon.svg"}
-            alt="google svg icon"
-            width={30}
-            height={30}
-          />
-          {/* نص التقييم الرئيسي */}
-          <p className="text-base md:text-lg text-foreground leading-relaxed font-medium max-w-xl">
-            {currentReview.text}
-          </p>
-
-          {/* معلومات العميل والصورة الرمزية */}
-          <div className="flex items-center gap-3.5 mt-2">
-            {/* الصورة الرمزية بالحرف الأول */}
-            <div className="w-12 h-12 rounded-full bg-primary/15 text-primary flex items-center justify-center font-black text-lg select-none shrink-0">
-              {firstLetter}
-            </div>
-
-            {/* الاسم والتوقيت */}
-            <div className="text-right">
-              <span className="block font-bold text-sm md:text-base text-secondary">
-                {currentReview.name}
-              </span>
-              <span className="block text-xs text-muted-foreground mt-0.5">
-                {currentReview.time}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* مؤشرات التمرير السفلية (Dots) */}
-        {reviews.length > 1 && (
-          <div className="flex items-center gap-2 mt-10">
-            {reviews.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  setIsFading(true);
-                  setTimeout(() => {
-                    setCurrentIndex(idx);
-                    setIsFading(false);
-                  }, 300);
-                }}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  idx === currentIndex
-                    ? "w-6 bg-primary"
-                    : "w-1.5 bg-secondary-foreground hover:bg-background/50"
+      {reviews.length > 1 && (
+        <div className="mt-2 flex items-center justify-center">
+          {reviews.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setCurrentIndex(idx)}
+              aria-label={`الذهاب إلى التقييم رقم ${idx + 1}`}
+              aria-current={idx === currentIndex}
+              className="group grid size-11 cursor-pointer place-items-center"
+            >
+              <span
+                className={`h-2 rounded-full transition-all duration-200 motion-reduce:transition-none ${
+                  idx === currentIndex ? "w-6 bg-primary" : "w-2 bg-navy-100 group-hover:bg-secondary/40"
                 }`}
-                aria-label={`الذهاب إلى التقييم رقم ${idx + 1}`}
               />
-            ))}
-          </div>
-        )}
-      </div>
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

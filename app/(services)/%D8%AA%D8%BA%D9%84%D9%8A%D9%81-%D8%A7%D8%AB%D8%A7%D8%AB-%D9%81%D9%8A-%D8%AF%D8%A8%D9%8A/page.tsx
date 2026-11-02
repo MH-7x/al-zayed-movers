@@ -65,9 +65,9 @@ export default function PackingPage() {
         ),
       }}
       below={
-        <>
+        <>          <ReviewsSection />
+
           <FAQSection title="أسئلة متكررة عن تغليف الاثاث" faqs={faqs} />
-          <ReviewsSection />
           <ContactSection
             title="احجز خدمة تغليف اثاث في دبي"
             description="أرسل لنا صور المطبخ والغرف، وسنحدد لك عدد الكراتين والمواد المطلوبة والسعر مباشرة، تغليف فقط أو مع النقل."

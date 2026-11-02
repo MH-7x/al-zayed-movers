@@ -1,4 +1,4 @@
-import { CheckCircle2 } from "lucide-react";
+import { Check } from "lucide-react";
 
 export function CheckGrid({ items }: { items: string[] }) {
   return (
@@ -6,12 +6,11 @@ export function CheckGrid({ items }: { items: string[] }) {
       {items.map((item, i) => (
         <li
           key={i}
-          className="flex items-center gap-3 rounded-2xl bg-card p-4 text-sm font-semibold shadow-sm ring-1 ring-border"
+          className="flex items-center gap-3 rounded-md border border-border bg-card p-4 text-sm font-bold text-secondary shadow-sm"
         >
-          <CheckCircle2
-            className="size-6 shrink-0 text-primary"
-            strokeWidth={1.5}
-          />
+          <span className="grid size-7 shrink-0 place-items-center rounded-full bg-brand-soft text-brand">
+            <Check className="size-4" strokeWidth={3} aria-hidden="true" />
+          </span>
           <span>{item}</span>
         </li>
       ))}

@@ -54,9 +54,9 @@ export default function AssemblyPage() {
         ),
       }}
       below={
-        <>
+        <>          <ReviewsSection />
+
           <FAQSection title="أسئلة متكررة عن فك وتركيب الاثاث" faqs={faqs} />
-          <ReviewsSection />
           <ContactSection
             title="احجز نجاراً لفك وتركيب اثاثك في دبي"
             description="أرسل لنا صور القطع أو أسماء موديلاتها، وسنرسل لك السعر وموعد زيارة النجار، مع ضمان على التركيب."

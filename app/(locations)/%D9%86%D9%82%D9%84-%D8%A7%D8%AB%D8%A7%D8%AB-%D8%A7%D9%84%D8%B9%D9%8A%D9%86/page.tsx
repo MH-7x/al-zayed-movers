@@ -3,17 +3,13 @@ import {
   Building2,
   Castle,
   CircleHelp,
-  Clock,
   HouseIcon,
   MapPinned,
-  Phone,
   Route,
   ThermometerSun,
-  Truck,
   Warehouse,
   Wrench,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import HeroImage from "@/public/img/نقل-اثاث-العين-امام-المنزل.jpg";
@@ -32,6 +28,7 @@ import {
   QuoteActions,
   WhatsAppButton,
 } from "@/components/location/QuoteActions";
+import { LocationHero } from "@/components/location/LocationHero";
 import { DetailRows } from "@/components/location/DetailRows";
 import { DataTable } from "@/components/location/DataTable";
 import { Callout } from "@/components/location/Callout";
@@ -50,105 +47,39 @@ export const metadata: Metadata = {
     "نقل اثاث العين مع الزايد: فك وتغليف ونقل وتركيب لفلل ومنازل ومكاتب العين، شركة مرخصة ومؤمّنة وبدون دفعة مقدمة. اطلب عرض سعرك عبر واتساب.",
 };
 
-const linkClass = "font-bold text-primary underline underline-offset-4";
+const linkClass = "font-bold text-brand underline underline-offset-4";
 
 export const AlAinPage = () => {
   return (
     <main>
-      <section className="w-full relative overflow-hidden">
-        <Image
-          src={HeroImage}
-          alt="شاحنة الزايد نقل اثاث أمام منزل في العين مع جبل حفيت في الخلفية"
-          fill
-          loading="eager"
-          placeholder="blur"
-          priority
-          className="object-cover absolute -z-10"
-        />
-
-        <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <h1 className="text-center text-white leading-tight">
-            نقل اثاث العين مع الزايد: فك وتغليف ونقل وتركيب لفلل ومنازل ومكاتب
-            العين
-          </h1>
-          <p className="text-center text-white/90 mt-5 md:px-24 leading-relaxed md:text-base text-sm">
-            الزايد نقل اثاث شركة مرخصة ومؤمّنة، نقدّم خدمة نقل اثاث العين للفلل
-            والمنازل والشقق والمكاتب في كل أحياء المدينة، وننقل أيضاً بين العين
-            وباقي إمارات الدولة. نتولى العمل من أوله إلى آخره. نفك الأثاث
-            ونغلّفه، ثم ننقله في شاحنات مغلقة ومكيّفة، ونعيد تركيبه في مكانك
-            الجديد، ولا نغادر قبل أن ننظف المكان.
-          </p>
-          <p className="text-center text-white/90 mt-3 md:px-24 leading-relaxed md:text-base text-sm">
-            فرقنا تنطلق من مقرنا في دبي، ووراءها أكثر من 12 سنة في نقل الأثاث
-            داخل الإمارات. لهذا نحدد معك موعد النقل ووقت وصول الفريق قبل اليوم
-            المحدد، حتى لا تقضي صباحك في الانتظار. السعر تعرفه قبل أن نلمس أي
-            قطعة، ولا نطلب منك أي مبلغ مقدماً، ولن تجد في الفاتورة بنداً لم
-            نتفق عليه.
-          </p>
-          <p className="text-center text-white/90 mt-3 md:px-24 leading-relaxed md:text-base text-sm">
-            عندك عفش تريد نقله داخل العين، أو منها إلى دبي أو أبوظبي؟ أرسل لنا
-            صور الأثاث على واتساب، ونرد عليك بتقدير سعر فوري. وإذا كان البيت
-            كبيراً أو فيه قطع تحتاج تخطيطاً خاصاً، نأتيك لمعاينة مجانية في
-            الموقع.
-          </p>
-          <div className="mt-6">
-            <QuoteActions
-              whatsappLabel="اطلب عرض سعر عبر واتساب"
-              callLabel="اتصل الآن:"
-            />
-          </div>
-        </div>
-
-        <div className="absolute inset-0 bg-secondary/80 z-10" />
-      </section>
-
-      <section className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16  ">
-        <div className="flex flex-col md:flex-row bg-card text-card-foreground rounded-2xl overflow-hidden">
-          {/* Phone */}
-          <div className="flex-1 p-6 md:p-8 flex items-center justify-center md:justify-start gap-4 border-b md:border-b-0 md:border-e border-border">
-            <div className="bg-primary/10 p-3 sm:p-4 rounded-full text-primary shrink-0">
-              <Phone className="size-6 sm:size-8" strokeWidth={1.3} />
-            </div>
-            <div>
-              <p className="font-bold text-lg sm:text-xl">الهاتف</p>
-              <a
-                href="tel:+971556461731"
-                className="text-primary font-bold text-lg sm:text-xl block mt-1"
-                dir="ltr"
-              >
-                055 646 1731
-              </a>
-            </div>
-          </div>
-
-          {/* Working hours */}
-          <div className="flex-1 p-6 md:p-8 flex items-center justify-center md:justify-start gap-4">
-            <div className="bg-primary/10 p-3 sm:p-4 rounded-full text-primary shrink-0">
-              <Clock className="size-6 sm:size-8" strokeWidth={1.3} />
-            </div>
-            <div>
-              <p className="font-bold text-lg sm:text-xl">ساعات العمل</p>
-              <p className="text-muted-foreground block mt-1 font-medium">
-                خدمة 7 أيام في الأسبوع
-              </p>
-            </div>
-          </div>
-
-          {/* CTA Action */}
-          <a
-            href="#contact"
-            className="flex-1 bg-primary text-primary-foreground flex items-center justify-center p-6 md:p-8 hover:opacity-95 transition-opacity group relative overflow-hidden"
-          >
-            {/* Decorative Truck Icon representing the background graphic */}
-            <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 opacity-20 transition-transform duration-500 group-hover:scale-110">
-              <Truck className="size-32 sm:size-40" />
-            </div>
-            <span className="font-bold text-xl sm:text-2xl underline underline-offset-8 decoration-2 relative z-10 text-center">
-              احجز نقل أثاثك الآن
-            </span>
-          </a>
-        </div>
-      </section>
+      <LocationHero
+        image={HeroImage}
+        imageAlt="شاحنة الزايد نقل اثاث أمام منزل في العين مع جبل حفيت في الخلفية"
+        title="نقل اثاث العين مع الزايد: فك وتغليف ونقل وتركيب لفلل ومنازل ومكاتب العين"
+        whatsappLabel="اطلب عرض سعر عبر واتساب"
+        callLabel="اتصل الآن:"
+      >
+        <p>
+          الزايد نقل اثاث شركة مرخصة ومؤمّنة، نقدّم خدمة نقل اثاث العين للفلل
+          والمنازل والشقق والمكاتب في كل أحياء المدينة، وننقل أيضاً بين العين
+          وباقي إمارات الدولة. نتولى العمل من أوله إلى آخره. نفك الأثاث
+          ونغلّفه، ثم ننقله في شاحنات مغلقة ومكيّفة، ونعيد تركيبه في مكانك
+          الجديد، ولا نغادر قبل أن ننظف المكان.
+        </p>
+        <p>
+          فرقنا تنطلق من مقرنا في دبي، ووراءها أكثر من 12 سنة في نقل الأثاث
+          داخل الإمارات. لهذا نحدد معك موعد النقل ووقت وصول الفريق قبل اليوم
+          المحدد، حتى لا تقضي صباحك في الانتظار. السعر تعرفه قبل أن نلمس أي
+          قطعة، ولا نطلب منك أي مبلغ مقدماً، ولن تجد في الفاتورة بنداً لم
+          نتفق عليه.
+        </p>
+        <p>
+          عندك عفش تريد نقله داخل العين، أو منها إلى دبي أو أبوظبي؟ أرسل لنا
+          صور الأثاث على واتساب، ونرد عليك بتقدير سعر فوري. وإذا كان البيت
+          كبيراً أو فيه قطع تحتاج تخطيطاً خاصاً، نأتيك لمعاينة مجانية في
+          الموقع.
+        </p>
+      </LocationHero>
 
       <QuoteImageSection
         title="احصل على عرض سعر لنقل الأثاث في العين خلال دقائق"
@@ -165,7 +96,7 @@ export const AlAinPage = () => {
         </p>
       </QuoteImageSection>
 
-      <Services
+      <Services tone="auto"
         nums={6}
         heading="خدمات نقل الاثاث التي نقدمها في العين"
         desc={
@@ -383,7 +314,7 @@ export const AlAinPage = () => {
         </Callout>
       </LocationSection>
 
-      <ReviewsSection />
+      <ReviewsSection tone="auto" />
 
       <LocationSection>
         <ImageBanner
@@ -545,7 +476,7 @@ export const AlAinPage = () => {
         />
       </LocationSection>
 
-      <FAQSection
+      <FAQSection tone="auto"
         openFirst
         title="أسئلة شائعة عن نقل اثاث العين"
         faqs={AlAinFaqs}

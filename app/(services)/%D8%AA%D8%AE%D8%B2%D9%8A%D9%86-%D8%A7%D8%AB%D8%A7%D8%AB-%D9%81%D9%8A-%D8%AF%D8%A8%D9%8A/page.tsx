@@ -55,9 +55,9 @@ export default function StoragePage() {
         ),
       }}
       below={
-        <>
+        <>          <ReviewsSection />
+
           <FAQSection title="أسئلة متكررة عن تخزين الاثاث" faqs={faqs} />
-          <ReviewsSection />
           <ContactSection
             title="احجز مساحة تخزين اثاث في دبي"
             description="أرسل لنا صور الأثاث ومدة التخزين المتوقعة، وسنرسل لك السعر الشهري مع قائمة جرد مصورة بكل القطع."

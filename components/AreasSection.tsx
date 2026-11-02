@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { MapPin, Building2, Home, Landmark, ArrowLeft } from "lucide-react";
+import { MapPin, Building2, Home, Landmark } from "lucide-react";
+import { Section, SectionHeading } from "@/components/ui/Section";
+import { locationItems } from "@/lib/utils";
 
 /* ── Area item: plain text OR a linkable item ── */
 type AreaItem =
@@ -7,7 +9,6 @@ type AreaItem =
   | { parts: { text: string; href?: string }[] } // compound item with inline links
   | string; // plain text, no link
 
-/* ── Area groups data ── */
 interface AreaGroup {
   icon: React.ReactNode;
   title: string;
@@ -15,9 +16,11 @@ interface AreaGroup {
   note: string;
 }
 
+const iconCls = "size-6 text-brand";
+
 const areaGroups: AreaGroup[] = [
   {
-    icon: <Building2 strokeWidth={1.4} className="size-7 text-primary" />,
+    icon: <Building2 strokeWidth={1.6} className={iconCls} />,
     title: "نقل اثاث في وسط دبي والمناطق الفاخرة",
     areas: [
       {
@@ -49,7 +52,7 @@ const areaGroups: AreaGroup[] = [
     note: "هذه المناطق فيها أبراج شاهقة وإجراءات دخول وخروج صارمة. نحن نتعامل مع هذه المتطلبات يومياً: حجز مصعد الخدمة، التنسيق مع الأمن، واستخراج تصاريح الانتقال.",
   },
   {
-    icon: <Home strokeWidth={1.4} className="size-7 text-primary" />,
+    icon: <Home strokeWidth={1.6} className={iconCls} />,
     title: "نقل اثاث في المجمعات السكنية والفلل",
     areas: [
       "دبي هيلز استيت (Dubai Hills)",
@@ -62,7 +65,7 @@ const areaGroups: AreaGroup[] = [
     note: "",
   },
   {
-    icon: <Landmark strokeWidth={1.4} className="size-7 text-primary" />,
+    icon: <Landmark strokeWidth={1.6} className={iconCls} />,
     title: "نقل اثاث في مناطق دبي القديمة والسكنية",
     areas: [
       {
@@ -96,141 +99,96 @@ const areaGroups: AreaGroup[] = [
   },
 ];
 
-/* ── Renders a single area item ── */
-function AreaItemContent({ item }: { item: AreaItem }) {
-  // Plain string
-  if (typeof item === "string") {
-    return (
-      <span className="text-[15px] text-foreground leading-relaxed">
-        {item}
-      </span>
-    );
-  }
+const chip =
+  "inline-flex min-h-11 items-center rounded-md border border-border bg-card px-3.5 py-1.5 text-sm font-bold text-secondary";
+const linkCls =
+  "underline decoration-primary/60 underline-offset-4 transition-colors hover:text-brand";
 
-  // Single link item
+/* ── Renders a single area item as a chip ── */
+function AreaItemContent({ item }: { item: AreaItem }) {
+  if (typeof item === "string") return <span className={chip}>{item}</span>;
+
   if ("text" in item && "href" in item) {
     return (
-      <Link
-        href={item.href}
-        className="
-          group/link inline-flex items-center gap-1
-          text-[15px] text-foreground leading-relaxed
-          underline decoration-primary/30 underline-offset-4
-          transition-colors duration-200
-          hover:text-primary hover:decoration-primary/60
-        "
-      >
-        <span>{item.text}</span>
-        <ArrowLeft className="size-3 text-primary opacity-0 -translate-x-0.5 transition-all duration-200 group-hover/link:opacity-100 group-hover/link:translate-x-0 shrink-0" />
+      <Link href={item.href} className={`${chip} ${linkCls} hover:border-primary`}>
+        {item.text}
       </Link>
     );
   }
 
-  // Compound item with parts
-  if ("parts" in item) {
-    return (
-      <span className="text-[15px] text-foreground leading-relaxed">
-        {item.parts.map((part, k) => (
-          <span key={k}>
-            {k > 0 && <span className="text-muted-foreground"> و</span>}
-            {part.href ? (
-              <Link
-                href={part.href}
-                className="
-                  group/link inline-inline-flex items-center gap-0.5
-                  underline decoration-primary/30 underline-offset-4
-                  transition-colors duration-200
-                  hover:text-primary hover:decoration-primary/60
-                "
-              >
-                {part.text}
-              </Link>
-            ) : (
-              part.text
-            )}
-          </span>
-        ))}
-      </span>
-    );
-  }
-
-  return null;
+  return (
+    <span className={chip}>
+      {item.parts.map((part, k) => (
+        <span key={k}>
+          {k > 0 && <span className="font-normal text-muted-foreground"> و</span>}
+          {part.href ? (
+            <Link href={part.href} className={`${linkCls} inline-flex min-h-11 items-center`}>
+              {part.text}
+            </Link>
+          ) : (
+            part.text
+          )}
+        </span>
+      ))}
+    </span>
+  );
 }
+
+// The five emirate pages that exist; Umm Al Quwain has no page yet, so it stays a no-op anchor.
+const otherEmirates = [
+  { name: "نقل اثاث ابوظبي", href: locationItems[0].href },
+  { name: "نقل اثاث الشارقة", href: locationItems[1].href.trim() },
+  { name: "نقل اثاث عجمان", href: locationItems[2].href },
+  { name: "نقل اثاث راس الخيمة", href: locationItems[3].href },
+  { name: "نقل اثاث العين", href: locationItems[4].href },
+  { name: "نقل الاثاث ام القيوين", href: "#" },
+];
 
 export function AreasSection() {
   return (
-    <section className="pt-16 lg:pt-28" id="areas">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ── Header ── */}
-        <div className="mb-14 lg:mb-16">
-          <div className="mb-3 inline-flex items-center gap-2 text-xs font-bold tracking-widest text-primary uppercase sm:text-sm">
-            <div className="flex items-center gap-1">
-              <span className="h-4 w-1.5 -skew-x-12 rounded-xs bg-primary" />
-              <span className="h-4 w-1.5 -skew-x-12 rounded-xs bg-primary" />
+    <Section id="areas" tone="alt">
+      <SectionHeading
+        eyebrow="مناطق الخدمة"
+        title="المناطق التي نغطيها لنقل الاثاث في دبي"
+        description="مقرنا في عود ميثاء بدبي، ونوصل لجميع مناطق الإمارة."
+      />
+
+      <div className="grid gap-4 lg:grid-cols-3 lg:gap-6">
+        {areaGroups.map((group) => (
+          <article key={group.title} className="rounded-md border border-border bg-card p-6 shadow-sm">
+            <div className="mb-4 flex items-start gap-3">
+              <span className="grid size-11 shrink-0 place-items-center rounded-md bg-brand-soft">
+                {group.icon}
+              </span>
+              <h3 className="text-xl leading-snug">{group.title}</h3>
             </div>
-            <span>مناطق الخدمة</span>
-          </div>
-
-          <h2 className="md:text-4xl text-3xl font-extrabold leading-tight max-w-3xl">
-            المناطق التي نغطيها لنقل الاثاث في دبي
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-            مقرنا في عود ميثاء بدبي، ونوصل لجميع مناطق الإمارة.
-          </p>
-        </div>
-
-        {/* ── Area Groups ── */}
-        <div className="space-y-0">
-          {areaGroups.map((group, i) => (
-            <div key={i} className="border-t border-border">
-              {/* Group header row */}
-              <div className="flex items-center gap-3 pt-8 pb-6">
-                <div className="flex items-center justify-center size-11 rounded-xl bg-primary/[0.08]">
-                  {group.icon}
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold">{group.title}</h3>
-              </div>
-
-              {/* Areas grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 pb-4">
-                {group.areas.map((area, j) => (
-                  <div key={j} className="flex items-start gap-2.5 py-1">
-                    <span className="mt-2.5 h-1.5 w-1.5 rounded-full bg-primary/50 shrink-0" />
-                    <AreaItemContent item={area} />
-                  </div>
-                ))}
-              </div>
-
-              {/* Contextual note */}
-              {group.note && (
-                <p className="text-sm text-muted-foreground leading-relaxed pb-8 max-w-3xl">
-                  {group.note}
-                </p>
-              )}
-
-              {!group.note && <div className="pb-8" />}
-            </div>
-          ))}
-        </div>
-
-        {/* ── Other Emirates banner ── */}
-        <div className="mt-2  rounded-xl bg-primary/10 px-5 py-4">
-          <div className="flex items-start gap-3">
-            <MapPin className="size-5 text-primary shrink-0 mt-0.5" />
-            <p className="text-sm sm:text-[15px] ">
-              كما تصل خدماتنا إلى باقي إمارات الدولة:{" "}
-            </p>
-          </div>
-          <p className="font-bold text-secondary mt-3 flex gap-3 flex-wrap">
-            <a href="#">نقل اثاث ابوظبي</a>
-            <a href="#">نقل اثاث الشارقة</a>
-            <a href="#">نقل اثاث عجمان</a>
-            <a href="#">نقل اثاث راس الخيمة</a>
-            <a href="#">نقل اثاث العين</a>
-            <a href="#">نقل الاثاث ام القيوين</a>
-          </p>
-        </div>
+            <ul className="flex flex-wrap gap-2">
+              {group.areas.map((area, j) => (
+                <li key={j}>
+                  <AreaItemContent item={area} />
+                </li>
+              ))}
+            </ul>
+            {group.note && <p className="mt-4 text-sm text-muted-foreground">{group.note}</p>}
+          </article>
+        ))}
       </div>
-    </section>
+
+      <div className="mt-6 rounded-md border border-border bg-card p-5">
+        <p className="flex items-start gap-3">
+          <MapPin className="mt-1.5 size-5 shrink-0 text-brand" aria-hidden="true" />
+          <span>كما تصل خدماتنا إلى باقي إمارات الدولة: </span>
+        </p>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {otherEmirates.map((e) => (
+            <li key={e.name}>
+              <Link href={e.href} className={`${chip} hover:border-primary hover:text-brand`}>
+                {e.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Section>
   );
 }

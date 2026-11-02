@@ -8,17 +8,15 @@ interface ChecklistItem {
 
 export function ChecklistCard({ items }: { items: ChecklistItem[] }) {
   return (
-    <ul className="mx-auto max-w-4xl divide-y divide-border rounded-2xl bg-card shadow-sm ring-1 ring-border">
+    <ul className="divide-y divide-border rounded-md border border-border bg-card shadow-sm">
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-4 p-5 md:p-6">
-          <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-            <Check className="size-4" strokeWidth={3} />
+          <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
+            <Check className="size-4" strokeWidth={3} aria-hidden="true" />
           </span>
-          <p className="leading-relaxed text-muted-foreground">
+          <p>
             {item.lead && (
-              <strong className="me-1 font-bold text-secondary">
-                {item.lead}
-              </strong>
+              <strong className="me-1 font-extrabold text-secondary">{item.lead}</strong>
             )}
             {item.children}
           </p>

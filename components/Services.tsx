@@ -2,7 +2,6 @@ import {
   Boxes,
   Building2Icon,
   Castle,
-  Download,
   HouseIcon,
   Truck,
   Warehouse,
@@ -10,8 +9,7 @@ import {
 } from "lucide-react";
 import React, { ReactNode } from "react";
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Section, SectionHeading } from "@/components/ui/Section";
 
 interface ExperienceItem {
   title: string;
@@ -27,6 +25,8 @@ interface Experience1Props {
   experience?: ExperienceItem[];
   className?: string;
   nums?: number;
+  /** band tone: `alt` on the home page, `auto` on pages that alternate by position */
+  tone?: "alt" | "auto" | "default";
 }
 
 export const Services = ({
@@ -50,7 +50,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <HouseIcon className="text-primary" strokeWidth={1} size={60} />,
+      icon: <HouseIcon className="text-brand" strokeWidth={1.6} size={26} />,
     },
     {
       title: "نقل اثاث الفلل والقصور",
@@ -69,7 +69,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <Castle className="text-primary" strokeWidth={1} size={60} />,
+      icon: <Castle className="text-brand" strokeWidth={1.6} size={26} />,
     },
     {
       title: "نقل اثاث المكاتب والشركات في دبي",
@@ -88,7 +88,7 @@ export const Services = ({
         </>
       ),
       icon: (
-        <Building2Icon className="text-primary" strokeWidth={1} size={60} />
+        <Building2Icon className="text-brand" strokeWidth={1.6} size={26} />
       ),
     },
     {
@@ -108,7 +108,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <Boxes className="text-primary" strokeWidth={1} size={60} />,
+      icon: <Boxes className="text-brand" strokeWidth={1.6} size={26} />,
     },
     {
       title: "فك وتركيب الاثاث في دبي",
@@ -125,7 +125,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <Wrench className="text-primary" strokeWidth={1} size={60} />,
+      icon: <Wrench className="text-brand" strokeWidth={1.6} size={26} />,
     },
     {
       title: "تخزين الاثاث في دبي ",
@@ -142,7 +142,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <Warehouse className="text-primary" strokeWidth={1} size={60} />,
+      icon: <Warehouse className="text-brand" strokeWidth={1.6} size={26} />,
     },
     {
       title: "نقل عفش دبي ",
@@ -159,76 +159,36 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <Truck className="text-primary" strokeWidth={1} size={60} />,
+      icon: <Truck className="text-brand" strokeWidth={1.6} size={26} />,
     },
   ],
   className,
   desc,
   nums,
   heading,
+  tone = "alt",
 }: Experience1Props) => {
+  // `nums` / `className` are kept for API compatibility with the emirate pages.
+  void nums;
   return (
-    <section className={cn("pt-16 lg:pt-28 md:px-0 px-4", className)}>
-      <div className="max-w-6xl mx-auto space-y-10 ">
-        {heading ? (
-          <>
-            <h2 className="md:text-4xl font-extrabold text-3xl">{heading}</h2>
-          </>
-        ) : (
-          <>
-            <h2 className="md:text-4xl font-extrabold text-3xl">
-              خدمات نقل الاثاث في دبي
-            </h2>{" "}
-          </>
-        )}
-        {desc && (
-          <>
-            <div className="mt-5 text-muted-foreground max-w-4xl flex flex-wrap gap-y-1">
-              {desc}
-            </div>
-          </>
-        )}
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
-          {experience.slice(0, nums || 4).map((exp, index) => (
-            <div
-              key={index}
-              className="flex flex-col justify-between border-b pb-10"
-            >
-              <div className="w-20 h-20 flex items-center justify-center">
+    <Section id="services" tone={tone} className={className}>
+      <SectionHeading title={heading ?? "خدمات نقل الاثاث في دبي"} description={desc} />
+      <div className="grid gap-4 md:grid-cols-2">
+        {experience.slice(0, 7).map((exp, index) => (
+          <article
+            key={index}
+            className="rounded-md border border-border border-t-[3px] border-t-secondary bg-card p-6 shadow-sm"
+          >
+            {exp.icon && (
+              <div className="mb-4 grid size-12 place-items-center rounded-md bg-brand-soft [&>svg]:size-6.5 [&>svg]:text-brand [&>svg]:[stroke-width:1.6]">
                 {exp.icon}
               </div>
-              <div className="">
-                <h3 className="my-4 text-2xl font-bold tracking-tighter">
-                  {exp.title}
-                </h3>
-                <div className="text-muted-foreground space-y-2">
-                  {exp.description}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
-          {experience.slice(nums || 4, 7).map((exp, index) => (
-            <div
-              key={index}
-              className="flex flex-col justify-between border-b pb-10"
-            >
-              <div className="w-20 h-20 flex items-center justify-center">
-                {exp.icon}
-              </div>
-              <div className="">
-                <h3 className="my-4 text-2xl font-bold tracking-tighter">
-                  {exp.title}
-                </h3>
-                <div className="text-muted-foreground space-y-2">
-                  {exp.description}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+            )}
+            <h3 className="mb-2 text-xl leading-snug">{exp.title}</h3>
+            <div className="space-y-3 text-sm">{exp.description}</div>
+          </article>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 };

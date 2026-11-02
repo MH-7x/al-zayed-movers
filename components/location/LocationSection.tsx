@@ -1,21 +1,24 @@
 import type { ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { Section } from "@/components/ui/Section";
 
 interface LocationSectionProps {
   id?: string;
   className?: string;
+  /** `auto` (default) alternates white / grey by position; pass `navy` for a dark band. */
+  tone?: "default" | "alt" | "navy" | "auto";
   children: ReactNode;
 }
 
-/** Standard page section: vertical rhythm + centred 6xl container. */
+/** Standard page section: symmetric rhythm + the shared 1140px container. */
 export function LocationSection({
   id,
   className,
+  tone = "auto",
   children,
 }: LocationSectionProps) {
   return (
-    <section id={id} className={cn("pt-16 lg:pt-28", className)}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
-    </section>
+    <Section id={id} tone={tone} className={className}>
+      {children}
+    </Section>
   );
 }

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/utils/Navbar";
 import Footer from "@/components/utils/Footer";
+import FloatingContact from "@/components/utils/FloatingContact";
 
 const almaraiFont = localFont({
   src: [
@@ -34,14 +35,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ar-AE"
       dir="rtl"
-      className={`${almaraiFont.className} h-full antialiased`}
+      className={`${almaraiFont.variable} ${almaraiFont.className} h-full antialiased`}
     >
       <body className="relative">
-        <div className="fixed inset-0 -z-10 h-full w-full bg-[radial-gradient(circle_at_30%_70%,rgba(235,111,51,0.10),transparent_60%),radial-gradient(circle_at_70%_30%,rgba(5,44,81,0.04),transparent_60%)]" />
-        {/* Background Image with High-Contrast Overlay */}
         <Navbar />
         {children}
         <Footer />
+        <FloatingContact />
       </body>
     </html>
   );

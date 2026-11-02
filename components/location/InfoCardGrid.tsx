@@ -14,15 +14,11 @@ interface InfoCardGridProps {
   className?: string;
 }
 
-export function InfoCardGrid({
-  items,
-  cols = 3,
-  className,
-}: InfoCardGridProps) {
+export function InfoCardGrid({ items, cols = 3, className }: InfoCardGridProps) {
   return (
     <div
       className={cn(
-        "grid grid-cols-1 gap-6 md:grid-cols-2",
+        "grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-6",
         cols === 3 ? "lg:grid-cols-3" : "",
         className,
       )}
@@ -30,17 +26,15 @@ export function InfoCardGrid({
       {items.map((item, i) => (
         <article
           key={i}
-          className="flex flex-col rounded-2xl bg-card p-6 shadow-sm ring-1 ring-border transition-shadow hover:shadow-lg"
+          className="flex flex-col rounded-md border border-border border-t-[3px] border-t-secondary bg-card p-6 shadow-sm"
         >
           {item.icon && (
-            <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <div className="mb-4 grid size-12 place-items-center rounded-md bg-brand-soft text-brand">
               {item.icon}
             </div>
           )}
-          <h3 className="mb-2 text-lg font-bold leading-snug">{item.title}</h3>
-          <div className="space-y-2 text-sm leading-relaxed text-muted-foreground">
-            {item.children}
-          </div>
+          <h3 className="mb-2 text-lg leading-snug md:text-xl">{item.title}</h3>
+          <div className="space-y-2 text-sm">{item.children}</div>
         </article>
       ))}
     </div>

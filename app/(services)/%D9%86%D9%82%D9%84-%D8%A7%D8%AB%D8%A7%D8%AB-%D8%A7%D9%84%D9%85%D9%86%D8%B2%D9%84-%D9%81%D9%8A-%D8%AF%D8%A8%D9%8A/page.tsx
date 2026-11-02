@@ -58,9 +58,9 @@ export default function HouseMovingPage() {
         ),
       }}
       below={
-        <>
+        <>          <ReviewsSection />
+
           <FAQSection title="أسئلة متكررة عن نقل اثاث المنزل" faqs={faqs} />
-          <ReviewsSection />
           <ContactSection
             title="احجز خدمة نقل اثاث المنزل في دبي"
             description="أرسل لنا صور الأثاث أو اطلب معاينة مجانية، وسنرسل لك عرض سعر مكتوباً لنقل منزلك دون أي دفعة مقدمة."

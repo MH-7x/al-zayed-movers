@@ -1,6 +1,13 @@
-import { locationItems, serviceItems } from "@/lib/utils";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ChevronDown, MapPin, Menu, Phone, X } from "lucide-react";
+import { locationItems, serviceItems } from "@/lib/utils";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/components/services/constants";
+import { buttonVariants } from "@/components/ui/button";
 
 const dubaiAreaItems = [
   { title: "نقل اثاث دبي مارينا", href: "/مناطق-دبي/نقل-اثاث-دبي-مارينا" },
@@ -27,336 +34,216 @@ const dubaiAreaItems = [
   { title: "نقل اثاث جميرا", href: "/مناطق-دبي/نقل-اثاث-جميرا" },
 ];
 
+type MenuId = "services" | "locations" | "areas" | "mobile";
+
+const menus: { id: Exclude<MenuId, "mobile">; label: string; items: { title: string; href: string }[] }[] = [
+  { id: "services", label: "خدماتنا", items: serviceItems },
+  { id: "locations", label: "المواقع", items: locationItems },
+  { id: "areas", label: "مناطق دبي", items: dubaiAreaItems },
+];
+
+const linkCls =
+  "inline-flex min-h-11 items-center rounded-md px-3 text-sm font-bold text-secondary transition-colors hover:text-brand";
+
 export default function Navbar() {
+  const pathname = usePathname();
+  // The open menu is remembered together with the path it was opened on, so navigating
+  // closes it without an effect.
+  const [state, setState] = useState<{ id: MenuId | null; path: string }>({ id: null, path: pathname });
+  const open = state.path === pathname ? state.id : null;
+  const rootRef = useRef<HTMLElement>(null);
+
+  const toggle = (id: MenuId) =>
+    setState({ id: open === id ? null : id, path: pathname });
+  const close = () => setState({ id: null, path: pathname });
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent | TouchEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setState((s) => ({ ...s, id: null }));
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setState((s) => ({ ...s, id: null }));
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("touchstart", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("touchstart", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
-    <header className="w-full bg-background  text-foreground ">
-      {/* 1. Top Bar */}
-      <div className="bg-secondary  text-xs sm:text-sm py-2 px-4 w-full md:block hidden">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-muted">
-          {/* Address */}
-          <address className="not-italic flex items-center gap-2 text-center sm:text-right">
-            <svg
-              className="w-4 h-4 text-primary shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.6}
-                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.6}
-                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-            <span>
-              B17 Owned by Al Nasr Sports Club - Office No. 1 - Oud Metha -
-              Dubai
+    <header
+      ref={rootRef}
+      className="sticky top-0 z-50 w-full border-b border-border bg-background text-foreground"
+    >
+      {/* 1. Utility bar (md+) */}
+      <div className="hidden bg-secondary text-xs text-white md:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 lg:px-8">
+          <address className="flex items-center gap-2 not-italic">
+            <MapPin className="size-3.5 shrink-0 text-primary" aria-hidden="true" />
+            <span dir="ltr" className="ltr-isolate">
+              B17 Owned by Al Nasr Sports Club - Office No. 1 - Oud Metha - Dubai
             </span>
           </address>
-
-          {/* Phone */}
-          <div className="flex items-center gap-2">
-            <svg
-              className="w-4 h-4 text-primary shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.6}
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-              />
-            </svg>
-            <a
-              href="tel:0556461731"
-              dir="ltr"
-              className="hover:text-primary transition-colors font-medium text-muted"
-            >
-              055 646 1731
-            </a>
-          </div>
+          <a
+            href={PHONE_TEL}
+            className="inline-flex min-h-11 items-center gap-2 font-bold hover:text-primary"
+          >
+            <Phone className="size-3.5 shrink-0 text-primary" aria-hidden="true" />
+            <span dir="ltr" className="ltr-isolate">
+              {PHONE_DISPLAY}
+            </span>
+          </a>
         </div>
       </div>
 
-      {/* 2. Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto md:px-0 px-4 ">
-        <div className="flex items-center justify-between  h-18">
-          {/* Logo Section */}
-          <div className="flex items-center gap-8">
+      {/* 2. Main bar — gutter at EVERY breakpoint (was px-0 from md up) */}
+      <div className="mx-auto flex min-h-[72px] max-w-7xl items-center gap-4 px-4 md:px-6 lg:px-8">
+        <Link
+          href="/"
+          aria-label="الصفحة الرئيسية"
+          className="relative me-auto flex h-11 w-44 items-center md:w-52"
+        >
+          <Image
+            src="/logo.svg"
+            alt="Al Zayed Movers Logo"
+            width={208}
+            height={51}
+            preload
+            className="h-auto w-full"
+          />
+        </Link>
+
+        {/* Desktop navigation (lg+) */}
+        <nav aria-label="القائمة الرئيسية" className="hidden items-center gap-1 lg:flex">
+          {menus.map((m) => (
+            <div key={m.id} className="relative">
+              <button
+                type="button"
+                aria-expanded={open === m.id}
+                aria-controls={`menu-${m.id}`}
+                onClick={() => toggle(m.id)}
+                className={`${linkCls} cursor-pointer gap-1.5 ${open === m.id ? "text-brand" : ""}`}
+              >
+                {m.label}
+                <ChevronDown
+                  className={`size-4 transition-transform motion-reduce:transition-none ${open === m.id ? "rotate-180" : ""}`}
+                  aria-hidden="true"
+                />
+              </button>
+              {open === m.id && (
+                <ul
+                  id={`menu-${m.id}`}
+                  className="absolute start-0 top-full z-50 mt-1 max-h-[70vh] w-72 overflow-y-auto rounded-lg border border-border bg-card p-2 shadow-md"
+                >
+                  {m.items.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={close}
+                        className="flex min-h-11 items-center rounded-md px-3 text-sm text-foreground hover:bg-muted hover:text-brand"
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+          <Link href="/من-نحن" className={linkCls}>
+            من نحن
+          </Link>
+          <Link href="/اتصل-بنا" className={linkCls}>
+            اتصل بنا
+          </Link>
+        </nav>
+
+        <Link
+          href="/اتصل-بنا"
+          className={`${buttonVariants({ size: "sm" })} hidden md:inline-flex`}
+        >
+          طلب تسعيرة
+        </Link>
+
+        {/* Mobile / tablet toggle (<lg) */}
+        <button
+          type="button"
+          aria-expanded={open === "mobile"}
+          aria-controls="mobile-menu"
+          aria-label="القائمة"
+          onClick={() => toggle("mobile")}
+          className="grid size-11 shrink-0 cursor-pointer place-items-center rounded-lg border border-border text-secondary hover:bg-muted lg:hidden"
+        >
+          {open === "mobile" ? (
+            <X className="size-6" aria-hidden="true" />
+          ) : (
+            <Menu className="size-6" aria-hidden="true" />
+          )}
+        </button>
+      </div>
+
+      {/* Mobile panel — sits directly under the header, no hard-coded offsets */}
+      {open === "mobile" && (
+        <div
+          id="mobile-menu"
+          className="absolute inset-x-0 top-full max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-border bg-background px-4 pt-2 pb-8 shadow-md md:px-6 lg:hidden"
+        >
+          <nav aria-label="القائمة الرئيسية" className="mx-auto max-w-3xl">
+            {menus.map((m) => (
+              <details key={m.id} className="group border-b border-border">
+                <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-extrabold text-secondary">
+                  {m.label}
+                  <ChevronDown
+                    className="size-5 transition-transform group-open:rotate-180 motion-reduce:transition-none"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <ul className="pb-2 ps-3">
+                  {m.items.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={close}
+                        className="flex min-h-11 items-center text-sm text-muted-foreground hover:text-brand"
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))}
             <Link
-              href="/"
-              className="md:w-52 w-44  h-10  relative"
-              aria-label="الصفحة الرئيسية"
+              href="/من-نحن"
+              onClick={close}
+              className="flex min-h-12 items-center border-b border-border font-extrabold text-secondary"
             >
-              <Image
-                src={"/logo.svg"}
-                alt="Al Zayed Movers Logo"
-                fill
-                className="object-contain object-center"
-              />
+              من نحن
             </Link>
-
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-              {/* Services Dropdown */}
-              <div className="relative group">
-                <button
-                  type="button"
-                  className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-secondary group-hover:text-primary transition-colors cursor-pointer"
-                  aria-haspopup="true"
-                >
-                  <span>خدماتنا</span>
-                  <svg
-                    className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-muted-foreground group-hover:text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.6}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-
-                <div className="absolute top-full right-0 w-64 pt-2 hidden group-hover:block z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="bg-card border border-border rounded-lg shadow-lg py-2 overflow-hidden">
-                    {serviceItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Locations Dropdown (with nested Dubai Areas) */}
-              <div className="relative group">
-                <button
-                  type="button"
-                  className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-secondary group-hover:text-primary transition-colors cursor-pointer"
-                  aria-haspopup="true"
-                >
-                  <span>المواقع</span>
-                  <svg
-                    className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-muted-foreground group-hover:text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.6}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-
-                <div className="absolute top-full right-0 w-64 pt-2 hidden group-hover:block z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="bg-card border border-border rounded-lg shadow-lg py-2 overflow-visible">
-                    {locationItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              {/* Sub Location Dropdown */}
-              <div className="relative group">
-                <button
-                  type="button"
-                  className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-secondary group-hover:text-primary transition-colors cursor-pointer"
-                  aria-haspopup="true"
-                >
-                  <span>مناطق دبي</span>
-                  <svg
-                    className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-muted-foreground group-hover:text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.6}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-
-                <div className="absolute top-full right-0 w-64 pt-2 hidden group-hover:block z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="bg-card border border-border rounded-lg shadow-lg py-2 overflow-hidden">
-                    {dubaiAreaItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Static Links */}
-              <Link
-                href="/من-نحن"
-                className="px-3 py-2 text-sm font-semibold text-secondary hover:text-primary transition-colors"
-              >
-                من نحن
-              </Link>
-              <Link
-                href="/اتصل-بنا"
-                className="px-3 py-2 text-sm font-semibold text-secondary hover:text-primary transition-colors"
-              >
-                اتصل بنا
-              </Link>
-            </nav>
-          </div>
-
-          {/* CTA Button & Mobile Toggle */}
-          <div className="flex items-center gap-4">
             <Link
               href="/اتصل-بنا"
-              className="md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-primary-foreground bg-primary hover:bg-primary/90 rounded-full shadow-sm hover:shadow transition-all duration-200  hidden"
+              onClick={close}
+              className="flex min-h-12 items-center border-b border-border font-extrabold text-secondary"
+            >
+              اتصل بنا
+            </Link>
+            <Link
+              href="/اتصل-بنا"
+              onClick={close}
+              className={`${buttonVariants()} mt-4 w-full`}
             >
               طلب تسعيرة
             </Link>
-
-            {/* Pure CSS Mobile Menu Trigger Checkbox */}
-            <input
-              type="checkbox"
-              id="mobile-nav-toggle"
-              className="hidden peer"
-              aria-label="تبديل القائمة"
-            />
-
-            {/* Hamburger Button Icon */}
-            <label
-              htmlFor="mobile-nav-toggle"
-              className="lg:hidden p-2 rounded-md border border-border text-secondary hover:bg-muted cursor-pointer select-none"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.6}
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg>
-            </label>
-
-            {/* Mobile Drawer (No JS / CSS driven by checkbox state) */}
-            <div className="peer-checked:block hidden fixed inset-x-0 top-[72px] sm:top-[115px] bottom-0 bg-background/95 backdrop-blur-sm z-50 border-t border-border overflow-y-auto px-6 py-6 lg:hidden">
-              <nav className="flex flex-col gap-4 text-base">
-                {/* Mobile Services Accordion */}
-                <details className="group/details border-b border-border/40 pb-2">
-                  <summary className="font-bold text-secondary hover:text-primary list-none flex justify-between items-center cursor-pointer py-1">
-                    <span>خدماتنا</span>
-                    <span className="text-xs transition-transform group-open/details:rotate-180">
-                      ▼
-                    </span>
-                  </summary>
-                  <div className="flex flex-col gap-2 mt-2 pr-4 text-sm text-muted-foreground">
-                    {serviceItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="hover:text-primary py-1"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                </details>
-
-                {/* Mobile Locations Accordion */}
-                <details className="group/details border-b border-border/40 pb-2">
-                  <summary className="font-bold text-secondary hover:text-primary list-none flex justify-between items-center cursor-pointer py-1">
-                    <span>المواقع</span>
-                    <span className="text-xs transition-transform group-open/details:rotate-180">
-                      ▼
-                    </span>
-                  </summary>
-                  <div className="flex flex-col gap-2 mt-2 pr-4 text-sm text-muted-foreground">
-                    {locationItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="hover:text-primary py-1"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                </details>
-
-                {/* Mobile sub locations Accordion */}
-                <details className="group/details border-b border-border/40 pb-2">
-                  <summary className="font-bold text-secondary hover:text-primary list-none flex justify-between items-center cursor-pointer py-1">
-                    <span>مناطق دبي</span>
-                    <span className="text-xs transition-transform group-open/details:rotate-180">
-                      ▼
-                    </span>
-                  </summary>
-                  <div className="flex flex-col gap-2 mt-2 pr-4 text-sm text-muted-foreground">
-                    {dubaiAreaItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="hover:text-primary py-1"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                </details>
-
-                <Link
-                  href="/من-نحن"
-                  className="font-bold text-secondary hover:text-primary py-1 border-b border-border/40"
-                >
-                  من نحن
-                </Link>
-                <Link
-                  href="/اتصل-بنا"
-                  className="font-bold text-secondary hover:text-primary py-1 border-b border-border/40"
-                >
-                  اتصل بنا
-                </Link>
-              </nav>
-            </div>
-          </div>
+          </nav>
         </div>
-      </div>
+      )}
     </header>
   );
 }

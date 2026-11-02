@@ -1,13 +1,9 @@
-import Image from "next/image";
 import HeroImage from "@/public/نقل-اثاث-ابوظبي.jpg";
 import SurveyImage from "@/public/img/معاينة-نقل-اثاث-شقة-ابوظبي.jpg";
 import AreasImage from "@/public/img/مناطق-نقل-اثاث-ابوظبي-مدينة-خليفة.jpg";
 import FleetImage from "@/public/img/شاحنات-ومعدات-نقل-اثاث-ابوظبي.jpg";
 import { ImageBanner } from "@/components/location/ImageBanner";
-import { Button } from "@/components/ui/button";
 import {
-  Phone,
-  Mail,
   HouseIcon,
   Boxes,
   Wrench,
@@ -15,196 +11,100 @@ import {
   Building2,
   Warehouse,
   Tv,
-} from "lucide-react";
-import { Services } from "@/components/Services";
-import Link from "next/link";
-import { LocProcessSection } from "@/components/utils/LocProcessSection";
-import {
   Truck,
   ThermometerSnowflake,
   Navigation,
   ArrowLeft,
 } from "lucide-react";
+import { Services } from "@/components/Services";
+import Link from "next/link";
+import { LocProcessSection } from "@/components/utils/LocProcessSection";
 import { FAQSection } from "@/components/utils/FaqsSection";
 import { AbuDhabiFaqs } from "@/lib/faqsData";
 import { ContactSection } from "@/components/ContactSection";
+import { LocationHero } from "@/components/location/LocationHero";
+import { LocationSection } from "@/components/location/LocationSection";
+import { SectionHeading } from "@/components/location/SectionHeading";
+import { QuoteImageSection } from "@/components/location/QuoteImageSection";
+import { IconFeatureGrid } from "@/components/location/IconFeatureGrid";
+import { DataTable } from "@/components/location/DataTable";
+import { InfoCardGrid } from "@/components/location/InfoCardGrid";
+import { ChecklistCard } from "@/components/location/ChecklistCard";
+
+const routeLink =
+  "font-bold text-brand underline underline-offset-4 hover:no-underline";
+const routeCard =
+  "flex flex-col justify-between rounded-md border border-border border-t-[3px] border-t-secondary bg-card p-6 shadow-sm";
+const routeIcon =
+  "grid size-9 place-items-center rounded-md bg-muted text-secondary";
+const routeMore =
+  "inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-brand hover:underline";
 
 const AbuDhabiPage = () => {
   return (
     <main>
-      <section className="w-full relative overflow-hidden">
-        <Image
-          src={HeroImage}
-          alt="الزايد نقل اثاث ابوظبي"
-          fill
-          loading="eager"
-          placeholder="blur"
-          priority
-          className="object-cover absolute -z-10"
-        />
+      <LocationHero
+        image={HeroImage}
+        imageAlt="الزايد نقل اثاث ابوظبي"
+        title="نقل اثاث ابوظبي - افضل شركة نقل اثاث"
+        whatsappLabel="أحصل على عرض سعر مجاني"
+        hoursText="مفتوح 24/7"
+      >
+        <p>
+          {" "}
+          إذا كنت تبحث عن خدمة نقل اثاث ابوظبي تلبي احتياجاتك وترفع عنك هذا
+          العبء، فأنت في المكان الصحيح. نحن في الزايد نقل اثاث نملك خبرة
+          تتجاوز 12 عاما في هذا المجال، ونغطي كافة مناطق الإمارات انطلاقا من
+          ابوظبي . نتعامل مع أثاثك وممتلكاتك كأنها تخصنا، ونستخدم مواد تغليف
+          قوية وسيارات مجهزة لضمان وصول كل شيء بأمان.
+        </p>
+      </LocationHero>
 
-        <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <h1 className="text-center text-white leading-tight">
-            نقل اثاث ابوظبي - افضل شركة نقل اثاث
-          </h1>
-          <p className="text-center text-white/90 mt-5 md:px-24 leading-relaxed md:text-base text-sm">
-            {" "}
-            إذا كنت تبحث عن خدمة نقل اثاث ابوظبي تلبي احتياجاتك وترفع عنك هذا
-            العبء، فأنت في المكان الصحيح. نحن في الزايد نقل اثاث نملك خبرة
-            تتجاوز 12 عاما في هذا المجال، ونغطي كافة مناطق الإمارات انطلاقا من
-            ابوظبي . نتعامل مع أثاثك وممتلكاتك كأنها تخصنا، ونستخدم مواد تغليف
-            قوية وسيارات مجهزة لضمان وصول كل شيء بأمان.
-          </p>
-          <div className="mt-5 flex justify-center ">
-            <Button size={"lg"} className={"md:px-5"}>
-              أحصل على عرض سعر مجاني
-            </Button>
-          </div>
-        </div>
+      <QuoteImageSection
+        title="خدمة نقل اثاث بضمان الحماية الكاملة"
+        image={SurveyImage}
+        imageAlt="مشرف الزايد نقل اثاث يعاين اثاث شقة مع العميل في أبوظبي"
+      >
+        <p>
+          الانتقال من منزل إلى آخر يستهلك الكثير من الجهد والوقت، خاصة مع وتيرة
+          الحياة السريعة في أبوظبي. التفكير في تفكيك الأغراض وتغليفها ونقلها
+          بأمان يسبب قلقا لا يحتاجه أحد.
+        </p>
+        <p>
+          لذلك صممنا خدماتنا لتوفر لك راحة البال من لحظة التخطيط وحتى ترتيب آخر
+          قطعة في بيتك الجديد. نهدف لتكون تجربة نقل اثاث في ابوظبي سلسة وخالية
+          من أي تعقيدات.
+        </p>
+        <p>
+          تواصل معنا اليوم عبر واتساب على الرقم{" "}
+          <bdi className="ltr-isolate">0556461731</bdi>، وخلنا نرتب لك خطوتك
+          الجاية بتسعير فوري وبدون أي التزامات.
+        </p>
+      </QuoteImageSection>
 
-        <div className="absolute inset-0 bg-secondary/80 z-10" />
-      </section>
-      <section className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16  mb-16">
-        <div className="flex flex-col md:flex-row bg-card text-card-foreground rounded-2xl overflow-hidden">
-          {/* Phone */}
-          <div className="flex-1 p-6 md:p-8 flex items-center justify-center md:justify-start gap-4 border-b md:border-b-0 md:border-e border-border">
-            <div className="bg-primary/10 p-3 sm:p-4 rounded-full text-primary shrink-0">
-              <Phone className="size-6 sm:size-8" strokeWidth={1.3} />
-            </div>
-            <div>
-              <p className="font-bold text-lg sm:text-xl">الهاتف</p>
-              <a
-                href="tel:+971556461731"
-                className="text-primary font-bold text-lg sm:text-xl block mt-1"
-                dir="ltr"
-              >
-                055 646 1731
-              </a>
-            </div>
-          </div>
-
-          {/* Email */}
-          <div className="flex-1 p-6 md:p-8 flex items-center justify-center md:justify-start gap-4">
-            <div className="bg-primary/10 p-3 sm:p-4 rounded-full text-primary shrink-0">
-              <Mail className="size-6 sm:size-8" strokeWidth={1.3} />
-            </div>
-            <div>
-              <p className="font-bold text-lg sm:text-xl">ساعات العمل</p>
-              <p className="text-muted-foreground block mt-1 font-medium">
-                مفتوح 24/7
-              </p>
-            </div>
-          </div>
-
-          {/* CTA Action */}
-          <a
-            href="#contact"
-            className="flex-1 bg-primary text-primary-foreground flex items-center justify-center p-6 md:p-8 hover:opacity-95 transition-opacity group relative overflow-hidden"
-          >
-            {/* Decorative Truck Icon representing the background graphic */}
-            <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 opacity-20 transition-transform duration-500 group-hover:scale-110">
-              <Truck className="size-32 sm:size-40" />
-            </div>
-            <span className="font-bold text-xl sm:text-2xl underline underline-offset-8 decoration-2 relative z-10 text-center">
-              احجز نقل أثاثك الآن
-            </span>
-          </a>
-        </div>
-      </section>
-      <section className=" overflow-hidden  pt-16 ">
-        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-            {/* Left Column: Content & Description */}
-            <div className="flex flex-col items-start text-right lg:col-span-6">
-              {/* Main Heading */}
-              <h2 className="text-3xl font-black leading-tight md:text-4xl md:pl-28 sm:pl-0 ">
-                خدمة نقل اثاث بضمان الحماية الكاملة
-              </h2>
-
-              {/* Description */}
-              <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-                الانتقال من منزل إلى آخر يستهلك الكثير من الجهد والوقت، خاصة مع
-                وتيرة الحياة السريعة في أبوظبي. التفكير في تفكيك الأغراض
-                وتغليفها ونقلها بأمان يسبب قلقا لا يحتاجه أحد.
-              </p>
-              <p className="mt-1 text-base leading-relaxed text-muted-foreground">
-                لذلك صممنا خدماتنا لتوفر لك راحة البال من لحظة التخطيط وحتى
-                ترتيب آخر قطعة في بيتك الجديد. نهدف لتكون تجربة نقل اثاث في
-                ابوظبي سلسة وخالية من أي تعقيدات.
-              </p>
-              <p className="mt-1 text-base leading-relaxed text-muted-foreground">
-                تواصل معنا اليوم عبر واتساب على الرقم 0556461731، وخلنا نرتب لك
-                خطوتك الجاية بتسعير فوري وبدون أي التزامات.
-              </p>
-            </div>
-            {/* Right Column: Image with Experience Badge */}
-            <div className="relative mx-auto w-full max-w-lg lg:col-span-6 lg:max-w-none">
-              {/* Experience Floating Badge */}
-              <div className="absolute -top-5 md:-end-5 -end-2 z-20 flex size-28 flex-col items-center justify-center rounded-full bg-primary p-2 text-center text-primary-foreground shadow-xl ring-4 ring-background sm:-top-7 sm:-end-7 sm:size-36">
-                <span className="text-2xl font-black leading-none sm:text-4xl">
-                  +12
-                </span>
-                <span className="mt-1 text-[11px] font-medium leading-tight sm:text-xs">
-                  عاماً من الخبرة والتميز
-                </span>
-              </div>
-
-              {/* Main Image Container */}
-              <div className="relative overflow-hidden rounded-2xl border-card bg-card aspect-4/3">
-                <Image
-                  src={SurveyImage}
-                  alt="مشرف الزايد نقل اثاث يعاين اثاث شقة مع العميل في أبوظبي"
-                  fill
-                  placeholder="blur"
-                  sizes="(min-width: 1024px) 540px, (min-width: 512px) 512px, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="pt-16 lg:pt-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-16 max-w-4xl text-center">
-            <h2 className="md:text-4xl text-3xl font-extrabold leading-tight mb-4">
+      <LocationSection>
+        <SectionHeading
+          title={
+            <>
               لماذا الزايد أفضل شركة نقل اثاث <br className="md:block hidden" />{" "}
               في ابوظبي؟
-            </h2>
-            {/* تمت إضافة المقدمة هنا لضمان عدم حذف أي جزء من النص */}
-            <p className="text-muted-foreground md:*:text-lg leading-relaxed">
+            </>
+          }
+          desc={
+            <p>
               عندما تقرر تغيير سكنك، فإن اختيار افضل شركة نقل اثاث في ابوظبي
               يصنع فارقا كبيرا في تجربتك ويجنبك كثيرا من المتاعب. نجمع في عملنا
               بين الدقة في التنفيذ والشفافية التامة، وهذا ما يجعلنا من افضل
               شركات نقل الاثاث في ابوظبي التي يعتمد عليها العملاء. ونلتزم
               بمعايير واضحة تضمن حقوقك وراحتك في كل خطوة كشركة نقل اثاث ابوظبي.
             </p>
-          </div>
+          }
+        />
+        <IconFeatureGrid items={features} />
+      </LocationSection>
 
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, i) => (
-              <div
-                key={i}
-                className="flex flex-col bg-card text-card-foreground shadow-lg p-5 items-center text-center rounded-2xl"
-              >
-                <div className="mb-5 relative overflow-hidden size-16 ">
-                  <Image
-                    src={feature.image}
-                    alt={feature.title}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <h3 className="mb-2 text-xl font-bold">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm mt-2">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
       <Services
+        tone="auto"
         nums={8}
         heading="خدمات نقل الاثاث في ابوظبي — ماذا نقدم لك؟"
         desc={
@@ -225,166 +125,110 @@ const AbuDhabiPage = () => {
         }
         experience={experience}
       />
-      <section className="pt-16  md:px-0 px-4">
-        <div className="mx-auto max-w-6xl">
-          {/* Section Header */}
-          <div className="mx-auto mb-12 max-w-3xl text-center">
-            <h2 className="text-3xl font-extrabold sm:text-3xl md:text-4xl leading-tight">
-              نقل الاثاث من ابوظبي إلى الإمارات الأخرى
-            </h2>
-          </div>
 
-          {/* 3 Route Cards Grid */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {/* Card 1: Dubai */}
-            <article className="group relative flex flex-col justify-between rounded-2xl bg-card p-6 ">
-              <div>
-                {/* Route Indicator */}
-                <div className="flex items-center justify-between border-b border-border/70 pb-4">
-                  <div className="flex items-center gap-2">
-                    <span className=" text-xs font-bold text-secondary">
-                      أبوظبي
-                    </span>
-                    <span className="text-xs font-bold text-primary">←</span>
-                    <span className=" text-xs font-bold text-primary">دبي</span>
-                  </div>
-                  <div className="flex size-9 items-center justify-center rounded-lg bg-muted text-secondary">
-                    <Truck className="size-4.5" />
-                  </div>
+      <LocationSection>
+        <SectionHeading title="نقل الاثاث من ابوظبي إلى الإمارات الأخرى" />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {/* Card 1: Dubai */}
+          <article className={routeCard}>
+            <div>
+              <div className="flex items-center justify-between border-b border-border pb-4">
+                <div className="flex items-center gap-2 text-sm font-bold">
+                  <span className="text-secondary">أبوظبي</span>
+                  <ArrowLeft className="size-4 text-brand" aria-hidden="true" />
+                  <span className="text-brand">دبي</span>
                 </div>
-
-                {/* Title & Body */}
-                <h3 className="mt-5 text-xl font-bold ">
-                  نقل اثاث من ابوظبي إلى دبي
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  تستغرق الرحلة عبر شارع الشيخ زايد حوالي ساعة ونصف. ندير مسار{" "}
-                  <Link
-                    href="/نقل-اثاث-دبي"
-                    className="font-bold text-primary underline underline-offset-4 "
-                  >
-                    نقل اثاث دبي
-                  </Link>{" "}
-                  اليومي لضمان توصيل سريع بين الإمارتين. ونقدم أسعاراً تنافسية
-                  تناسب حركة الانتقال المستمرة للعمل أو السكن.
-                </p>
-              </div>
-
-              <div className="mt-6 border-t border-border/60 pt-4">
-                <Link
-                  href="/نقل-اثاث-دبي"
-                  className="inline-flex items-center text-xs font-bold text-primary hover:underline"
-                >
-                  <span>تفاصيل خدمة دبي</span>
-                  <ArrowLeft className="mr-1.5 size-3.5 " />
-                </Link>
-              </div>
-            </article>
-
-            {/* Card 2: Al Ain */}
-            <article className="group relative flex flex-col justify-between rounded-2xl bg-card p-6 ">
-              <div>
-                {/* Route Indicator */}
-                <div className="flex items-center justify-between border-b border-border/70 pb-4">
-                  <div className="flex items-center gap-2">
-                    <span className=" text-xs font-bold text-secondary">
-                      أبوظبي
-                    </span>
-                    <span className="text-xs font-bold text-primary">←</span>
-                    <span className=" text-xs font-bold text-primary">
-                      العين
-                    </span>
-                  </div>
-                  <div className="flex size-9 items-center justify-center rounded-lg bg-muted text-secondary">
-                    <ThermometerSnowflake className="size-4.5" />
-                  </div>
+                <div className={routeIcon}>
+                  <Truck className="size-5" aria-hidden="true" />
                 </div>
-
-                {/* Title & Body */}
-                <h3 className="mt-5 text-xl font-bold text-secondary">
-                  نقل اثاث من ابوظبي إلى العين
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  يمتد الطريق عبر شارع E22 لحوالي ساعتين. تتطلب خطة{" "}
-                  <Link
-                    href="/نقل-اثاث-العين"
-                    className="font-bold text-primary underline underline-offset-4 "
-                  >
-                    نقل اثاث العين
-                  </Link>{" "}
-                  شاحنات مكيفة لحماية الأثاث والأجهزة الكهربائية من حرارة
-                  الصحراء. نثبت الحمولة جيداً لتفادي أي اهتزازات خلال الرحلة
-                  الطويلة.
-                </p>
               </div>
+              <h3 className="mt-5 text-xl">نقل اثاث من ابوظبي إلى دبي</h3>
+              <p className="mt-3 text-sm">
+                تستغرق الرحلة عبر شارع الشيخ زايد حوالي ساعة ونصف. ندير مسار{" "}
+                <Link href="/نقل-اثاث-دبي" className={routeLink}>
+                  نقل اثاث دبي
+                </Link>{" "}
+                اليومي لضمان توصيل سريع بين الإمارتين. ونقدم أسعاراً تنافسية
+                تناسب حركة الانتقال المستمرة للعمل أو السكن.
+              </p>
+            </div>
+            <div className="mt-6 border-t border-border pt-4">
+              <Link href="/نقل-اثاث-دبي" className={routeMore}>
+                <span>تفاصيل خدمة دبي</span>
+                <ArrowLeft className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </article>
 
-              <div className="mt-6 border-t border-border/60 pt-4">
-                <Link
-                  href="/نقل-اثاث-العين"
-                  className="inline-flex items-center text-xs font-bold text-primary hover:underline"
-                >
-                  <span>تفاصيل خدمة العين</span>
-                  <ArrowLeft className="mr-1.5 size-3.5 " />
-                </Link>
-              </div>
-            </article>
-
-            {/* Card 3: Sharjah & Ajman */}
-            <article className="group relative flex flex-col justify-between rounded-2xl bg-card p-6 ">
-              <div>
-                {/* Route Indicator */}
-                <div className="flex items-center justify-between border-b border-border/70 pb-4">
-                  <div className="flex items-center gap-2">
-                    <span className=" text-xs font-bold text-secondary">
-                      أبوظبي
-                    </span>
-                    <span className="text-xs font-bold text-primary">←</span>
-                    <span className=" text-xs font-bold text-primary">
-                      الشارقة وعجمان
-                    </span>
-                  </div>
-                  <div className="flex size-9 items-center justify-center rounded-lg bg-muted text-secondary ">
-                    <Navigation className="size-4.5" />
-                  </div>
+          {/* Card 2: Al Ain */}
+          <article className={routeCard}>
+            <div>
+              <div className="flex items-center justify-between border-b border-border pb-4">
+                <div className="flex items-center gap-2 text-sm font-bold">
+                  <span className="text-secondary">أبوظبي</span>
+                  <ArrowLeft className="size-4 text-brand" aria-hidden="true" />
+                  <span className="text-brand">العين</span>
                 </div>
-
-                {/* Title & Body */}
-                <h3 className="mt-5 text-xl font-bold text-secondary">
-                  نقل اثاث من ابوظبي إلى الشارقة وعجمان
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  ننظم رحلات مجدولة لخدمات{" "}
-                  <Link
-                    href="/نقل-اثاث-الشارقة"
-                    className="font-bold text-primary underline underline-offset-4 "
-                  >
-                    نقل اثاث الشارقة
-                  </Link>{" "}
-                  وتغطية مجمعات{" "}
-                  <Link
-                    href="/نقل-اثاث-عجمان"
-                    className="font-bold text-primary underline underline-offset-4 "
-                  >
-                    نقل اثاث عجمان
-                  </Link>
-                  . ندرس مسارات الطرق لتجنب الازدحام المروري في الشوارع الفاصلة
-                  بين الإمارات الشمالية.
-                </p>
+                <div className={routeIcon}>
+                  <ThermometerSnowflake className="size-5" aria-hidden="true" />
+                </div>
               </div>
+              <h3 className="mt-5 text-xl">نقل اثاث من ابوظبي إلى العين</h3>
+              <p className="mt-3 text-sm">
+                يمتد الطريق عبر شارع E22 لحوالي ساعتين. تتطلب خطة{" "}
+                <Link href="/نقل-اثاث-العين" className={routeLink}>
+                  نقل اثاث العين
+                </Link>{" "}
+                شاحنات مكيفة لحماية الأثاث والأجهزة الكهربائية من حرارة
+                الصحراء. نثبت الحمولة جيداً لتفادي أي اهتزازات خلال الرحلة
+                الطويلة.
+              </p>
+            </div>
+            <div className="mt-6 border-t border-border pt-4">
+              <Link href="/نقل-اثاث-العين" className={routeMore}>
+                <span>تفاصيل خدمة العين</span>
+                <ArrowLeft className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </article>
 
-              <div className="mt-6 border-t border-border/60 pt-4">
-                <Link
-                  href="/نقل-اثاث-الشارقة"
-                  className="inline-flex items-center text-xs font-bold text-primary hover:underline"
-                >
-                  <span>تفاصيل خدمة الشارقة وعجمان</span>
-                  <ArrowLeft className="mr-1.5 size-3.5 " />
+          {/* Card 3: Sharjah & Ajman */}
+          <article className={routeCard}>
+            <div>
+              <div className="flex items-center justify-between border-b border-border pb-4">
+                <div className="flex items-center gap-2 text-sm font-bold">
+                  <span className="text-secondary">أبوظبي</span>
+                  <ArrowLeft className="size-4 text-brand" aria-hidden="true" />
+                  <span className="text-brand">الشارقة وعجمان</span>
+                </div>
+                <div className={routeIcon}>
+                  <Navigation className="size-5" aria-hidden="true" />
+                </div>
+              </div>
+              <h3 className="mt-5 text-xl">نقل اثاث من ابوظبي إلى الشارقة وعجمان</h3>
+              <p className="mt-3 text-sm">
+                ننظم رحلات مجدولة لخدمات{" "}
+                <Link href="/نقل-اثاث-الشارقة" className={routeLink}>
+                  نقل اثاث الشارقة
+                </Link>{" "}
+                وتغطية مجمعات{" "}
+                <Link href="/نقل-اثاث-عجمان" className={routeLink}>
+                  نقل اثاث عجمان
                 </Link>
-              </div>
-            </article>
-          </div>
+                . ندرس مسارات الطرق لتجنب الازدحام المروري في الشوارع الفاصلة
+                بين الإمارات الشمالية.
+              </p>
+            </div>
+            <div className="mt-6 border-t border-border pt-4">
+              <Link href="/نقل-اثاث-الشارقة" className={routeMore}>
+                <span>تفاصيل خدمة الشارقة وعجمان</span>
+                <ArrowLeft className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </article>
         </div>
-      </section>
+      </LocationSection>
+
       <LocProcessSection
         headline={
           <>
@@ -425,323 +269,303 @@ const AbuDhabiPage = () => {
           },
         ]}
       />
+
       {/* Pricing Section */}
-      <section className="pt-16 lg:pt-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-secondary leading-tight mb-4">
-              أسعار نقل الاثاث في ابوظبي — دليل الأسعار التقريبية
-            </h2>
-            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+      <LocationSection>
+        <SectionHeading
+          title="أسعار نقل الاثاث في ابوظبي — دليل الأسعار التقريبية"
+          desc={
+            <p>
               معرفة اسعار شركات نقل الاثاث في ابوظبي يساعدك في وضع ميزانية دقيقة
               لعملية الانتقال. وفرنا لك هذا الدليل المبدئي لتكون الصورة واضحة
               قبل التواصل.
             </p>
-          </div>
+          }
+        />
+        <h3 className="mb-4 text-xl">أسعار نقل الاثاث حسب حجم المسكن</h3>
+        <DataTable
+          columns={["نوع المسكن", "نطاق السعر (درهم إماراتي)"]}
+          rows={pricingData.map((item) => [item.type, `${item.price} درهم`])}
+        />
+        <p className="mt-6 max-w-[68ch] text-sm text-muted-foreground">
+          هذه الأسعار تقريبية وتعطي فكرة عامة عن التكلفة المتوقعة. السعر
+          النهائي يعتمد على تفاصيل المعاينة المجانية وتحديد المتطلبات الدقيقة
+          لكل عملية نقل.
+        </p>
+      </LocationSection>
 
-          <div className="max-w-4xl mx-auto bg-card/50 border border-border/80 rounded-2xl p-6 md:p-8">
-            <h3 className="text-xl font-bold text-secondary mb-6 border-b pb-4">
-              أسعار نقل الاثاث حسب حجم المسكن
-            </h3>
+      <LocationSection>
+        <InfoCardGrid
+          cols={2}
+          items={[
+            {
+              title: "العوامل المؤثرة على تكلفة نقل الاثاث",
+              children: (
+                <>
+                  <p>
+                    تختلف تكلفة النقل بناء على عدة عوامل يجب أخذها في الاعتبار.
+                    كمية الأثاث وعدد الغرف تحدد حجم سيارة النقل وعدد العمال
+                    المطلوبين. والمسافة بين الموقع القديم والجديد تؤثر أيضا على
+                    السعر النهائي.
+                  </p>
+                  <p>
+                    وجود مصعد يسهل العملية، بينما الحاجة لاستخدام السلالم تتطلب
+                    جهدا ووقتا إضافيا من العمال. والأثاث الثقيل مثل البيانو أو
+                    الخزائن الضخمة يحتاج إلى معدات وعناية خاصة. الخدمات الإضافية
+                    كفك وتركيب المكيفات أو التغليف الخاص للتحف تزيد من التكلفة.
+                  </p>
+                  <p>
+                    وقت النقل يلعب دورا أيضا، حيث تكون الأسعار أعلى في نهاية
+                    الشهر بسبب زيادة الطلب. وأخيرا، يجب مراعاة أي رسوم قد تفرضها
+                    إدارة البناية لاستخدام المصعد أو استخراج تصاريح النقل.
+                  </p>
+                </>
+              ),
+            },
+            {
+              title: "نصائح لتوفير تكاليف النقل",
+              children: (
+                <>
+                  <p>
+                    يمكنك تقليل تكلفة النقل بخطوات بسيطة. تخلص من الأغراض التي
+                    لم تعد بحاجة إليها قبل موعد الانتقال لتقليل حجم المنقولات.
+                    واجمع الأغراض الشخصية الصغيرة والملابس في صناديق بنفسك
+                    لتقليل الوقت والجهد على فريق النقل.
+                  </p>
+                  <p>
+                    احجز موعد النقل مبكرا، ويفضل قبل أسبوعين، لضمان الحصول على
+                    سعر مناسب وتوافر الفريق. وتجنب النقل في نهاية الشهر أو أيام
+                    العطلات حيث يرتفع الطلب والأسعار. اطلب عروض أسعار من 3 شركات
+                    على الأقل وقارن بينها لتختار الأنسب لميزانيتك.
+                  </p>
+                </>
+              ),
+            },
+          ]}
+        />
+      </LocationSection>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-right border-collapse">
-                <thead>
-                  <tr className="border-b border-border/60 text-muted-foreground text-sm font-semibold">
-                    <th className="py-3 px-4">نوع المسكن</th>
-                    <th className="py-3 px-4 text-left">
-                      نطاق السعر (درهم إماراتي)
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/40 text-sm">
-                  {pricingData.map((item, index) => (
-                    <tr
-                      key={index}
-                      className="hover:bg-muted/30 transition-colors"
-                    >
-                      <td className="py-3.5 px-4 font-bold text-secondary">
-                        {item.type}
-                      </td>
-                      <td className="py-3.5 px-4 font-bold text-primary text-left">
-                        {item.price} درهم
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <p className="mt-6 pt-4 border-t border-border/60 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              هذه الأسعار تقريبية وتعطي فكرة عامة عن التكلفة المتوقعة. السعر
-              النهائي يعتمد على تفاصيل المعاينة المجانية وتحديد المتطلبات
-              الدقيقة لكل عملية نقل.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="pt-16  max-w-6xl mx-auto px-4 md:px-0">
-        <div className="border-b border-border pb-8">
-          {/* Group header row */}
-
-          <h3 className="text-xl sm:text-2xl font-bold  pb-6">
-            العوامل المؤثرة على تكلفة نقل الاثاث
-          </h3>
-          <div className="text-muted-foreground leading-relaxed space-y-2 max-w-4xl">
-            <p>
-              تختلف تكلفة النقل بناء على عدة عوامل يجب أخذها في الاعتبار. كمية
-              الأثاث وعدد الغرف تحدد حجم سيارة النقل وعدد العمال المطلوبين.
-              والمسافة بين الموقع القديم والجديد تؤثر أيضا على السعر النهائي.
-            </p>
-            <p>
-              وجود مصعد يسهل العملية، بينما الحاجة لاستخدام السلالم تتطلب جهدا
-              ووقتا إضافيا من العمال. والأثاث الثقيل مثل البيانو أو الخزائن
-              الضخمة يحتاج إلى معدات وعناية خاصة. الخدمات الإضافية كفك وتركيب
-              المكيفات أو التغليف الخاص للتحف تزيد من التكلفة.
-            </p>
-            <p>
-              وقت النقل يلعب دورا أيضا، حيث تكون الأسعار أعلى في نهاية الشهر
-              بسبب زيادة الطلب. وأخيرا، يجب مراعاة أي رسوم قد تفرضها إدارة
-              البناية لاستخدام المصعد أو استخراج تصاريح النقل.
-            </p>
-          </div>
-        </div>
-        <div className="border-b border-border py-8">
-          {/* Group header row */}
-
-          <h3 className="text-xl sm:text-2xl font-bold  pb-6">
-            نصائح لتوفير تكاليف النقل
-          </h3>
-          <div className="text-muted-foreground leading-relaxed space-y-2 max-w-4xl">
-            <p>
-              يمكنك تقليل تكلفة النقل بخطوات بسيطة. تخلص من الأغراض التي لم تعد
-              بحاجة إليها قبل موعد الانتقال لتقليل حجم المنقولات. واجمع الأغراض
-              الشخصية الصغيرة والملابس في صناديق بنفسك لتقليل الوقت والجهد على
-              فريق النقل.
-            </p>
-            <p>
-              احجز موعد النقل مبكرا، ويفضل قبل أسبوعين، لضمان الحصول على سعر
-              مناسب وتوافر الفريق. وتجنب النقل في نهاية الشهر أو أيام العطلات
-              حيث يرتفع الطلب والأسعار. اطلب عروض أسعار من 3 شركات على الأقل
-              وقارن بينها لتختار الأنسب لميزانيتك.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4  pt-16 lg:pt-28">
-        <h2 className="md:text-4xl text-3xl font-extrabold leading-tight ">
-          مناطق خدمة نقل الاثاث في ابوظبي
-        </h2>
-
+      <LocationSection>
+        <SectionHeading title="مناطق خدمة نقل الاثاث في ابوظبي" />
         <ImageBanner
           src={AreasImage}
           alt="شاحنة الزايد نقل اثاث في مدينة خليفة بأبوظبي"
-          className="mt-10"
+          className="mb-8"
         />
+        <InfoCardGrid
+          items={[
+            {
+              title: "نقل اثاث مصفح (المنطقة الصناعية والسكنية)",
+              children: (
+                <p>
+                  تتطلب طبيعة المباني في مدينة آيكاد والمستودعات في مصفح
+                  الصناعية تعاملا خاصا مع المداخل الواسعة والممرات. نوفر خدمات
+                  نقل اثاث مصفح تلبي احتياجات القطاع التجاري والمنازل في
+                  الشعبية. عند طلب نقل اثاث في مصفح، نجهز شاحنات تناسب الشوارع
+                  العريضة والمناطق المزدحمة في الأحياء السكنية والعمالية.
+                </p>
+              ),
+            },
+            {
+              title: "نقل اثاث الرويس ابوظبي ",
+              children: (
+                <p>
+                  تبعد مدينة الرويس عن العاصمة مسافة تستدعي تخطيطا دقيقا للرحلة.
+                  تخدم فرقنا المجمعات السكنية التابعة لأدنوك وتدير عمليات نقل
+                  اثاث الرويس بمركبات مجهزة للمسافات الطويلة في منطقة الظفرة.
+                  نوفر مواد تغليف تتحمل ظروف الطريق السريع لضمان وصول الممتلكات
+                  بأمان.
+                </p>
+              ),
+            },
+            {
+              title: "نقل اثاث مدينة خليفة ابوظبي",
+              children: (
+                <p>
+                  تتكون مدينة خليفة أ وب بشكل رئيسي من الفلل والتاون هاوس
+                  القريبة من مطار أبوظبي. نستخدم معدات مصممة للمنازل ذات
+                  الطوابق المتعددة والسلالم الداخلية. تشمل خدماتنا تفكيك وتركيب
+                  الأثاث الخشبي الضخم الذي يميز ديكورات الفلل في هذه المنطقة.
+                </p>
+              ),
+            },
+            {
+              title: "نقل اثاث جزيرة الريم",
+              children: (
+                <p>
+                  تحتاج الأبراج الشاهقة مثل أبراج صن آند سكاي وشمس أبوظبي
+                  ومارينا سكوير إلى تنسيق مسبق مع إدارة المباني. نتولى حجز
+                  المصاعد وتوفير تصاريح العمل المطلوبة. نرسل عمالة مدربة للتعامل
+                  مع الممرات الضيقة وأنظمة الحماية في الأبراج.
+                </p>
+              ),
+            },
+            {
+              title: "نقل اثاث جزيرة ياس",
+              children: (
+                <p>
+                  تتميز مجمعات ياس إيكرز وويست ياس بالبنية التحتية الحديثة
+                  والمنازل الجديدة. ندير عمليات النقل بالقرب من ياس مول
+                  والوجهات الترفيهية مع مراعاة أوقات الذروة المرورية. ونحرص على
+                  حماية الأرضيات والجدران المنجزة حديثا أثناء إدخال وتركيب قطع
+                  الأثاث الكبيرة.
+                </p>
+              ),
+            },
+            {
+              title: "نقل اثاث بني ياس ومحمد بن زايد",
+              children: (
+                <p>
+                  ترتبط هذه المناطق بجسر الشيخ زايد وتضم مزيجا من الشقق والفلل
+                  السكنية بأسعار اقتصادية. نوفر باقات نقل تناسب ميزانية الأسر
+                  المقيمة هنا. ونوزع فرق العمل لتغطية المسافات بين المجمعات
+                  السكنية وتسريع عملية الفك والتركيب في نفس اليوم.
+                </p>
+              ),
+            },
+            {
+              title: "نقل اثاث الخالدية والمرور والكورنيش",
+              children: (
+                <p>
+                  تواجهنا تحديات قلة المواقف وضيق المداخل في المباني القديمة
+                  بوسط أبو ظبي. نخطط مسبقا لأوقات التحميل وتأمين مساحات وقوف
+                  الشاحنات بالقرب من المداخل. ونعتمد على أوناش الرفع الخارجية
+                  لتجاوز سلالم البنايات القديمة الخالية من مصاعد الخدمات.
+                </p>
+              ),
+            },
+            {
+              title: "نقل اثاث جزيرة السعديات",
+              children: (
+                <p>
+                  تتطلب الفلل في شاطئ السعديات والمنطقة الثقافية قرب متحف
+                  اللوفر عناية مضاعفة. نستخدم مواد تغليف أوروبية لحماية التحف
+                  واللوحات والأثاث الراقي. فريقنا مدرب للتعامل مع القطع ذات
+                  القيمة العالية.
+                </p>
+              ),
+            },
+            {
+              title: "مناطق أخرى نخدمها في ابوظبي",
+              children: (
+                <p>
+                  تمتد تغطيتنا لتشمل أحياء الشهامة والوثبة والعين الفايضة. نصل
+                  بأسطولنا إلى مدينة زايد والباهية والغدير. كما نوفر فرق عمل
+                  جاهزة لخدمة مناطق الشامخة والمفرق والسمحة مع الالتزام
+                  بالمواعيد المحددة.
+                </p>
+              ),
+            },
+          ]}
+        />
+      </LocationSection>
 
-        <div className="mt-10 grid md:grid-cols-2 grid-cols-1 gap-10">
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              نقل اثاث مصفح (المنطقة الصناعية والسكنية)
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              تتطلب طبيعة المباني في مدينة آيكاد والمستودعات في مصفح الصناعية
-              تعاملا خاصا مع المداخل الواسعة والممرات. نوفر خدمات نقل اثاث مصفح
-              تلبي احتياجات القطاع التجاري والمنازل في الشعبية. عند طلب نقل اثاث
-              في مصفح، نجهز شاحنات تناسب الشوارع العريضة والمناطق المزدحمة في
-              الأحياء السكنية والعمالية.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              نقل اثاث الرويس ابوظبي{" "}
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              تبعد مدينة الرويس عن العاصمة مسافة تستدعي تخطيطا دقيقا للرحلة.
-              تخدم فرقنا المجمعات السكنية التابعة لأدنوك وتدير عمليات نقل اثاث
-              الرويس بمركبات مجهزة للمسافات الطويلة في منطقة الظفرة. نوفر مواد
-              تغليف تتحمل ظروف الطريق السريع لضمان وصول الممتلكات بأمان.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              نقل اثاث مدينة خليفة ابوظبي
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              تتكون مدينة خليفة أ وب بشكل رئيسي من الفلل والتاون هاوس القريبة من
-              مطار أبوظبي. نستخدم معدات مصممة للمنازل ذات الطوابق المتعددة
-              والسلالم الداخلية. تشمل خدماتنا تفكيك وتركيب الأثاث الخشبي الضخم
-              الذي يميز ديكورات الفلل في هذه المنطقة.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              نقل اثاث جزيرة الريم
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              تحتاج الأبراج الشاهقة مثل أبراج صن آند سكاي وشمس أبوظبي ومارينا
-              سكوير إلى تنسيق مسبق مع إدارة المباني. نتولى حجز المصاعد وتوفير
-              تصاريح العمل المطلوبة. نرسل عمالة مدربة للتعامل مع الممرات الضيقة
-              وأنظمة الحماية في الأبراج.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              نقل اثاث جزيرة ياس
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              تتميز مجمعات ياس إيكرز وويست ياس بالبنية التحتية الحديثة والمنازل
-              الجديدة. ندير عمليات النقل بالقرب من ياس مول والوجهات الترفيهية مع
-              مراعاة أوقات الذروة المرورية. ونحرص على حماية الأرضيات والجدران
-              المنجزة حديثا أثناء إدخال وتركيب قطع الأثاث الكبيرة.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              نقل اثاث بني ياس ومحمد بن زايد
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              ترتبط هذه المناطق بجسر الشيخ زايد وتضم مزيجا من الشقق والفلل
-              السكنية بأسعار اقتصادية. نوفر باقات نقل تناسب ميزانية الأسر
-              المقيمة هنا. ونوزع فرق العمل لتغطية المسافات بين المجمعات السكنية
-              وتسريع عملية الفك والتركيب في نفس اليوم.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              نقل اثاث الخالدية والمرور والكورنيش
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              تواجهنا تحديات قلة المواقف وضيق المداخل في المباني القديمة بوسط
-              أبو ظبي. نخطط مسبقا لأوقات التحميل وتأمين مساحات وقوف الشاحنات
-              بالقرب من المداخل. ونعتمد على أوناش الرفع الخارجية لتجاوز سلالم
-              البنايات القديمة الخالية من مصاعد الخدمات.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              نقل اثاث جزيرة السعديات
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              تتطلب الفلل في شاطئ السعديات والمنطقة الثقافية قرب متحف اللوفر
-              عناية مضاعفة. نستخدم مواد تغليف أوروبية لحماية التحف واللوحات
-              والأثاث الراقي. فريقنا مدرب للتعامل مع القطع ذات القيمة العالية.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              مناطق أخرى نخدمها في ابوظبي
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              تمتد تغطيتنا لتشمل أحياء الشهامة والوثبة والعين الفايضة. نصل
-              بأسطولنا إلى مدينة زايد والباهية والغدير. كما نوفر فرق عمل جاهزة
-              لخدمة مناطق الشامخة والمفرق والسمحة مع الالتزام بالمواعيد المحددة.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4  pt-16 lg:pt-28">
-        <h2 className="md:text-4xl text-3xl font-extrabold leading-tight ">
-          سيارات ومعدات نقل الاثاث في ابوظبي
-        </h2>
-
+      <LocationSection>
+        <SectionHeading title="سيارات ومعدات نقل الاثاث في ابوظبي" />
         <ImageBanner
           src={FleetImage}
           alt="شاحنات ومعدات الزايد نقل اثاث في أبوظبي"
-          className="mt-10"
+          className="mb-8"
         />
+        <InfoCardGrid
+          items={[
+            {
+              title: "سيارات نقل مغلقة ومبطنة",
+              children: (
+                <p>
+                  نمتلك أسطولا من الشاحنات المغلقة بالكامل والمزودة بأنظمة تحكم
+                  بالحرارة. تبدأ سعة الشاحنات من 3 طن لتناسب الشقق الصغيرة وتصل
+                  إلى 10 طن للفلل الكبيرة. جميع الصناديق مبطنة من الداخل لحماية
+                  الألواح الخشبية والأجهزة من الخدوش والاحتكاك أثناء القيادة.
+                </p>
+              ),
+            },
+            {
+              title: "بيك اب لنقل القطع الفردية",
+              children: (
+                <p>
+                  نخصص سيارات بيك اب نقل عفش لنقل الأغراض القليلة أو القطع
+                  المنفردة بتكلفة اقتصادية. تناسب هذه السيارات تحريك الكنب
+                  والأجهزة الكهربائية بين الأحياء القريبة. وتتميز بمرونة التنقل
+                  في الشوارع الضيقة ومواقف الأقبية.
+                </p>
+              ),
+            },
+            {
+              title: "أوناش ورافعات هيدروليكية",
+              children: (
+                <p>
+                  تعتمد طواقمنا على الأوناش الهيدروليكية لرفع الأثاث الضخم إلى
+                  الطوابق العليا في حال ضيق السلالم أو صغر حجم المصعد. توفر
+                  الرافعات وقتا وجهدا وتمنع تضرر قطع الأثاث الكبيرة والمداخل
+                  المشتركة في البنايات.
+                </p>
+              ),
+            },
+          ]}
+        />
+      </LocationSection>
 
-        <div className="mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              سيارات نقل مغلقة ومبطنة
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              نمتلك أسطولا من الشاحنات المغلقة بالكامل والمزودة بأنظمة تحكم
-              بالحرارة. تبدأ سعة الشاحنات من 3 طن لتناسب الشقق الصغيرة وتصل إلى
-              10 طن للفلل الكبيرة. جميع الصناديق مبطنة من الداخل لحماية الألواح
-              الخشبية والأجهزة من الخدوش والاحتكاك أثناء القيادة.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              بيك اب لنقل القطع الفردية
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              نخصص سيارات بيك اب نقل عفش لنقل الأغراض القليلة أو القطع المنفردة
-              بتكلفة اقتصادية. تناسب هذه السيارات تحريك الكنب والأجهزة
-              الكهربائية بين الأحياء القريبة. وتتميز بمرونة التنقل في الشوارع
-              الضيقة ومواقف الأقبية.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              أوناش ورافعات هيدروليكية
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              تعتمد طواقمنا على الأوناش الهيدروليكية لرفع الأثاث الضخم إلى
-              الطوابق العليا في حال ضيق السلالم أو صغر حجم المصعد. توفر الرافعات
-              وقتا وجهدا وتمنع تضرر قطع الأثاث الكبيرة والمداخل المشتركة في
-              البنايات.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="max-w-6xl mx-auto px-4  pt-16 ">
-        <h2 className="md:text-4xl text-3xl font-extrabold leading-tight ">
-          نصائح مهمة قبل نقل الاثاث في ابوظبي
-        </h2>
-
-        <div className="mt-10 max-w-3xl">
-          <h3 className="font-bold md:text-2xl text-xl">
-            قائمة التجهيز قبل يوم النقل
-          </h3>
-          <p className="my-3 text-muted-foreground ">
-            تبدأ عملية نقل اثاث في ابوظبي الناجحة قبل أسابيع من يوم الانتقال.
-            هذه قائمة تجهيز تسهل عليك العملية:
-          </p>
-          <ol className=" list-decimal space-y-3 pr-5 text-muted-foreground ">
-            <li className="pr-1">
-              <strong className="">قبل أسبوعين:</strong> تواصل مع إدارة البناية
-              الجديدة والقديمة واحجز المصعد ليوم النقل. يجب أيضا إخطار شركة
-              أبوظبي للتوزيع (ADDC) لترتيب فصل وتشغيل الخدمات.
-            </li>
-            <li className="pr-1">
-              <strong className="">قبل أسبوع:</strong> قم بفرز الأغراض وتخلص من
-              الكراكيب. يمكنك بيع أو التبرع بما لا تحتاجه لتقليل حجم المنقولات.
-            </li>
-            <li className="pr-1">
-              <strong className="">قبل 3 أيام:</strong> ابدأ بتعبئة الأغراض
-              الشخصية والأشياء الثمينة. افصل الأجهزة الكهربائية مثل الثلاجات
-              ليذوب الثلج تماما.
-            </li>
-            <li className="pr-1">
-              <strong className="">يوم النقل:</strong> تأكد من تجهيز ممر واضح
-              لتسهيل حركة العمال. وافحص توفر مواقف قريبة لشاحنات النقل.
-            </li>
-            <li className="pr-1">
-              <strong className="">بعد النقل:</strong> قم بجرد المنقولات بمجرد
-              وصولها. تأكد من إتمام تركيب الأثاث في أماكنه الصحيحة، ثم وقع محضر
-              التسليم مع المشرف.
-            </li>
-          </ol>
-          <h3 className="font-bold md:text-2xl text-xl mt-10">
-            أفضل وقت للانتقال في ابوظبي
-          </h3>
-          <p className="my-3 text-muted-foreground ">
+      <LocationSection>
+        <SectionHeading
+          title="نصائح مهمة قبل نقل الاثاث في ابوظبي"
+          desc={
+            <>
+              <h3 className="text-xl text-secondary md:text-2xl">قائمة التجهيز قبل يوم النقل</h3>
+              <p>
+                تبدأ عملية نقل اثاث في ابوظبي الناجحة قبل أسابيع من يوم الانتقال.
+                هذه قائمة تجهيز تسهل عليك العملية:
+              </p>
+            </>
+          }
+        />
+        <ChecklistCard
+          items={[
+            {
+              lead: "قبل أسبوعين:",
+              children:
+                "تواصل مع إدارة البناية الجديدة والقديمة واحجز المصعد ليوم النقل. يجب أيضا إخطار شركة أبوظبي للتوزيع (ADDC) لترتيب فصل وتشغيل الخدمات.",
+            },
+            {
+              lead: "قبل أسبوع:",
+              children:
+                "قم بفرز الأغراض وتخلص من الكراكيب. يمكنك بيع أو التبرع بما لا تحتاجه لتقليل حجم المنقولات.",
+            },
+            {
+              lead: "قبل 3 أيام:",
+              children:
+                "ابدأ بتعبئة الأغراض الشخصية والأشياء الثمينة. افصل الأجهزة الكهربائية مثل الثلاجات ليذوب الثلج تماما.",
+            },
+            {
+              lead: "يوم النقل:",
+              children:
+                "تأكد من تجهيز ممر واضح لتسهيل حركة العمال. وافحص توفر مواقف قريبة لشاحنات النقل.",
+            },
+            {
+              lead: "بعد النقل:",
+              children:
+                "قم بجرد المنقولات بمجرد وصولها. تأكد من إتمام تركيب الأثاث في أماكنه الصحيحة، ثم وقع محضر التسليم مع المشرف.",
+            },
+          ]}
+        />
+        <div className="mt-10 max-w-[68ch] space-y-3">
+          <h3 className="text-xl md:text-2xl">أفضل وقت للانتقال في ابوظبي</h3>
+          <p>
             يؤثر توقيت الانتقال على التكلفة وسلامة الأثاث. تجنب الانتقال خلال
             أشهر الصيف (يونيو إلى أغسطس)، حيث تؤثر الحرارة الشديدة على بعض
             المواد والأجهزة. أفضل الأشهر للانتقال هي من أكتوبر إلى مارس.
           </p>
-          <p className="my-3 text-muted-foreground ">
+          <p>
             حاول تجنب نهاية وبداية الشهر لأن الطلب يكون مرتفعا مما يؤدي لزيادة
             الأسعار. الأيام من الأحد إلى الأربعاء هي الأنسب. وابدأ النقل في
             الصباح الباكر (بين 6 إلى 7 صباحا) لتفادي الازدحام المروري وحرارة
             منتصف النهار.
           </p>
         </div>
-      </section>
+      </LocationSection>
+
       <FAQSection
+        tone="auto"
         openFirst
         title="الأسئلة الشائعة حول نقل الاثاث في ابوظبي"
         faqs={AbuDhabiFaqs}
@@ -839,7 +663,7 @@ const experience = [
           نقوم بترقيم أجزاء الأثاث وتجميع البراغي في أكياس مخصصة لضمان عدم ضياع
           أي قطعة أثناء النقل. يمكنك الاعتماد على{" "}
           <a
-            className="underline text-primary underline-offset-4"
+            className="underline text-brand underline-offset-4"
             href="/فك-وتركيب-اثاث-في-دبي"
           >
             خدمة فك وتركيب الاثاث

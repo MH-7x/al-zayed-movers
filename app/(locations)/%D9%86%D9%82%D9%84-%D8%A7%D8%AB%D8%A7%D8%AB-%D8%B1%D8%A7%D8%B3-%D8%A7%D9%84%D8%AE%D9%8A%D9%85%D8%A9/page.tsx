@@ -3,12 +3,8 @@ import {
   Building2,
   Castle,
   CircleHelp,
-  Clock,
   HouseIcon,
-  Phone,
-  Truck,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import HeroImage from "@/public/img/نقل-اثاث-راس-الخيمة-امام-المنزل.jpg";
@@ -24,6 +20,7 @@ import { ReviewsSection } from "@/components/ReviewsSection";
 import { LocationSection } from "@/components/location/LocationSection";
 import { SectionHeading } from "@/components/location/SectionHeading";
 import { QuoteActions } from "@/components/location/QuoteActions";
+import { LocationHero } from "@/components/location/LocationHero";
 import { FactsStrip } from "@/components/location/FactsStrip";
 import { RouteSection } from "@/components/location/RouteSection";
 import { ImageBanner } from "@/components/location/ImageBanner";
@@ -41,104 +38,39 @@ export const metadata: Metadata = {
     "الزايد لنقل الاثاث: نقل اثاث رأس الخيمة داخل الإمارة ومن دبي والشارقة إليها، مع الفك والتركيب والتغليف وشاحنات مغلقة مكيّفة وتأمين شامل، وبدون دفعة مقدمة.",
 };
 
-const linkClass = "font-bold text-primary underline underline-offset-4";
+const linkClass = "font-bold text-brand underline underline-offset-4";
 const whiteLinkClass = "font-bold text-white underline underline-offset-4";
 
 export const RasAlKhaimahPage = () => {
   return (
     <main>
-      <section className="w-full relative overflow-hidden">
-        <Image
-          src={HeroImage}
-          alt="شاحنة الزايد نقل اثاث أمام منزل في رأس الخيمة مع جبل جيس في الخلفية"
-          fill
-          loading="eager"
-          placeholder="blur"
-          priority
-          className="object-cover absolute -z-10"
-        />
-
-        <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <h1 className="text-center text-white leading-tight">
-            نقل اثاث راس الخيمة: نقل آمن داخل الإمارة ومن دبي إليها
-          </h1>
-          <p className="text-center text-white/90 mt-5 md:px-24 leading-relaxed md:text-base text-sm">
-            تنتقل إلى شقة في أبراج جلفار؟ أو تترك فيلتك في دبي لتسكن في ميناء
-            العرب؟ في الحالتين سيخطر لك سؤالان: من سينقل كل هذا الأثاث بأمان،
-            وكم سيكلّف؟
-          </p>
-          <p className="text-center text-white/90 mt-3 md:px-24 leading-relaxed md:text-base text-sm">
-            نتولى في الزايد لنقل الاثاث نقل اثاث راس الخيمة للمنازل والفلل
-            والمكاتب: داخل الإمارة نفسها، أو بينها وبين دبي والشارقة وباقي
-            الإمارات. خبرتنا في هذا العمل تزيد عن 12 سنة، وكل نقلة معنا تشمل
-            الفك والتركيب والتغليف، وشاحنات مغلقة ومكيّفة، وتأميناً شاملاً على
-            كل قطعة ننقلها. ولن نطلب منك أي دفعة مقدمة.
-          </p>
-          <p className="text-center text-white/90 mt-3 md:px-24 leading-relaxed md:text-base text-sm">
-            أرسل صور أثاثك وعنواني الانطلاق والوصول على واتساب، ونرد عليك بتقدير
-            فوري للسعر. وإذا كنت تفضّل أن نرى المكان بأنفسنا، نأتيك بمعاينة
-            مجانية ونعطيك السعر في الموقع. وإن كنت تقارن بين أكثر من شركة نقل
-            اثاث في رأس الخيمة، فستجد في هذه الصفحة الأسئلة التي تستحق أن تطرحها
-            على أي شركة قبل الحجز.
-          </p>
-          <div className="mt-6">
-            <QuoteActions
-              whatsappLabel="اطلب عرض سعر على واتساب"
-              callLabel="اتصل الآن"
-            />
-          </div>
-        </div>
-
-        <div className="absolute inset-0 bg-secondary/80 z-10" />
-      </section>
-
-      <section className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16  ">
-        <div className="flex flex-col md:flex-row bg-card text-card-foreground rounded-2xl overflow-hidden">
-          {/* Phone */}
-          <div className="flex-1 p-6 md:p-8 flex items-center justify-center md:justify-start gap-4 border-b md:border-b-0 md:border-e border-border">
-            <div className="bg-primary/10 p-3 sm:p-4 rounded-full text-primary shrink-0">
-              <Phone className="size-6 sm:size-8" strokeWidth={1.3} />
-            </div>
-            <div>
-              <p className="font-bold text-lg sm:text-xl">الهاتف</p>
-              <a
-                href="tel:+971556461731"
-                className="text-primary font-bold text-lg sm:text-xl block mt-1"
-                dir="ltr"
-              >
-                055 646 1731
-              </a>
-            </div>
-          </div>
-
-          {/* Working hours */}
-          <div className="flex-1 p-6 md:p-8 flex items-center justify-center md:justify-start gap-4">
-            <div className="bg-primary/10 p-3 sm:p-4 rounded-full text-primary shrink-0">
-              <Clock className="size-6 sm:size-8" strokeWidth={1.3} />
-            </div>
-            <div>
-              <p className="font-bold text-lg sm:text-xl">ساعات العمل</p>
-              <p className="text-muted-foreground block mt-1 font-medium">
-                خدمة 7 أيام في الأسبوع
-              </p>
-            </div>
-          </div>
-
-          {/* CTA Action */}
-          <a
-            href="#contact"
-            className="flex-1 bg-primary text-primary-foreground flex items-center justify-center p-6 md:p-8 hover:opacity-95 transition-opacity group relative overflow-hidden"
-          >
-            {/* Decorative Truck Icon representing the background graphic */}
-            <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 opacity-20 transition-transform duration-500 group-hover:scale-110">
-              <Truck className="size-32 sm:size-40" />
-            </div>
-            <span className="font-bold text-xl sm:text-2xl underline underline-offset-8 decoration-2 relative z-10 text-center">
-              احجز نقل أثاثك الآن
-            </span>
-          </a>
-        </div>
-      </section>
+      <LocationHero
+        image={HeroImage}
+        imageAlt="شاحنة الزايد نقل اثاث أمام منزل في رأس الخيمة مع جبل جيس في الخلفية"
+        title="نقل اثاث راس الخيمة: نقل آمن داخل الإمارة ومن دبي إليها"
+        whatsappLabel="اطلب عرض سعر على واتساب"
+        callLabel="اتصل الآن"
+      >
+        <p>
+          تنتقل إلى شقة في أبراج جلفار؟ أو تترك فيلتك في دبي لتسكن في ميناء
+          العرب؟ في الحالتين سيخطر لك سؤالان: من سينقل كل هذا الأثاث بأمان،
+          وكم سيكلّف؟
+        </p>
+        <p>
+          نتولى في الزايد لنقل الاثاث نقل اثاث راس الخيمة للمنازل والفلل
+          والمكاتب: داخل الإمارة نفسها، أو بينها وبين دبي والشارقة وباقي
+          الإمارات. خبرتنا في هذا العمل تزيد عن 12 سنة، وكل نقلة معنا تشمل
+          الفك والتركيب والتغليف، وشاحنات مغلقة ومكيّفة، وتأميناً شاملاً على
+          كل قطعة ننقلها. ولن نطلب منك أي دفعة مقدمة.
+        </p>
+        <p>
+          أرسل صور أثاثك وعنواني الانطلاق والوصول على واتساب، ونرد عليك بتقدير
+          فوري للسعر. وإذا كنت تفضّل أن نرى المكان بأنفسنا، نأتيك بمعاينة
+          مجانية ونعطيك السعر في الموقع. وإن كنت تقارن بين أكثر من شركة نقل
+          اثاث في رأس الخيمة، فستجد في هذه الصفحة الأسئلة التي تستحق أن تطرحها
+          على أي شركة قبل الحجز.
+        </p>
+      </LocationHero>
 
       <FactsStrip facts={facts} />
 
@@ -159,7 +91,7 @@ export const RasAlKhaimahPage = () => {
         </p>
       </QuoteImageSection>
 
-      <Services
+      <Services tone="auto"
         nums={4}
         heading="خدمات نقل اثاث رأس الخيمة حسب نوع العقار"
         experience={services}
@@ -384,7 +316,7 @@ export const RasAlKhaimahPage = () => {
         </Callout>
       </LocationSection>
 
-      <ReviewsSection />
+      <ReviewsSection tone="auto" />
 
       <LocationSection>
         <SectionHeading title="قبل الانتقال إلى رأس الخيمة: قائمة تحقق سريعة" />
@@ -393,7 +325,7 @@ export const RasAlKhaimahPage = () => {
         />
       </LocationSection>
 
-      <FAQSection
+      <FAQSection tone="auto"
         openFirst
         title="الأسئلة الشائعة عن نقل الاثاث في رأس الخيمة"
         faqs={RasAlKhaimahFaqs}

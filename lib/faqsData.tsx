@@ -13,8 +13,8 @@ export const dubaiFaqs = [
           والتنظيف.
         </p>
         <div className="overflow-x-auto my-3">
-          <table className="min-w-full text-sm border border-gray-200 text-right">
-            <thead className="bg-gray-100 font-semibold">
+          <table className="min-w-full text-sm border border-border text-start">
+            <thead className="bg-muted font-semibold">
               <tr>
                 <th className="p-2 border">نوع المسكن / الخدمة</th>
                 <th className="p-2 border">متوسط السعر</th>
@@ -29,7 +29,7 @@ export const dubaiFaqs = [
                 <td className="p-2 border">فك + تغليف + تحميل + نقل + تركيب</td>
                 <td className="p-2 border">2 – 3 ساعات</td>
               </tr>
-              <tr className="bg-gray-50">
+              <tr className="bg-surface">
                 <td className="p-2 border font-medium">
                   شقة غرفة وصالة (1BHK)
                 </td>
@@ -49,7 +49,7 @@ export const dubaiFaqs = [
                 </td>
                 <td className="p-2 border">5 – 7 ساعات</td>
               </tr>
-              <tr className="bg-gray-50">
+              <tr className="bg-surface">
                 <td className="p-2 border font-medium">
                   شقة 3 غرف وصالة (3BHK)
                 </td>
@@ -75,7 +75,7 @@ export const dubaiFaqs = [
             href="https://wa.me/971556461731"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 underline font-bold"
+            className="text-brand underline font-bold"
           >
             055 646 1731
           </Link>{" "}
@@ -108,7 +108,7 @@ export const dubaiFaqs = [
       <>
         <p>
           أفضل{" "}
-          <Link href="/" className="text-blue-600 underline">
+          <Link href="/" className="text-brand underline">
             شركة نقل اثاث دبي
           </Link>{" "}
           هي التي تجمع بين الترخيص التجاري المعتمد، الخبرة الطويلة، والتأمين
@@ -141,21 +141,21 @@ export const dubaiFaqs = [
             <em>My Nakheel</em>، وأبراج{" "}
             <Link
               href="/مناطق-دبي/نقل-اثاث-دبي-مارينا"
-              className="text-blue-600 underline"
+              className="text-brand underline"
             >
               دبي مارينا
             </Link>{" "}
             و
             <Link
               href="/مناطق-دبي/نقل-اثاث-وسط-مدينة-دبي"
-              className="text-blue-600 underline"
+              className="text-brand underline"
             >
               داون تاون دبي
             </Link>{" "}
             و
             <Link
               href="/مناطق-دبي/نقل-اثاث-أبراج-بحيرات-جميرا"
-              className="text-blue-600 underline"
+              className="text-brand underline"
             >
               أبراج بحيرات جميرا JLT
             </Link>{" "}
@@ -197,7 +197,7 @@ export const dubaiFaqs = [
           نعم، تشمل خدمة{" "}
           <Link
             href="/فك-وتركيب-اثاث-في-دبي"
-            className="text-blue-600 underline"
+            className="text-brand underline"
           >
             فك وتركيب اثاث في دبي
           </Link>{" "}
@@ -219,7 +219,7 @@ export const dubaiFaqs = [
         <p>
           <strong>
             نعم، جميع مواد{" "}
-            <Link href="/تغليف-اثاث-في-دبي" className="text-blue-600 underline">
+            <Link href="/تغليف-اثاث-في-دبي" className="text-brand underline">
               تغليف اثاث في دبي
             </Link>{" "}
             مشمولة بالكامل ومجاناً ضمن عرض السعر.
@@ -262,7 +262,7 @@ export const dubaiFaqs = [
         <p>
           <strong>
             نعم، نوفر خدمة{" "}
-            <Link href="/" className="text-blue-600 underline">
+            <Link href="/" className="text-brand underline">
               نقل عفش دبي
             </Link>{" "}
             للقطع الفردية.
@@ -271,7 +271,7 @@ export const dubaiFaqs = [
         <p className="mt-2">
           إذا كنت ترغب بنقل ثلاجة، غسالة، أريكة، طاولة طعام، أو خزنة حديدية
           ثقيلة، نوفر{" "}
-          <Link href="/" className="text-blue-600 underline">
+          <Link href="/" className="text-brand underline">
             سيارات نقل الاثاث
           </Link>{" "}
           وبيك أب 1.5 طن و3 طن مجهزة مع عمال للمساعدة في التغليف والتحميل الفوري
@@ -290,39 +290,39 @@ export const dubaiFaqs = [
           <li>
             <strong>النقل بين الإمارات:</strong> نوفر خدمات النقل اليومي من دبي
             إلى{" "}
-            <Link href="/نقل-اثاث-ابوظبي" className="text-blue-600 underline">
+            <Link href="/نقل-اثاث-ابوظبي" className="text-brand underline">
               أبوظبي
             </Link>
             ،{" "}
-            <Link href="/نقل-اثاث-الشارقة" className="text-blue-600 underline">
+            <Link href="/نقل-اثاث-الشارقة" className="text-brand underline">
               الشارقة
             </Link>
             ،{" "}
-            <Link href="/نقل-اثاث-عجمان" className="text-blue-600 underline">
+            <Link href="/نقل-اثاث-عجمان" className="text-brand underline">
               عجمان
             </Link>
             ،{" "}
             <Link
               href="/نقل-اثاث-راس-الخيمة"
-              className="text-blue-600 underline"
+              className="text-brand underline"
             >
               رأس الخيمة
             </Link>
             ،{" "}
-            <Link href="/نقل-اثاث-العين" className="text-blue-600 underline">
+            <Link href="/نقل-اثاث-العين" className="text-brand underline">
               العين
             </Link>
             ،{" "}
             <Link
               href="/نقل-الاثاث-ام-القيوين"
-              className="text-blue-600 underline"
+              className="text-brand underline"
             >
               أم القيوين
             </Link>
             ، و
             <Link
               href="/نقل-الاثاث-الفجيرة"
-              className="text-blue-600 underline"
+              className="text-brand underline"
             >
               الفجيرة
             </Link>
@@ -330,7 +330,7 @@ export const dubaiFaqs = [
           </li>
           <li>
             <strong>تخزين الاثاث:</strong> نوفر مستودعات{" "}
-            <Link href="/تخزين-اثاث-في-دبي" className="text-blue-600 underline">
+            <Link href="/تخزين-اثاث-في-دبي" className="text-brand underline">
               تخزين اثاث في دبي
             </Link>
             مكيّفة، نظيفة، ومراقبة بالكاميرات 24/7 لفترات قصيرة أو طويلة.

@@ -1,5 +1,4 @@
 import { Services } from "@/components/Services";
-import { Button } from "@/components/ui/button";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
 import HeroImage from "@/public/img/نقل-اثاث-الشارقة-كورنيش-المجاز.jpg";
 import SurveyImage from "@/public/img/معاينة-نقل-اثاث-شقة-الشارقة.jpg";
@@ -10,268 +9,116 @@ import {
   Boxes,
   Building2,
   Castle,
-  Clock,
   HouseIcon,
-  Phone,
-  Truck,
   Warehouse,
   Wrench,
 } from "lucide-react";
-import Image from "next/image";
 import { FAQSection } from "@/components/utils/FaqsSection";
 import { SharjahFaqs } from "@/lib/faqsData";
 import { ContactSection } from "@/components/ContactSection";
+import { LocationHero } from "@/components/location/LocationHero";
+import { LocationSection } from "@/components/location/LocationSection";
+import { SectionHeading } from "@/components/location/SectionHeading";
+import { QuoteImageSection } from "@/components/location/QuoteImageSection";
+import { AreaChips } from "@/components/location/AreaChips";
+import { Callout } from "@/components/location/Callout";
+import { IconFeatureGrid } from "@/components/location/IconFeatureGrid";
+import { RouteSection } from "@/components/location/RouteSection";
+import { InfoCardGrid } from "@/components/location/InfoCardGrid";
+
 const SharjahPage = () => {
   return (
     <main>
-      <section className="w-full relative overflow-hidden">
-        <Image
-          src={HeroImage}
-          alt="شاحنة الزايد نقل اثاث على كورنيش المجاز في الشارقة"
-          fill
-          loading="eager"
-          placeholder="blur"
-          priority
-          className="object-cover absolute -z-10"
-        />
-
-        <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <h1 className="text-center text-white leading-tight">
-            نقل أثاث الشارقة مع الزايد نقل اثاث
-          </h1>
-          <p className="text-center text-white/90 mt-5 md:px-24 leading-relaxed md:text-base text-sm">
-            الزايد نقل اثاث شركة متخصصة في نقل الأثاث تغطي الشارقة بكافة
-            مناطقها، بخبرة تتجاوز 12 عامًا في نقل المنازل والشقق والفلل
-            والمكاتب. مهمتنا الأساسية هي حماية أثاثك من أي تلف خلال النقل، من
-            أول قطعة حتى آخرها.
-          </p>
-          <div className="mt-5 flex justify-center ">
-            <Button size={"lg"} className={"md:px-5"}>
-              أحصل على عرض سعر مجاني
-            </Button>
-          </div>
-        </div>
-
-        <div className="absolute inset-0 bg-secondary/80 z-10" />
-      </section>
-
-      <section className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16  mb-16">
-        <div className="flex flex-col md:flex-row bg-card text-card-foreground rounded-2xl overflow-hidden">
-          {/* Phone */}
-          <div className="flex-1 p-6 md:p-8 flex items-center justify-center md:justify-start gap-4 border-b md:border-b-0 md:border-e border-border">
-            <div className="bg-primary/10 p-3 sm:p-4 rounded-full text-primary shrink-0">
-              <Phone className="size-6 sm:size-8" strokeWidth={1.3} />
-            </div>
-            <div>
-              <p className="font-bold text-lg sm:text-xl">الهاتف</p>
-              <a
-                href="tel:+971556461731"
-                className="text-primary font-bold text-lg sm:text-xl block mt-1"
-                dir="ltr"
-              >
-                055 646 1731
-              </a>
-            </div>
-          </div>
-
-          {/* Email */}
-          <div className="flex-1 p-6 md:p-8 flex items-center justify-center md:justify-start gap-4">
-            <div className="bg-primary/10 p-3 sm:p-4 rounded-full text-primary shrink-0">
-              <Clock className="size-6 sm:size-8" strokeWidth={1.3} />
-            </div>
-            <div>
-              <p className="font-bold text-lg sm:text-xl">ساعات العمل</p>
-              <p className="text-muted-foreground block mt-1 font-medium">
-                خدمة 7 أيام في الأسبوع
-              </p>
-            </div>
-          </div>
-
-          {/* CTA Action */}
-          <a
-            href="#contact"
-            className="flex-1 bg-primary text-primary-foreground flex items-center justify-center p-6 md:p-8 hover:opacity-95 transition-opacity group relative overflow-hidden"
-          >
-            {/* Decorative Truck Icon representing the background graphic */}
-            <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 opacity-20 transition-transform duration-500 group-hover:scale-110">
-              <Truck className="size-32 sm:size-40" />
-            </div>
-            <span className="font-bold text-xl sm:text-2xl underline underline-offset-8 decoration-2 relative z-10 text-center">
-              احجز نقل أثاثك الآن
-            </span>
-          </a>
-        </div>
-      </section>
-
-      <section className=" overflow-hidden  pt-16 ">
-        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-            {/* Left Column: Content & Description */}
-            <div className="flex flex-col items-start text-right lg:col-span-6">
-              {/* Main Heading */}
-              <h2 className="text-3xl font-black leading-tight md:text-4xl md:pl-28 sm:pl-0 ">
-                احصل على عرض سعر لنقل الأثاث في الشارقة خلال دقائق
-              </h2>
-
-              {/* Description */}
-              <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-                للحصول على عرض السعر، لدينا طريقتان سريعتان: تقدير فوري عبر
-                الإنترنت دون الحاجة لزيارة الموقع، أو معاينة ميدانية مجانية
-                يطّلع خلالها فريقنا على تفاصيل أثاثك ليمنحك سعرًا دقيقًا على
-                الفور.
-              </p>
-              <p className="mt-1 text-base leading-relaxed text-muted-foreground">
-                سواء كنت تبحث عن نقل عفش الشارقة أو نقل اثاث الشارقه، يمكنك
-                التواصل مع فريقنا مباشرة عبر الواتساب.
-              </p>
-              <p className="mt-1 text-base leading-relaxed text-muted-foreground">
-                تواصل معنا اليوم عبر واتساب على الرقم 0556461731، وسنرتب لك
-                خطوتك القادمة بتسعير فوري وبدون أي التزامات.
-              </p>
-            </div>
-            {/* Right Column: Image with Experience Badge */}
-            <div className="relative mx-auto w-full max-w-lg lg:col-span-6 lg:max-w-none">
-              {/* Experience Floating Badge */}
-              <div className="absolute -top-5 md:-end-5 -end-2 z-20 flex size-28 flex-col items-center justify-center rounded-full bg-primary p-2 text-center text-primary-foreground shadow-xl ring-4 ring-background sm:-top-7 sm:-end-7 sm:size-36">
-                <span className="text-2xl font-black leading-none sm:text-4xl">
-                  +12
-                </span>
-                <span className="mt-1 text-[11px] font-medium leading-tight sm:text-xs">
-                  عاماً من الخبرة والتميز
-                </span>
-              </div>
-
-              {/* Main Image Container */}
-              <div className="relative overflow-hidden rounded-2xl border-card bg-card aspect-4/3">
-                <Image
-                  src={SurveyImage}
-                  alt="مشرف الزايد نقل اثاث يعاين اثاث شقة مع العميل في الشارقة"
-                  fill
-                  placeholder="blur"
-                  sizes="(min-width: 1024px) 540px, (min-width: 512px) 512px, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mt-20 max-w-7xl md:px-10 px-4 mx-auto">
-        <h2 className="md:text-4xl text-3xl font-bold text-center">
-          المناطق التي نغطيها في الشارقة
-        </h2>
-        <p className="text-muted-foreground mt-5 text-center">
-          يغطي فريق الزايد نقل اثاث معظم مناطق الشارقة الرئيسية، سواء كنت تسكن
-          في شقة أو فيلا أو تدير مكتبًا تجاريًا. من أبرز المناطق التي ننقل
-          الأثاث فيها بانتظام:
+      <LocationHero
+        image={HeroImage}
+        imageAlt="شاحنة الزايد نقل اثاث على كورنيش المجاز في الشارقة"
+        title="نقل أثاث الشارقة مع الزايد نقل اثاث"
+        whatsappLabel="أحصل على عرض سعر مجاني"
+      >
+        <p>
+          الزايد نقل اثاث شركة متخصصة في نقل الأثاث تغطي الشارقة بكافة
+          مناطقها، بخبرة تتجاوز 12 عامًا في نقل المنازل والشقق والفلل
+          والمكاتب. مهمتنا الأساسية هي حماية أثاثك من أي تلف خلال النقل، من
+          أول قطعة حتى آخرها.
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-5 mt-5">
-          {[
-            {
-              t: "النهدة",
-              l: "#",
-            },
-            {
-              t: "المجاز",
-              l: "#",
-            },
-            {
-              t: "الخان",
-              l: "#",
-            },
-            {
-              t: "التعاون",
-              l: "#",
-            },
-            {
-              t: "مويلح",
-              l: "#",
-            },
-            {
-              t: "القاسمية",
-              l: "#",
-            },
-            {
-              t: "المناطق الصناعية بالشارقة",
-              l: "#",
-            },
-            {
-              t: "الروضة والرولة",
-              l: "#",
-            },
-          ].map((t, i) => (
-            <div
-              key={i}
-              className="bg-white text-foreground  px-4  py-2 text-sm rounded-4xl flex items-center gap-2"
-            >
-              <span className="text-primary"> ✔</span>{" "}
-              {/* <Link href={t.l}>{t.t} </Link> */}
-              <p>{t.t} </p>
-            </div>
-          ))}
-        </div>
-        <p className="text-muted-foreground mt-5 text-center max-w-4xl mx-auto">
+      </LocationHero>
+
+      <QuoteImageSection
+        title="احصل على عرض سعر لنقل الأثاث في الشارقة خلال دقائق"
+        image={SurveyImage}
+        imageAlt="مشرف الزايد نقل اثاث يعاين اثاث شقة مع العميل في الشارقة"
+      >
+        <p>
+          للحصول على عرض السعر، لدينا طريقتان سريعتان: تقدير فوري عبر
+          الإنترنت دون الحاجة لزيارة الموقع، أو معاينة ميدانية مجانية
+          يطّلع خلالها فريقنا على تفاصيل أثاثك ليمنحك سعرًا دقيقًا على
+          الفور.
+        </p>
+        <p>
+          سواء كنت تبحث عن نقل عفش الشارقة أو نقل اثاث الشارقه، يمكنك
+          التواصل مع فريقنا مباشرة عبر الواتساب.
+        </p>
+        <p>
+          تواصل معنا اليوم عبر واتساب على الرقم{" "}
+          <bdi className="ltr-isolate">0556461731</bdi>، وسنرتب لك
+          خطوتك القادمة بتسعير فوري وبدون أي التزامات.
+        </p>
+      </QuoteImageSection>
+
+      <LocationSection>
+        <SectionHeading
+          title="المناطق التي نغطيها في الشارقة"
+          desc={
+            <p>
+              يغطي فريق الزايد نقل اثاث معظم مناطق الشارقة الرئيسية، سواء كنت
+              تسكن في شقة أو فيلا أو تدير مكتبًا تجاريًا. من أبرز المناطق التي
+              ننقل الأثاث فيها بانتظام:
+            </p>
+          }
+        />
+        <AreaChips
+          areas={[
+            "النهدة",
+            "المجاز",
+            "الخان",
+            "التعاون",
+            "مويلح",
+            "القاسمية",
+            "المناطق الصناعية بالشارقة",
+            "الروضة والرولة",
+          ]}
+        />
+        <p className="mt-6 max-w-[68ch]">
           إذا كانت منطقتك غير مذكورة أعلاه، تواصل معنا عبر الواتساب للتأكد من
           التغطية، فخدماتنا تمتد عمليًا إلى باقي أحياء الإمارة.
         </p>
-      </section>
-      <section className="pt-16  max-w-6xl mx-auto px-4 md:px-0">
-        <div className="border-b border-border py-8">
-          {/* Group header row */}
+        <Callout title="نقل الأثاث في خورفكان" className="mt-8">
+          <p>
+            بالإضافة إلى مدينة الشارقة، نقدم أيضًا خدمة نقل الأثاث في خورفكان،
+            رغم بعدها الجغرافي عن مركز الإمارة على الساحل الشرقي. يتطلب النقل
+            إلى خورفكان أو منها وقتًا إضافيًا للتنقل مقارنة بمناطق الشارقة
+            الأقرب، ونأخذ ذلك بعين الاعتبار عند تحديد موعد النقل وتنسيق
+            الرحلة.
+          </p>
+        </Callout>
+      </LocationSection>
 
-          <h3 className="text-xl sm:text-2xl font-bold  pb-6">
-            نقل الأثاث في خورفكان
-          </h3>
-          <div className="text-muted-foreground leading-relaxed space-y-2 max-w-4xl">
+      <LocationSection>
+        <SectionHeading
+          title="لماذا تختار الزايد لنقل الأثاث في الشارقة؟"
+          desc={
             <p>
-              بالإضافة إلى مدينة الشارقة، نقدم أيضًا خدمة نقل الأثاث في خورفكان،
-              رغم بعدها الجغرافي عن مركز الإمارة على الساحل الشرقي. يتطلب النقل
-              إلى خورفكان أو منها وقتًا إضافيًا للتنقل مقارنة بمناطق الشارقة
-              الأقرب، ونأخذ ذلك بعين الاعتبار عند تحديد موعد النقل وتنسيق
-              الرحلة.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="pt-16 lg:pt-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-16 max-w-4xl text-center">
-            <h2 className="md:text-4xl text-3xl font-extrabold leading-tight mb-4">
-              لماذا تختار الزايد لنقل الأثاث في الشارقة؟
-            </h2>
-            {/* تمت إضافة المقدمة هنا لضمان عدم حذف أي جزء من النص */}
-            <p className="text-muted-foreground md:*:text-lg leading-relaxed">
               نعمل في الزايد نقل اثاث على أساس بسيط: لا تلف في أثاثك، مهما كانت
               المسافة أو حجم النقل. لتحقيق ذلك، نعتمد على مجموعة من الممارسات
               الثابتة في كل عملية نقل:
             </p>
-          </div>
+          }
+        />
+        <IconFeatureGrid items={features} />
+      </LocationSection>
 
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, i) => (
-              <div
-                key={i}
-                className="flex flex-col bg-card text-card-foreground shadow-lg p-5 items-center text-center rounded-2xl"
-              >
-                <div className="mb-5 relative overflow-hidden size-16 ">
-                  <Image
-                    src={feature.image}
-                    alt={`image icon ${i}`}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-
-                <p className="text-muted-foreground text-sm ">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
       <Services
+        tone="auto"
         nums={4}
         heading="خدمات نقل الأثاث التي نقدمها في الشارقة"
         desc={
@@ -318,89 +165,81 @@ const SharjahPage = () => {
         ]}
       />
 
-      <section className="w-full relative overflow-hidden mt-16 md:mt-24 py-20 md:py-28">
-        <Image
-          src={InterEmirateImage}
-          alt="شاحنة الزايد نقل اثاث على طريق الشارقة دبي"
-          fill
-          sizes="100vw"
-          placeholder="blur"
-          className="object-cover absolute inset-0 -z-20"
-        />
-        <div className="absolute inset-0 bg-secondary/75 -z-10" />
-
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight mb-6">
-            نقل الأثاث بين الشارقة ودبي والإمارات الأخرى
-          </h2>
-          <div className="space-y-4 text-white/90 text-sm sm:text-base  leading-relaxed max-w-3xl mx-auto">
-            <p>
-              نظرًا لقرب الشارقة من دبي، يحتاج كثير من سكان الشارقة إلى نقل اثاث
-              الشارقة دبي أو العكس، خاصة مع انتقال الكثيرين للعمل بين الإمارتين.
-              يقدم فريق الزايد نقل اثاث هذه الخدمة بانتظام، مع مراعاة أوقات
-              الازدحام المروري على الطرق الرئيسية بين الإمارتين عند تحديد موعد
-              النقل لتفادي التأخير.
-            </p>
-            <p>
-              كذلك نوفر خدمة نقل اثاث الشارقة عجمان، وننقل الأثاث فعليًا إلى
-              باقي إمارات الدولة، بما في ذلك أبوظبي والعين ورأس الخيمة والفجيرة
-              وأم القيوين.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-6xl mx-auto px-4  pt-16 lg:pt-28">
-        <h2 className="md:text-4xl text-3xl font-extrabold leading-tight ">
-          أشياء يجب معرفتها قبل نقل الأثاث في الشارقة
-        </h2>
-        <p className="text-muted-foreground mt-5">
-          قبل موعد النقل، هناك بعض الأمور العملية التي تساعد على إتمام العملية
-          بسلاسة:
+      <RouteSection
+        title="نقل الأثاث بين الشارقة ودبي والإمارات الأخرى"
+        image={InterEmirateImage}
+        imageAlt="شاحنة الزايد نقل اثاث على طريق الشارقة دبي"
+      >
+        <p>
+          نظرًا لقرب الشارقة من دبي، يحتاج كثير من سكان الشارقة إلى نقل اثاث
+          الشارقة دبي أو العكس، خاصة مع انتقال الكثيرين للعمل بين الإمارتين.
+          يقدم فريق الزايد نقل اثاث هذه الخدمة بانتظام، مع مراعاة أوقات
+          الازدحام المروري على الطرق الرئيسية بين الإمارتين عند تحديد موعد
+          النقل لتفادي التأخير.
         </p>
+        <p>
+          كذلك نوفر خدمة نقل اثاث الشارقة عجمان، وننقل الأثاث فعليًا إلى
+          باقي إمارات الدولة، بما في ذلك أبوظبي والعين ورأس الخيمة والفجيرة
+          وأم القيوين.
+        </p>
+      </RouteSection>
+
+      <LocationSection>
+        <SectionHeading
+          title="أشياء يجب معرفتها قبل نقل الأثاث في الشارقة"
+          desc={
+            <p>
+              قبل موعد النقل، هناك بعض الأمور العملية التي تساعد على إتمام العملية
+              بسلاسة:
+            </p>
+          }
+        />
         <ImageBanner
           src={PrepImage}
           alt="صناديق مرقمة وحماية مدخل المبنى قبل نقل الاثاث في الشارقة"
-          className="mt-10"
+          className="mb-8"
         />
-
-        <div className="mt-10 grid md:grid-cols-2 grid-cols-1 gap-10">
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              حجز المصعد والحصول على إذن الإدارة
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              في كثير من أبراج السكن بالشارقة، تشترط إدارة المبنى حجز المصعد
-              مسبقًا أو الحصول على إذن لنقل الأثاث في وقت محدد. من الأفضل التأكد
-              من هذا الإجراء مع إدارة مبناك قبل يوم النقل بوقت كافٍ، لتفادي أي
-              تأخير في اليوم نفسه.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              اختيار وقت مناسب لتفادي الازدحام
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              إذا كان النقل يشمل التنقل بين الشارقة ودبي أو إمارة أخرى، يُفضّل
-              تجنب أوقات الذروة الصباحية والمسائية على الطرق الرئيسية، حيث يساعد
-              ذلك في إنجاز النقل بشكل أسرع وأكثر تنظيمًا.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold md:text-2xl text-xl">
-              التغليف المناسب لحرارة الشارقة
-            </h3>
-            <p className="mt-2 text-muted-foreground text-sm">
-              نظرًا لارتفاع درجات الحرارة في الشارقة معظم أيام السنة، من المهم
-              استخدام مواد تغليف تحمي القطع الخشبية والإلكترونية من التأثر
-              بالحرارة أثناء النقل، خاصة إذا كانت مدة النقل تستغرق وقتًا أطول من
-              المعتاد.
-            </p>
-          </div>
-        </div>
-      </section>
+        <InfoCardGrid
+          items={[
+            {
+              title: "حجز المصعد والحصول على إذن الإدارة",
+              children: (
+                <p>
+                  في كثير من أبراج السكن بالشارقة، تشترط إدارة المبنى حجز المصعد
+                  مسبقًا أو الحصول على إذن لنقل الأثاث في وقت محدد. من الأفضل
+                  التأكد من هذا الإجراء مع إدارة مبناك قبل يوم النقل بوقت كافٍ،
+                  لتفادي أي تأخير في اليوم نفسه.
+                </p>
+              ),
+            },
+            {
+              title: "اختيار وقت مناسب لتفادي الازدحام",
+              children: (
+                <p>
+                  إذا كان النقل يشمل التنقل بين الشارقة ودبي أو إمارة أخرى،
+                  يُفضّل تجنب أوقات الذروة الصباحية والمسائية على الطرق
+                  الرئيسية، حيث يساعد ذلك في إنجاز النقل بشكل أسرع وأكثر
+                  تنظيمًا.
+                </p>
+              ),
+            },
+            {
+              title: "التغليف المناسب لحرارة الشارقة",
+              children: (
+                <p>
+                  نظرًا لارتفاع درجات الحرارة في الشارقة معظم أيام السنة، من
+                  المهم استخدام مواد تغليف تحمي القطع الخشبية والإلكترونية من
+                  التأثر بالحرارة أثناء النقل، خاصة إذا كانت مدة النقل تستغرق
+                  وقتًا أطول من المعتاد.
+                </p>
+              ),
+            },
+          ]}
+        />
+      </LocationSection>
 
       <FAQSection
+        tone="auto"
         openFirst
         title="الأسئلة الشائعة حول نقل الأثاث في الشارقة"
         faqs={SharjahFaqs}

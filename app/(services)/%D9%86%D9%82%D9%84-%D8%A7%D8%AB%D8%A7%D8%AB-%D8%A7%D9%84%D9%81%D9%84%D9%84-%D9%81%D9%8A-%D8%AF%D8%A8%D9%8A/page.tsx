@@ -56,9 +56,9 @@ export default function VillaMovingPage() {
         ),
       }}
       below={
-        <>
+        <>          <ReviewsSection />
+
           <FAQSection title="أسئلة متكررة عن نقل اثاث الفلل" faqs={faqs} />
-          <ReviewsSection />
           <ContactSection
             title="احجز معاينة مجانية لنقل اثاث فيلتك في دبي"
             description="سيزورك مشرف من فريقنا في الموعد الذي يناسبك، ويحدد الشاحنات والعمال والقطع التي تحتاج إلى ونش، ثم يصلك سعر ثابت ومكتوب."

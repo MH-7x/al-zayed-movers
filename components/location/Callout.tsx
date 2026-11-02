@@ -7,18 +7,17 @@ interface CalloutProps {
   className?: string;
 }
 
+/** Note card: white surface, 4px orange start rule (text stays on white for contrast). */
 export function Callout({ title, children, className }: CalloutProps) {
   return (
     <aside
       className={cn(
-        "rounded-2xl border-s-4 border-primary bg-primary/10 p-6",
+        "rounded-md border border-border border-s-4 border-s-primary bg-card p-6 shadow-sm",
         className,
       )}
     >
-      {title && <h3 className="mb-2 text-lg font-bold">{title}</h3>}
-      <div className="space-y-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-        {children}
-      </div>
+      {title && <h3 className="mb-2 text-lg">{title}</h3>}
+      <div className="space-y-2 text-sm md:text-base">{children}</div>
     </aside>
   );
 }

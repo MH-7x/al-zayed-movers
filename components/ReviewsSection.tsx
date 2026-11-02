@@ -1,61 +1,41 @@
 import Image from "next/image";
 import ReviewsSlider from "./utils/ReviewsSlider";
-import { Button } from "./ui/button";
+import { buttonVariants } from "./ui/button";
+import { Section, SectionHeading } from "@/components/ui/Section";
 
-export function ReviewsSection() {
+const badges = [
+  { src: "/google-reviews-badge.png", alt: "google reviews badge" },
+  { src: "/excellent-service-badge.png", alt: "excellent service badge" },
+  { src: "/trip-advior-badge.png", alt: "trip advisor badge" },
+];
+
+export function ReviewsSection({ tone = "alt" }: { tone?: "alt" | "auto" | "default" }) {
   return (
-    <section className="md:pt-16 pt-28">
-      <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 grid-cols-1 md:gap-16 gap-10 items-center md:mb-0 mb-5">
-        <div>
-          <h2 className="text-3xl font-extrabold leading-tight">
-            ماذا يقول سكان دبي عن <br /> الزايد نقل اثاث دبي ؟
-          </h2>
-          <p className="text-muted-foreground text-sm my-5 ">
-            سمعتنا هي رأسمالنا الحقيقي. نحن شركة نقل اثاث موثوقة في دبي لأننا
-            نفي بوعودنا دائماً.
-          </p>
-          <Button variant={"outline"}>
-            <a
-              href="https://search.google.com/local/reviews?placeid=ChIJjeNo41ppXz4R34OmlNqaUBU"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ⭐⭐⭐⭐⭐ شاهد تقييمات عملائنا على Google
-            </a>
-          </Button>
-        </div>
-        <div className="grid grid-cols-3 gap-3">
-          {[
-            {
-              src: "/google-reviews-badge.png",
-              alt: "google reviews badge",
-            },
-            {
-              src: "/excellent-service-badge.png",
-              alt: "excellent service badge",
-            },
-            {
-              src: "/trip-advior-badge.png",
-              alt: "trip advisor badge",
-            },
-          ].map((badge, i) => (
-            <div
-              className="aspect-4/3 relative md:h-28 h-18 
-                 overflow-hidden"
-              key={i}
-            >
-              <Image
-                src={badge.src}
-                alt={badge.alt}
-                fill
-                className="object-contain"
-              />
-            </div>
+    <Section id="reviews" tone={tone}>
+      <SectionHeading
+        title="ماذا يقول سكان دبي عن الزايد نقل اثاث دبي ؟"
+        description="سمعتنا هي رأسمالنا الحقيقي. نحن شركة نقل اثاث موثوقة في دبي لأننا نفي بوعودنا دائماً."
+      />
+      <div className="mb-8 flex flex-wrap items-center gap-4">
+        <a
+          href="https://search.google.com/local/reviews?placeid=ChIJjeNo41ppXz4R34OmlNqaUBU"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonVariants({ variant: "outline" })}
+        >
+          ⭐⭐⭐⭐⭐ شاهد تقييمات عملائنا على Google
+        </a>
+        <ul className="flex flex-wrap items-center gap-3">
+          {badges.map((b) => (
+            <li key={b.src} className="rounded-md border border-border bg-card p-2 shadow-xs">
+              {/* sources are 163×137 / 343×150 / 201×150 → shown contained in a 149×112 box */}
+              <Image src={b.src} alt={b.alt} width={149} height={112} className="h-28 w-37 object-contain" />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-      <ReviewsSlider reviews={mockReviews} autoPlayInterval={3000} />
-    </section>
+      <ReviewsSlider reviews={mockReviews} autoPlayInterval={5000} />
+    </Section>
   );
 }
 
