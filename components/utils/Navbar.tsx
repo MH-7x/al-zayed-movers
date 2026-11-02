@@ -36,7 +36,11 @@ const dubaiAreaItems = [
 
 type MenuId = "services" | "locations" | "areas" | "mobile";
 
-const menus: { id: Exclude<MenuId, "mobile">; label: string; items: { title: string; href: string }[] }[] = [
+const menus: {
+  id: Exclude<MenuId, "mobile">;
+  label: string;
+  items: { title: string; href: string }[];
+}[] = [
   { id: "services", label: "خدماتنا", items: serviceItems },
   { id: "locations", label: "المواقع", items: locationItems },
   { id: "areas", label: "مناطق دبي", items: dubaiAreaItems },
@@ -49,7 +53,10 @@ export default function Navbar() {
   const pathname = usePathname();
   // The open menu is remembered together with the path it was opened on, so navigating
   // closes it without an effect.
-  const [state, setState] = useState<{ id: MenuId | null; path: string }>({ id: null, path: pathname });
+  const [state, setState] = useState<{ id: MenuId | null; path: string }>({
+    id: null,
+    path: pathname,
+  });
   const open = state.path === pathname ? state.id : null;
   const rootRef = useRef<HTMLElement>(null);
 
@@ -86,16 +93,23 @@ export default function Navbar() {
       <div className="hidden bg-secondary text-xs text-white md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 lg:px-8">
           <address className="flex items-center gap-2 not-italic">
-            <MapPin className="size-3.5 shrink-0 text-primary" aria-hidden="true" />
+            <MapPin
+              className="size-3.5 shrink-0 text-primary"
+              aria-hidden="true"
+            />
             <span dir="ltr" className="ltr-isolate">
-              B17 Owned by Al Nasr Sports Club - Office No. 1 - Oud Metha - Dubai
+              B17 Owned by Al Nasr Sports Club - Office No. 1 - Oud Metha -
+              Dubai
             </span>
           </address>
           <a
             href={PHONE_TEL}
             className="inline-flex min-h-11 items-center gap-2 font-bold hover:text-primary"
           >
-            <Phone className="size-3.5 shrink-0 text-primary" aria-hidden="true" />
+            <Phone
+              className="size-3.5 shrink-0 text-primary"
+              aria-hidden="true"
+            />
             <span dir="ltr" className="ltr-isolate">
               {PHONE_DISPLAY}
             </span>
@@ -121,7 +135,10 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop navigation (lg+) */}
-        <nav aria-label="القائمة الرئيسية" className="hidden items-center gap-1 lg:flex">
+        <nav
+          aria-label="القائمة الرئيسية"
+          className="hidden items-center gap-1 lg:flex"
+        >
           {menus.map((m) => (
             <div key={m.id} className="relative">
               <button
@@ -167,7 +184,7 @@ export default function Navbar() {
 
         <Link
           href="/اتصل-بنا"
-          className={`${buttonVariants({ size: "sm" })} hidden md:inline-flex`}
+          className={`${buttonVariants({ size: "sm" })} hidden! md:inline-flex`}
         >
           طلب تسعيرة
         </Link>

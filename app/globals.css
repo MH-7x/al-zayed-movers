@@ -36,8 +36,12 @@
   --color-ring: var(--ring);
 
   /* Design-system additions */
-  --color-brand: var(--brand-text); /* orange-700: small text & links on light surfaces */
-  --color-brand-soft: var(--orange-100); /* tint behind orange text/icons (replaces bg-primary/10) */
+  --color-brand: var(
+    --brand-text
+  ); /* orange-700: small text & links on light surfaces */
+  --color-brand-soft: var(
+    --orange-100
+  ); /* tint behind orange text/icons (replaces bg-primary/10) */
   --color-surface: var(--surface-alt);
   --color-navy-50: #f1f5f9;
   --color-navy-100: #e3ebf4;
@@ -89,7 +93,7 @@
 :root {
   --radius: 0.75rem;
   --background: #ffffff;
-  --foreground: #3d4a5a; /* body ink: 9.03:1 on white */
+  --foreground: #4e545a; /* body ink: 9.03:1 on white */
   --card: #ffffff;
   --card-foreground: #3d4a5a;
   --popover: #ffffff;
@@ -155,7 +159,7 @@
   }
   @media (min-width: 1024px) {
     h1 {
-      font-size: 3.25rem; /* 52 */
+      font-size: 2.15rem; /* 52 */
     }
     h2 {
       font-size: 2.25rem; /* 36 */
@@ -169,7 +173,15 @@
   main {
     overflow-x: clip;
   }
-  :where(a, button, summary, input, textarea, select, [tabindex]):focus-visible {
+  :where(
+    a,
+    button,
+    summary,
+    input,
+    textarea,
+    select,
+    [tabindex]
+  ):focus-visible {
     outline: 3px solid var(--ring);
     outline-offset: 3px;
     border-radius: 4px;

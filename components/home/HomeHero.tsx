@@ -21,9 +21,6 @@ export function HomeHero() {
       <div className={containerCls}>
         <div className="grid items-center gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div className="flex flex-col">
-            <p className="text-sm font-bold text-brand">
-              الزايد نقل اثاث دبي — باحترافية وضمان كامل
-            </p>
             <h1 className="mt-2 mb-4 lg:mb-4">
               <span className="block text-brand">الزايد نقل اثاث دبي</span> فك
               وتغليف وتركيب بضمان شامل
@@ -39,7 +36,7 @@ export function HomeHero() {
             </p>
           </div>
 
-          <div className="relative order-first aspect-2/1 overflow-hidden rounded-lg border border-border shadow-md lg:order-none lg:aspect-5/4">
+          <div className="relative order-first aspect-4/3 overflow-hidden rounded-lg border border-border shadow-md lg:order-none lg:aspect-5/4">
             <Image
               src="/الزايد-نقل-اثاث-دبي.jpg"
               alt="الزايد نقل اثاث دبي"
@@ -60,7 +57,11 @@ export function HomeHero() {
               } ${i < 2 ? "border-b lg:border-b-0" : ""} ${i < 3 ? "lg:border-e" : "lg:border-e-0"}`}
             >
               <span className="grid size-6 shrink-0 place-items-center rounded-full bg-brand-soft text-brand">
-                <Check className="size-3.5" strokeWidth={3} aria-hidden="true" />
+                <Check
+                  className="size-3.5"
+                  strokeWidth={3}
+                  aria-hidden="true"
+                />
               </span>
               {t}
             </li>

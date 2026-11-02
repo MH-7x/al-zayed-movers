@@ -57,7 +57,7 @@ export function WhySection() {
               width={64}
               height={64}
               sizes="64px"
-              className="row-span-3 size-14 rounded-md border border-border object-contain lg:mb-4 lg:size-16"
+              className="row-span-3 size-14  object-contain lg:mb-4 lg:size-16"
             />
             <h3 className="text-xl leading-snug lg:mb-2">{f.title}</h3>
             <p className="mt-1 text-sm lg:mt-2">{f.description}</p>
