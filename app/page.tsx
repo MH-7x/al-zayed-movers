@@ -12,6 +12,13 @@ import { ReviewsSection } from "@/components/ReviewsSection";
 import { dubaiFaqs } from "@/lib/faqsData";
 
 /** Direction A order: proof first, price before detail, one decision band per section. */
+
+export const metadata = {
+  title: "الزايد نقل اثاث دبي | افضل شركة نقل اثاث في دبي",
+  description:
+    "الزايد نقل اثاث دبي، شركة نقل اثاث في دبي بخبرة 12 سنة. تغليف وفك وتركيب، سعر ثابت، تأمين شامل، وبدون دفعة مقدمة. واتساب 055 6461731 لعرض سعر فوري.",
+};
+
 export default function Home() {
   return (
     <main>

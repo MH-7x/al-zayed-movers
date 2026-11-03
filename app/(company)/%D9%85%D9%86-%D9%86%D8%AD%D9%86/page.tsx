@@ -43,7 +43,7 @@ import { AboutFaqs } from "@/lib/faqsData";
 import { AREA_HREF, SERVICE_HREF } from "@/components/services/constants";
 
 export const metadata: Metadata = {
-  title: "من نحن | الزايد نقل اثاث دبي - خبرة 12 سنة",
+  title: "من نحن | الزايد نقل اثاث دبي ",
   description:
     "الزايد نقل اثاث دبي، شركة مرخصة بخبرة أكثر من 12 سنة. سعر ثابت، تأمين وضمان مكتوب، وبدون دفعة مقدمة. اطلب عرض سعر فوري عبر الواتساب.",
 };
@@ -777,7 +777,12 @@ export default function AboutPage() {
       </LocationSection>
 
       {/* ───────── FAQ ───────── */}
-      <FAQSection tone="auto" title="أسئلة يسألها عملاؤنا" subtitle="" faqs={AboutFaqs} />
+      <FAQSection
+        tone="auto"
+        title="أسئلة يسألها عملاؤنا"
+        subtitle=""
+        faqs={AboutFaqs}
+      />
 
       {/* ───────── CTA ───────── */}
       <CtaBand
