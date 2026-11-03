@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { MetadataTemplate } from "@/lib/MetadataTemplate";
 import HeroImage from "@/public/img/نقل-اثاث-عجمان-كورنيش.jpg";
 import QuoteImage from "@/public/img/عرض-سعر-نقل-اثاث-عجمان.jpg";
 import AreasImage from "@/public/img/مناطق-نقل-اثاث-عجمان.jpg";
@@ -18,16 +20,32 @@ import { Callout } from "@/components/location/Callout";
 import { IconFeatureGrid } from "@/components/location/IconFeatureGrid";
 import { RouteSection } from "@/components/location/RouteSection";
 import { InfoCardGrid } from "@/components/location/InfoCardGrid";
+import JsonLd from "@/components/JsonLd";
+import { buildPageSchema } from "@/lib/schema";
 
-export const metadata = {
+export const metadata: Metadata = MetadataTemplate({
   title: "نقل اثاث عجمان | شركة نقل اثاث في عجمان بخبرة 12 سنة",
-  description:
+  desc:
     "الزايد نقل اثاث عجمان بخبرة 12 سنة: نقل عفش الشقق والفلل والمكاتب، تغليف وفك وتركيب، تأمين شامل، سعر ثابت وبدون دفعة مقدمة. واتساب 055 646 1731.",
-};
+  path: "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%B9%D8%AC%D9%85%D8%A7%D9%86",
+  image: {
+    path: "/img/نقل-اثاث-عجمان-كورنيش.jpg",
+    alt: "شاحنة الزايد نقل اثاث أمام أبراج كورنيش عجمان",
+  },
+});
 
 export const AjmanPage = () => {
+  const schema = buildPageSchema({
+    page: "ajman",
+    name: String(metadata.title),
+    description: String(metadata.description),
+    image: "/img/نقل-اثاث-عجمان-كورنيش.jpg",
+    imageWidth: 1000,
+    imageHeight: 495,
+  });
   return (
     <main>
+      <JsonLd data={schema} />
       <LocationHero
         image={HeroImage}
         imageAlt="شاحنة الزايد نقل اثاث أمام أبراج كورنيش عجمان"

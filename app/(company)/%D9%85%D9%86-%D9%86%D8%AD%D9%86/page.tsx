@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MetadataTemplate } from "@/lib/MetadataTemplate";
 import Link from "next/link";
 import {
   Award,
@@ -40,13 +41,20 @@ import { QuoteActions } from "@/components/location/QuoteActions";
 import { CtaBand } from "@/components/location/CtaBand";
 import { FAQSection } from "@/components/utils/FaqsSection";
 import { AboutFaqs } from "@/lib/faqsData";
-import { AREA_HREF, SERVICE_HREF } from "@/components/services/constants";
+import { SERVICE_HREF } from "@/components/services/constants";
+import JsonLd from "@/components/JsonLd";
+import { buildPageSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = MetadataTemplate({
   title: "من نحن | الزايد نقل اثاث دبي ",
-  description:
+  desc:
     "الزايد نقل اثاث دبي، شركة مرخصة بخبرة أكثر من 12 سنة. سعر ثابت، تأمين وضمان مكتوب، وبدون دفعة مقدمة. اطلب عرض سعر فوري عبر الواتساب.",
-};
+  path: "/%D9%85%D9%86-%D9%86%D8%AD%D9%86",
+  image: {
+    path: "/img/اسطول-شاحنات-الزايد-نقل-اثاث.jpg",
+    alt: "أسطول شاحنات الزايد نقل اثاث المغلقة والمكيفة",
+  },
+});
 
 const linkClass =
   "font-bold text-brand underline underline-offset-4 hover:no-underline";
@@ -218,65 +226,18 @@ const checklist = [
 
 const truckSizes = ["1.5 طن", "3 طن", "7 طن"];
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "AboutPage",
-      name: "من نحن | الزايد نقل اثاث دبي - خبرة 12 سنة",
-      description:
-        "الزايد نقل اثاث دبي، شركة مرخصة بخبرة أكثر من 12 سنة. سعر ثابت، تأمين وضمان مكتوب، وبدون دفعة مقدمة. اطلب عرض سعر فوري عبر الواتساب.",
-      inLanguage: "ar-AE",
-      about: { "@id": "#movingcompany" },
-    },
-    {
-      "@type": "MovingCompany",
-      "@id": "#movingcompany",
-      name: "الزايد نقل اثاث دبي",
-      telephone: "+971556461731",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "B17 Owned by Al Nasr Sports Club - Office No. 1",
-        addressLocality: "عود ميثاء",
-        addressRegion: "دبي",
-        addressCountry: "AE",
-      },
-      openingHoursSpecification: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
-        opens: "00:00",
-        closes: "23:59",
-      },
-      areaServed: [
-        "دبي",
-        "أبوظبي",
-        "الشارقة",
-        "عجمان",
-        "رأس الخيمة",
-        "الفجيرة",
-        "أم القيوين",
-        "العين",
-      ],
-    },
-  ],
-};
-
 export default function AboutPage() {
+  const schema = buildPageSchema({
+    page: "about",
+    name: "من نحن | الزايد نقل اثاث دبي ",
+    description: "الزايد نقل اثاث دبي، شركة مرخصة بخبرة أكثر من 12 سنة. سعر ثابت، تأمين وضمان مكتوب، وبدون دفعة مقدمة. اطلب عرض سعر فوري عبر الواتساب.",
+    image: "/img/فريق-الزايد-نقل-اثاث-دبي.jpg",
+    imageWidth: 700,
+    imageHeight: 869,
+  });
   return (
     <main>
-      <script
-        id="AboutSchema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={schema} />
 
       {/* ───────── Hero ───────── */}
       <section className="relative overflow-hidden bg-secondary [--outline:#ffffff] [--outline-inv:var(--color-secondary)] px-4 pt-14 pb-32 sm:px-6 md:pt-20 md:pb-36 lg:px-8">
@@ -635,45 +596,25 @@ export default function AboutPage() {
           <div className="mt-6 space-y-5 leading-loose text-muted-foreground md:text-lg">
             <p>
               مقرنا في عود ميثاء بدبي، ونغطي أغلب مناطق المدينة، منها:{" "}
-              <Link href={AREA_HREF.marina} className={linkClass}>
-                دبي مارينا
-              </Link>
+              دبي مارينا
               ،{" "}
-              <Link href={AREA_HREF.downtown} className={linkClass}>
-                وسط مدينة دبي
-              </Link>
+              وسط مدينة دبي
               ،{" "}
-              <Link href={AREA_HREF.jlt} className={linkClass}>
-                أبراج بحيرات جميرا
-              </Link>
+              أبراج بحيرات جميرا
               ،{" "}
-              <Link href={AREA_HREF.businessBay} className={linkClass}>
-                الخليج التجاري
-              </Link>
+              الخليج التجاري
               ،{" "}
-              <Link href={AREA_HREF.jvc} className={linkClass}>
-                قرية جميرا الدائرية
-              </Link>
+              قرية جميرا الدائرية
               ،{" "}
-              <Link href={AREA_HREF.palm} className={linkClass}>
-                نخلة جميرا
-              </Link>
+              نخلة جميرا
               ،{" "}
-              <Link href={AREA_HREF.barsha} className={linkClass}>
-                البرشاء
-              </Link>
+              البرشاء
               ،{" "}
-              <Link href={AREA_HREF.deira} className={linkClass}>
-                ديرة
-              </Link>
+              ديرة
               ،{" "}
-              <Link href={AREA_HREF.burDubai} className={linkClass}>
-                بر دبي
-              </Link>
+              بر دبي
               ، و
-              <Link href={AREA_HREF.jumeirah} className={linkClass}>
-                جميرا
-              </Link>
+              جميرا
               .
             </p>
             <p>
@@ -682,7 +623,7 @@ export default function AboutPage() {
                 أبوظبي
               </Link>
               ،{" "}
-              <Link href="/نقل-اثاث-الشارقة" className={linkClass}>
+              <Link href="/نقل-أثاث-الشارقة" className={linkClass}>
                 الشارقة
               </Link>
               ،{" "}
@@ -694,13 +635,9 @@ export default function AboutPage() {
                 رأس الخيمة
               </Link>
               ،{" "}
-              <Link href="/نقل-الاثاث-الفجيرة" className={linkClass}>
-                الفجيرة
-              </Link>
+              الفجيرة
               ،{" "}
-              <Link href="/نقل-الاثاث-ام-القيوين" className={linkClass}>
-                أم القيوين
-              </Link>
+              أم القيوين
               ، و
               <Link href="/نقل-اثاث-العين" className={linkClass}>
                 العين

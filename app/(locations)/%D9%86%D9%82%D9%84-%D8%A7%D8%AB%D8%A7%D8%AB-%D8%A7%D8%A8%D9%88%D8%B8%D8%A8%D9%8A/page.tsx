@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { MetadataTemplate } from "@/lib/MetadataTemplate";
 import HeroImage from "@/public/نقل-اثاث-ابوظبي.jpg";
 import SurveyImage from "@/public/img/معاينة-نقل-اثاث-شقة-ابوظبي.jpg";
 import AreasImage from "@/public/img/مناطق-نقل-اثاث-ابوظبي-مدينة-خليفة.jpg";
@@ -24,6 +26,8 @@ import { IconFeatureGrid } from "@/components/location/IconFeatureGrid";
 import { DataTable } from "@/components/location/DataTable";
 import { InfoCardGrid } from "@/components/location/InfoCardGrid";
 import { ChecklistCard } from "@/components/location/ChecklistCard";
+import JsonLd from "@/components/JsonLd";
+import { buildPageSchema } from "@/lib/schema";
 
 const routeLink =
   "font-bold text-brand underline underline-offset-4 hover:no-underline";
@@ -34,14 +38,28 @@ const routeIcon =
 const routeMore =
   "inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-brand hover:underline";
 
-export const metadata = {
+export const metadata: Metadata = MetadataTemplate({
   title: "نقل اثاث ابوظبي - شركة نقل اثاث ابوظبي بخبرة 12 سنة",
-  description:
+  desc:
     "افضل شركات نقل الاثاث في ابوظبي: الزايد بخبرة 12 سنة. نقل اثاث في ابوظبي للفلل والشقق والمكاتب، تغليف وفك وتركيب، تأمين شامل، سعر ثابت. واتساب 055 646 1731.",
-};
+  path: "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D8%A8%D9%88%D8%B8%D8%A8%D9%8A",
+  image: {
+    path: "/نقل-اثاث-ابوظبي.jpg",
+    alt: "الزايد نقل اثاث ابوظبي",
+  },
+});
 const AbuDhabiPage = () => {
+  const schema = buildPageSchema({
+    page: "abuDhabi",
+    name: String(metadata.title),
+    description: String(metadata.description),
+    image: "/نقل-اثاث-ابوظبي.jpg",
+    imageWidth: 1100,
+    imageHeight: 614,
+  });
   return (
     <main>
+      <JsonLd data={schema} />
       <LocationHero
         image={HeroImage}
         imageAlt="الزايد نقل اثاث ابوظبي"
@@ -143,18 +161,15 @@ const AbuDhabiPage = () => {
               <h3 className="mt-5 text-xl">نقل اثاث من ابوظبي إلى دبي</h3>
               <p className="mt-3 text-sm">
                 تستغرق الرحلة عبر شارع الشيخ زايد حوالي ساعة ونصف. ندير مسار{" "}
-                <Link href="/نقل-اثاث-دبي" className={routeLink}>
-                  نقل اثاث دبي
-                </Link>{" "}
+                نقل اثاث دبي{" "}
                 اليومي لضمان توصيل سريع بين الإمارتين. ونقدم أسعاراً تنافسية
                 تناسب حركة الانتقال المستمرة للعمل أو السكن.
               </p>
             </div>
             <div className="mt-6 border-t border-border pt-4">
-              <Link href="/نقل-اثاث-دبي" className={routeMore}>
-                <span>تفاصيل خدمة دبي</span>
-                <ArrowLeft className="size-4" aria-hidden="true" />
-              </Link>
+              <p className="inline-flex min-h-11 items-center text-sm font-bold text-secondary">
+                تفاصيل خدمة دبي
+              </p>
             </div>
           </article>
 
@@ -207,7 +222,7 @@ const AbuDhabiPage = () => {
               </h3>
               <p className="mt-3 text-sm">
                 ننظم رحلات مجدولة لخدمات{" "}
-                <Link href="/نقل-اثاث-الشارقة" className={routeLink}>
+                <Link href="/نقل-أثاث-الشارقة" className={routeLink}>
                   نقل اثاث الشارقة
                 </Link>{" "}
                 وتغطية مجمعات{" "}
@@ -219,7 +234,7 @@ const AbuDhabiPage = () => {
               </p>
             </div>
             <div className="mt-6 border-t border-border pt-4">
-              <Link href="/نقل-اثاث-الشارقة" className={routeMore}>
+              <Link href="/نقل-أثاث-الشارقة" className={routeMore}>
                 <span>تفاصيل خدمة الشارقة وعجمان</span>
                 <ArrowLeft className="size-4" aria-hidden="true" />
               </Link>

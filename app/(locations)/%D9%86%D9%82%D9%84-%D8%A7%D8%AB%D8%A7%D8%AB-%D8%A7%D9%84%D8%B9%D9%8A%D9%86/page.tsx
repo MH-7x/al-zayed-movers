@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { MetadataTemplate } from "@/lib/MetadataTemplate";
 import HeroImage from "@/public/img/نقل-اثاث-العين-امام-المنزل.jpg";
 import QuoteImage from "@/public/img/معاينة-نقل-اثاث-فيلا-العين.jpg";
 import RoadImage from "@/public/img/نقل-اثاث-من-العين-الى-دبي.jpg";
@@ -36,18 +37,34 @@ import { CtaBand } from "@/components/location/CtaBand";
 import { ImageBand } from "@/components/location/ImageBand";
 import { ImageBanner } from "@/components/location/ImageBanner";
 import { QuoteImageSection } from "@/components/location/QuoteImageSection";
+import JsonLd from "@/components/JsonLd";
+import { buildPageSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = MetadataTemplate({
   title: "نقل اثاث العين | شركة نقل اثاث مرخصة ومؤمّنة ",
-  description:
+  desc:
     "نقل اثاث العين مع الزايد: فك وتغليف ونقل وتركيب لفلل ومنازل ومكاتب العين، شركة مرخصة ومؤمّنة وبدون دفعة مقدمة. اطلب عرض سعرك عبر واتساب.",
-};
+  path: "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D8%B9%D9%8A%D9%86",
+  image: {
+    path: "/img/نقل-اثاث-العين-امام-المنزل.jpg",
+    alt: "شاحنة الزايد نقل اثاث أمام منزل في العين مع جبل حفيت في الخلفية",
+  },
+});
 
 const linkClass = "font-bold text-brand underline underline-offset-4";
 
 export const AlAinPage = () => {
+  const schema = buildPageSchema({
+    page: "alAin",
+    name: "نقل اثاث العين | شركة نقل اثاث مرخصة ومؤمّنة ",
+    description: "نقل اثاث العين مع الزايد: فك وتغليف ونقل وتركيب لفلل ومنازل ومكاتب العين، شركة مرخصة ومؤمّنة وبدون دفعة مقدمة. اطلب عرض سعرك عبر واتساب.",
+    image: "/img/نقل-اثاث-العين-امام-المنزل.jpg",
+    imageWidth: 1000,
+    imageHeight: 495,
+  });
   return (
     <main>
+      <JsonLd data={schema} />
       <LocationHero
         image={HeroImage}
         imageAlt="شاحنة الزايد نقل اثاث أمام منزل في العين مع جبل حفيت في الخلفية"
@@ -383,7 +400,7 @@ export const AlAinPage = () => {
         />
         <p className="mx-auto mt-8 max-w-3xl text-center leading-relaxed text-muted-foreground">
           ونصل كذلك إلى{" "}
-          <Link href="/نقل-اثاث-الشارقة" className={linkClass}>
+          <Link href="/نقل-أثاث-الشارقة" className={linkClass}>
             الشارقة
           </Link>{" "}
           و

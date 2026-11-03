@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { MetadataTemplate } from "@/lib/MetadataTemplate";
 import { Services } from "@/components/Services";
 import { serviceImages } from "@/components/services/service-images";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
@@ -18,16 +20,32 @@ import { Callout } from "@/components/location/Callout";
 import { IconFeatureGrid } from "@/components/location/IconFeatureGrid";
 import { RouteSection } from "@/components/location/RouteSection";
 import { InfoCardGrid } from "@/components/location/InfoCardGrid";
+import JsonLd from "@/components/JsonLd";
+import { buildPageSchema } from "@/lib/schema";
 
-export const metadata = {
+export const metadata: Metadata = MetadataTemplate({
   title: "نقل أثاث الشارقة | شركة نقل اثاث الشارقة بخبرة 12 سنة",
-  description:
+  desc:
     "الزايد نقل أثاث الشارقة بخبرة 12 سنة: نقل اثاث الشقق والفلل والمكاتب، تغليف وفك وتركيب، سعر ثابت، تأمين شامل، وبدون دفعة مقدمة. واتساب 055 646 1731.",
-};
+  path: "/%D9%86%D9%82%D9%84-%D8%A3%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
+  image: {
+    path: "/img/نقل-اثاث-الشارقة-كورنيش-المجاز.jpg",
+    alt: "شاحنة الزايد نقل اثاث على كورنيش المجاز في الشارقة",
+  },
+});
 
 const SharjahPage = () => {
+  const schema = buildPageSchema({
+    page: "sharjah",
+    name: String(metadata.title),
+    description: String(metadata.description),
+    image: "/img/نقل-اثاث-الشارقة-كورنيش-المجاز.jpg",
+    imageWidth: 1000,
+    imageHeight: 495,
+  });
   return (
     <main>
+      <JsonLd data={schema} />
       <LocationHero
         image={HeroImage}
         imageAlt="شاحنة الزايد نقل اثاث على كورنيش المجاز في الشارقة"

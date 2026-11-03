@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { MetadataTemplate } from "@/lib/MetadataTemplate";
 import { Services } from "@/components/Services";
 import { PricingSection } from "@/components/PricingSection";
 import { ProcessSection } from "@/components/ProcessSection";
@@ -10,18 +12,34 @@ import { FAQSection } from "@/components/utils/FaqsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { dubaiFaqs } from "@/lib/faqsData";
+import JsonLd from "@/components/JsonLd";
+import { buildPageSchema } from "@/lib/schema";
 
 /** Direction A order: proof first, price before detail, one decision band per section. */
 
-export const metadata = {
+export const metadata: Metadata = MetadataTemplate({
   title: "الزايد نقل اثاث دبي | افضل شركة نقل اثاث في دبي",
-  description:
+  desc:
     "الزايد نقل اثاث دبي، شركة نقل اثاث في دبي بخبرة 12 سنة. تغليف وفك وتركيب، سعر ثابت، تأمين شامل، وبدون دفعة مقدمة. واتساب 055 6461731 لعرض سعر فوري.",
-};
+  path: "/",
+  image: {
+    path: "/الزايد-نقل-اثاث-دبي.jpg",
+    alt: "الزايد نقل اثاث دبي",
+  },
+});
 
 export default function Home() {
+  const schema = buildPageSchema({
+    page: "home",
+    name: String(metadata.title),
+    description: String(metadata.description),
+    image: "/الزايد-نقل-اثاث-دبي.jpg",
+    imageWidth: 824,
+    imageHeight: 618,
+  });
   return (
     <main>
+      <JsonLd data={schema} />
       <HomeHero />
       <AboutSection />
       <WhySection />

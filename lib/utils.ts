@@ -15,12 +15,13 @@ export const serviceItems = [
   { title: "تخزين اثاث في دبي", href: "/تخزين-اثاث-في-دبي" },
 ];
 
-export const locationItems = [
+/** An item without `href` has no page yet and renders as plain text. */
+export const locationItems: { title: string; href?: string }[] = [
   { title: "نقل اثاث ابوظبي", href: "/نقل-اثاث-ابوظبي" },
-  { title: "نقل اثاث الشارقة", href: "/نقل-أثاث-الشارقة " },
+  { title: "نقل اثاث الشارقة", href: "/نقل-أثاث-الشارقة" },
   { title: "نقل اثاث عجمان", href: "/نقل-اثاث-عجمان" },
   { title: "نقل اثاث راس الخيمة", href: "/نقل-اثاث-راس-الخيمة" },
   { title: "نقل اثاث العين", href: "/نقل-اثاث-العين" },
-  { title: "نقل الاثاث ام القيوين", href: "/نقل-الاثاث-ام-القيوين" },
-  { title: "نقل الاثاث الفجيرة", href: "/نقل-الاثاث-الفجيرة" },
+  { title: "نقل الاثاث ام القيوين" },
+  { title: "نقل الاثاث الفجيرة" },
 ];

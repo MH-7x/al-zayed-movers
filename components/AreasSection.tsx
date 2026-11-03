@@ -3,16 +3,10 @@ import { MapPin, Building2, Home, Landmark } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { locationItems } from "@/lib/utils";
 
-/* ── Area item: plain text OR a linkable item ── */
-type AreaItem =
-  | { text: string; href: string } // whole item is a link
-  | { parts: { text: string; href?: string }[] } // compound item with inline links
-  | string; // plain text, no link
-
 interface AreaGroup {
   icon: React.ReactNode;
   title: string;
-  areas: AreaItem[];
+  areas: string[];
   note: string;
 }
 
@@ -23,31 +17,13 @@ const areaGroups: AreaGroup[] = [
     icon: <Building2 strokeWidth={1.6} className={iconCls} />,
     title: "نقل اثاث في وسط دبي والمناطق الفاخرة",
     areas: [
-      {
-        text: "وسط مدينة دبي (داون تاون) — الأبراج المحيطة ببرج خليفة ودبي مول",
-        href: "/مناطق-دبي/نقل-اثاث-وسط-مدينة-دبي",
-      },
-      {
-        text: "دبي مارينا وجي بي آر (JBR)",
-        href: "/مناطق-دبي/نقل-اثاث-دبي-مارينا",
-      },
-      {
-        text: "الخليج التجاري (Business Bay)",
-        href: "/مناطق-دبي/نقل-اثاث-الخليج-التجاري",
-      },
-      {
-        text: "نخلة جميرا (Palm Jumeirah)",
-        href: "/مناطق-دبي/نقل-اثاث-نخلة-جميرا",
-      },
-      {
-        text: "أبراج بحيرات جميرا (JLT)",
-        href: "/مناطق-دبي/نقل-اثاث-أبراج-بحيرات-جميرا",
-      },
+      "وسط مدينة دبي (داون تاون) — الأبراج المحيطة ببرج خليفة ودبي مول",
+      "دبي مارينا وجي بي آر (JBR)",
+      "الخليج التجاري (Business Bay)",
+      "نخلة جميرا (Palm Jumeirah)",
+      "أبراج بحيرات جميرا (JLT)",
       "تلال الإمارات (Emirates Hills)",
-      {
-        text: "جميرا (Jumeirah)",
-        href: "/مناطق-دبي/نقل-اثاث-جميرا",
-      },
+      "جميرا (Jumeirah)",
     ],
     note: "هذه المناطق فيها أبراج شاهقة وإجراءات دخول وخروج صارمة. نحن نتعامل مع هذه المتطلبات يومياً: حجز مصعد الخدمة، التنسيق مع الأمن، واستخراج تصاريح الانتقال.",
   },
@@ -68,31 +44,13 @@ const areaGroups: AreaGroup[] = [
     icon: <Landmark strokeWidth={1.6} className={iconCls} />,
     title: "نقل اثاث في مناطق دبي القديمة والسكنية",
     areas: [
-      {
-        parts: [
-          { text: "ديرة", href: "/مناطق-دبي/نقل-اثاث-ديرة" },
-          { text: "بر دبي", href: "/مناطق-دبي/نقل-اثاث-بر-دبي" },
-        ],
-      },
+      "ديرة وبر دبي",
       "الكرامة والسطوة",
-      {
-        parts: [
-          { text: "البرشاء", href: "/مناطق-دبي/نقل-اثاث-البرشاء" },
-          { text: "القوز" },
-        ],
-      },
+      "البرشاء والقوز",
       "القصيص ومردف",
       "واحة السيليكون (Dubai Silicon Oasis)",
       "المدينة العالمية (International City)",
-      {
-        parts: [
-          {
-            text: "قرية جميرا الدائرية (JVC)",
-            href: "/مناطق-دبي/نقل-اثاث-قرية-جميرا-الدائرية",
-          },
-          { text: "قرية جميرا المثلثة (JVT)" },
-        ],
-      },
+      "قرية جميرا الدائرية (JVC) وقرية جميرا المثلثة (JVT)",
       "جبل علي (Jebel Ali)",
     ],
     note: "",
@@ -101,48 +59,9 @@ const areaGroups: AreaGroup[] = [
 
 const chip =
   "inline-flex min-h-11 items-center rounded-md border border-border bg-card px-3.5 py-1.5 text-sm font-bold text-secondary";
-const linkCls =
-  "underline decoration-primary/60 underline-offset-4 transition-colors hover:text-brand";
 
-/* ── Renders a single area item as a chip ── */
-function AreaItemContent({ item }: { item: AreaItem }) {
-  if (typeof item === "string") return <span className={chip}>{item}</span>;
-
-  if ("text" in item && "href" in item) {
-    return (
-      <Link href={item.href} className={`${chip} ${linkCls} hover:border-primary`}>
-        {item.text}
-      </Link>
-    );
-  }
-
-  return (
-    <span className={chip}>
-      {item.parts.map((part, k) => (
-        <span key={k}>
-          {k > 0 && <span className="font-normal text-muted-foreground"> و</span>}
-          {part.href ? (
-            <Link href={part.href} className={`${linkCls} inline-flex min-h-11 items-center`}>
-              {part.text}
-            </Link>
-          ) : (
-            part.text
-          )}
-        </span>
-      ))}
-    </span>
-  );
-}
-
-// The five emirate pages that exist; Umm Al Quwain has no page yet, so it stays a no-op anchor.
-const otherEmirates = [
-  { name: "نقل اثاث ابوظبي", href: locationItems[0].href },
-  { name: "نقل اثاث الشارقة", href: locationItems[1].href.trim() },
-  { name: "نقل اثاث عجمان", href: locationItems[2].href },
-  { name: "نقل اثاث راس الخيمة", href: locationItems[3].href },
-  { name: "نقل اثاث العين", href: locationItems[4].href },
-  { name: "نقل الاثاث ام القيوين", href: "#" },
-];
+// Emirates without a page yet (no `href`) render as plain chips.
+const otherEmirates = locationItems.slice(0, 6);
 
 export function AreasSection() {
   return (
@@ -163,9 +82,9 @@ export function AreasSection() {
               <h3 className="text-xl leading-snug">{group.title}</h3>
             </div>
             <ul className="flex flex-wrap gap-2">
-              {group.areas.map((area, j) => (
-                <li key={j}>
-                  <AreaItemContent item={area} />
+              {group.areas.map((area) => (
+                <li key={area}>
+                  <span className={chip}>{area}</span>
                 </li>
               ))}
             </ul>
@@ -181,10 +100,14 @@ export function AreasSection() {
         </p>
         <ul className="mt-3 flex flex-wrap gap-2">
           {otherEmirates.map((e) => (
-            <li key={e.name}>
-              <Link href={e.href} className={`${chip} hover:border-primary hover:text-brand`}>
-                {e.name}
-              </Link>
+            <li key={e.title}>
+              {e.href ? (
+                <Link href={e.href} className={`${chip} hover:border-primary hover:text-brand`}>
+                  {e.title}
+                </Link>
+              ) : (
+                <span className={chip}>{e.title}</span>
+              )}
             </li>
           ))}
         </ul>

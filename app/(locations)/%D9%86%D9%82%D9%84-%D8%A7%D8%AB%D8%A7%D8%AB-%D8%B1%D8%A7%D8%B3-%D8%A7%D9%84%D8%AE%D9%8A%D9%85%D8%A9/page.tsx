@@ -1,6 +1,7 @@
 import { CircleHelp } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { MetadataTemplate } from "@/lib/MetadataTemplate";
 import HeroImage from "@/public/img/نقل-اثاث-راس-الخيمة-امام-المنزل.jpg";
 import QuoteImage from "@/public/img/معاينة-نقل-اثاث-فيلا-راس-الخيمة.jpg";
 import RouteImage from "@/public/img/نقل-اثاث-دبي-راس-الخيمة-طريق-الامارات.jpg";
@@ -26,19 +27,35 @@ import { DataTable } from "@/components/location/DataTable";
 import { Callout } from "@/components/location/Callout";
 import { ChecklistCard } from "@/components/location/ChecklistCard";
 import { CtaBand } from "@/components/location/CtaBand";
+import JsonLd from "@/components/JsonLd";
+import { buildPageSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = MetadataTemplate({
   title: "شركة نقل اثاث راس الخيمة | نقل اثاث رأس الخيمة – الزايد",
-  description:
+  desc:
     "الزايد نقل اثاث راس الخيمة بخبرة 12 سنة: نقل داخل الإمارة ومن دبي والشارقة، فك وتركيب وتغليف، تأمين شامل، بدون دفعة مقدمة. واتساب 055 6461731.",
-};
+  path: "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%B1%D8%A7%D8%B3-%D8%A7%D9%84%D8%AE%D9%8A%D9%85%D8%A9",
+  image: {
+    path: "/img/نقل-اثاث-راس-الخيمة-امام-المنزل.jpg",
+    alt: "شاحنة الزايد نقل اثاث أمام منزل في رأس الخيمة مع جبل جيس في الخلفية",
+  },
+});
 
 const linkClass = "font-bold text-brand underline underline-offset-4";
 const whiteLinkClass = "font-bold text-white underline underline-offset-4";
 
 export const RasAlKhaimahPage = () => {
+  const schema = buildPageSchema({
+    page: "rasAlKhaimah",
+    name: "شركة نقل اثاث راس الخيمة | نقل اثاث رأس الخيمة – الزايد",
+    description: "الزايد نقل اثاث راس الخيمة بخبرة 12 سنة: نقل داخل الإمارة ومن دبي والشارقة، فك وتركيب وتغليف، تأمين شامل، بدون دفعة مقدمة. واتساب 055 6461731.",
+    image: "/img/نقل-اثاث-راس-الخيمة-امام-المنزل.jpg",
+    imageWidth: 1000,
+    imageHeight: 495,
+  });
   return (
     <main>
+      <JsonLd data={schema} />
       <LocationHero
         image={HeroImage}
         imageAlt="شاحنة الزايد نقل اثاث أمام منزل في رأس الخيمة مع جبل جيس في الخلفية"
@@ -128,7 +145,7 @@ export const RasAlKhaimahPage = () => {
         <p>
           الشارقة وعجمان أقرب إلى رأس الخيمة من دبي، فتكون الرحلة أقصر، لكن
           التخطيط للمبنيين يبقى كما هو. وإذا كنت تنقل عفشك من{" "}
-          <Link href="/نقل-اثاث-الشارقة" className={linkClass}>
+          <Link href="/نقل-أثاث-الشارقة" className={linkClass}>
             الشارقة
           </Link>{" "}
           أو{" "}
@@ -340,7 +357,7 @@ export const RasAlKhaimahPage = () => {
               نقل اثاث دبي
             </Link>{" "}
             ·{" "}
-            <Link href="/نقل-اثاث-الشارقة" className={whiteLinkClass}>
+            <Link href="/نقل-أثاث-الشارقة" className={whiteLinkClass}>
               نقل اثاث الشارقة
             </Link>{" "}
             ·{" "}

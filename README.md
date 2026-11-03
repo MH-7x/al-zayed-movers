@@ -34,24 +34,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## Services URLs (`app/(services)`)
-
-### Arabic (Decoded)
-- https://alzayedmovers.vercel.app/تخزين-اثاث-في-دبي
-- https://alzayedmovers.vercel.app/تغليف-اثاث-في-دبي
-- https://alzayedmovers.vercel.app/فك-وتركيب-اثاث-في-دبي
-- https://alzayedmovers.vercel.app/نقل-اثاث-الشقق-في-دبي
-- https://alzayedmovers.vercel.app/نقل-اثاث-الفلل-في-دبي
-- https://alzayedmovers.vercel.app/نقل-اثاث-المكاتب-في-دبي
-- https://alzayedmovers.vercel.app/نقل-اثاث-المنزل-في-دبي
-
-### URL-Encoded
-- https://alzayedmovers.vercel.app/%D8%AA%D8%AE%D8%B2%D9%8A%D9%86-%D8%A7%D8%AB%D8%A7%D8%AB-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A
-- https://alzayedmovers.vercel.app/%D8%AA%D8%BA%D9%84%D9%8A%D9%81-%D8%A7%D8%AB%D8%A7%D8%AB-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A
-- https://alzayedmovers.vercel.app/%D9%81%D9%83-%D9%88%D8%AA%D8%B1%D9%83%D9%8A%D8%A8-%D8%A7%D8%AB%D8%A7%D8%AB-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A
-- https://alzayedmovers.vercel.app/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D8%B4%D9%82%D9%82-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A
-- https://alzayedmovers.vercel.app/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D9%81%D9%84%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A
-- https://alzayedmovers.vercel.app/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D9%85%D9%83%D8%A7%D8%AA%D8%A8-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A
-- https://alzayedmovers.vercel.app/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D9%85%D9%86%D8%B2%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A
-

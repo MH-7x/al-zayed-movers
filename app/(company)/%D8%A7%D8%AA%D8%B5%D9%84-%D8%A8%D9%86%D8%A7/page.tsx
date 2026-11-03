@@ -1,15 +1,25 @@
 import type { Metadata } from "next";
+import { MetadataTemplate } from "@/lib/MetadataTemplate";
 import { ContactSection } from "@/components/ContactSection";
+import JsonLd from "@/components/JsonLd";
+import { buildPageSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = MetadataTemplate({
   title: "اتصل بنا | الزايد نقل اثاث دبي",
-  description:
+  desc:
     "تواصل مع الزايد نقل اثاث دبي عبر الواتساب أو الهاتف 055 646 1731 واحصل على عرض سعر فوري ومعاينة مجانية. نخدم دبي وكل الإمارات 7 أيام في الأسبوع.",
-};
+  path: "/%D8%A7%D8%AA%D8%B5%D9%84-%D8%A8%D9%86%D8%A7",
+});
 
 export default function ContactPage() {
+  const schema = buildPageSchema({
+    page: "contact",
+    name: "اتصل بنا | الزايد نقل اثاث دبي",
+    description: "تواصل مع الزايد نقل اثاث دبي عبر الواتساب أو الهاتف 055 646 1731 واحصل على عرض سعر فوري ومعاينة مجانية. نخدم دبي وكل الإمارات 7 أيام في الأسبوع.",
+  });
   return (
     <main>
+      <JsonLd data={schema} />
       <ContactSection
         as="h1"
         title="تواصل معنا واحصل على عرض سعر فوري"

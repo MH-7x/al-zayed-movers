@@ -22,8 +22,8 @@ export function HomeHero() {
         <div className="grid items-center gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div className="flex flex-col">
             <h1 className="mt-2 mb-4 lg:mb-4">
-              <span className="block text-brand">الزايد نقل اثاث دبي</span> فك
-              وتغليف وتركيب بضمان شامل
+              <span className="block text-brand">الزايد نقل اثاث دبي - </span>{" "}
+              فك وتغليف وتركيب بضمان شامل
             </h1>
             <div className="order-2 mb-6 flex flex-wrap gap-3 max-sm:[&>a]:w-full lg:order-3 lg:mb-0">
               <WhatsAppButton>احصل على عرض سعر مجاني</WhatsAppButton>
