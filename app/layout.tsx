@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/utils/Footer";
+import { Metadata } from "next";
+import StickyContactBar from "./StickyContactBar";
 
 const almaraiFont = localFont({
   src: [
@@ -22,6 +24,30 @@ const almaraiFont = localFont({
   variable: "--font-almarai",
 });
 
+export const metadata: Metadata = {
+  applicationName: "شركة الزايد نقل اثاث",
+  robots: {
+    "max-image-preview": "large",
+    follow: true,
+    googleBot: {
+      notranslate: true,
+      "max-image-preview": "large",
+      index: true,
+      follow: true,
+    },
+    index: true,
+    notranslate: true,
+  },
+  icons: {
+    icon: [
+      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/icons/apple-touch-icon.png",
+    shortcut: "/icons/favicon-32x32.png",
+  },
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -31,6 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="relative">
         {children}
+        <StickyContactBar />
         <Footer />
       </body>
     </html>
