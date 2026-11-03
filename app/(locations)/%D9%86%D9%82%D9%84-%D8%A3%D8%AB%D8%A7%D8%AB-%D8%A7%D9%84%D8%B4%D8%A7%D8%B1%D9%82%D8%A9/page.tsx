@@ -1,18 +1,11 @@
 import { Services } from "@/components/Services";
+import { serviceImages } from "@/components/services/service-images";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
 import HeroImage from "@/public/img/نقل-اثاث-الشارقة-كورنيش-المجاز.jpg";
 import SurveyImage from "@/public/img/معاينة-نقل-اثاث-شقة-الشارقة.jpg";
 import InterEmirateImage from "@/public/img/نقل-اثاث-من-الشارقة-الى-دبي-طريق.jpg";
 import PrepImage from "@/public/img/تجهيز-نقل-اثاث-مبنى-الشارقة.jpg";
 import { ImageBanner } from "@/components/location/ImageBanner";
-import {
-  Boxes,
-  Building2,
-  Castle,
-  HouseIcon,
-  Warehouse,
-  Wrench,
-} from "lucide-react";
 import { FAQSection } from "@/components/utils/FaqsSection";
 import { SharjahFaqs } from "@/lib/faqsData";
 import { ContactSection } from "@/components/ContactSection";
@@ -33,7 +26,6 @@ const SharjahPage = () => {
         image={HeroImage}
         imageAlt="شاحنة الزايد نقل اثاث على كورنيش المجاز في الشارقة"
         title="نقل أثاث الشارقة مع الزايد نقل اثاث"
-        whatsappLabel="أحصل على عرض سعر مجاني"
       >
         <p>
           الزايد نقل اثاث شركة متخصصة في نقل الأثاث تغطي الشارقة بكافة
@@ -303,7 +295,7 @@ const services = [
         <p>هذه الخدمة مناسبة سواء كنت تنتقل داخل الشارقة أو إلى إمارة أخرى.</p>
       </>
     ),
-    icon: <HouseIcon className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.house,
   },
   {
     title: "نقل اثاث الشقق في الشارقة",
@@ -322,7 +314,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Building2 className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.apartments,
   },
   {
     title: "نقل اثاث الفلل في الشارقة",
@@ -339,7 +331,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Castle className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.villas,
   },
   {
     title: "نقل اثاث المكاتب في الشارقة",
@@ -357,7 +349,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Building2 className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.offices,
   },
   {
     title: "تغليف اثاث في الشارقة",
@@ -374,7 +366,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Boxes className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.packing,
   },
   {
     title: "فك وتركيب اثاث في الشارقة",
@@ -391,7 +383,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Wrench className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.assembly,
   },
   {
     title: "تخزين اثاث في الشارقة",
@@ -408,6 +400,6 @@ const services = [
         </p>
       </>
     ),
-    icon: <Warehouse className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.storage,
   },
 ];

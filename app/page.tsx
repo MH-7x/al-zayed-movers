@@ -18,8 +18,9 @@ export default function Home() {
       <HomeHero />
       <AboutSection />
       <WhySection />
-      <PricingSection />
       <Services />
+      <PricingSection />
+
       <ProcessSection />
       <AreasSection />
       <RequirementsSection />

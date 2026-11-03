@@ -19,10 +19,11 @@ export interface FAQProps {
 /**
  * Answers come from lib/faqsData.tsx as free-form JSX (links, tables, lists). Rather than editing
  * ~1000 lines of copy, the answer container normalises them with descendant selectors:
- * links → brand-text + underline, tables → scrollable bordered grid with start alignment.
+ * links → brand-text + underline, tables → bordered grid with start alignment that scrolls inside the
+ * answer (`overflow-x-auto`) instead of widening the page.
  */
 const answerCls =
-  "space-y-3 px-4 pb-5 text-foreground md:text-base text-sm " +
+  "space-y-3 overflow-x-auto px-4 pb-5 text-foreground md:text-base text-sm " +
   "[&_a]:font-bold [&_a]:text-brand [&_a]:underline [&_a]:underline-offset-4 " +
   "[&_table]:w-full [&_table]:min-w-140 [&_table]:border-collapse [&_table]:text-start [&_table]:text-sm " +
   "[&_th]:border [&_th]:border-border [&_th]:bg-muted [&_th]:p-2.5 [&_th]:text-start [&_th]:font-bold [&_th]:text-secondary " +
@@ -36,7 +37,7 @@ export const FAQItem: React.FC<{ faq: FAQData; openFirst?: boolean }> = ({
   return (
     <details
       open={openFirst}
-      className="group rounded-md border border-border bg-card open:border-secondary"
+      className="group min-w-0 rounded-md border border-border bg-card open:border-secondary"
     >
       <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-4 py-3">
         <h3 className="text-base leading-snug font-extrabold md:text-lg">{faq.question}</h3>
@@ -67,7 +68,7 @@ export const FAQSection: React.FC<FAQProps> = ({
       />
       <Section id="faq" tone={tone} containerClassName="max-w-4xl 2xl:max-w-4xl">
         <SectionHeading title={title} description={subtitle} />
-        <div className="grid gap-3">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-3">
           {faqs.map((faq, index) => (
             <FAQItem key={`faq-${index}`} faq={faq} openFirst={index === 0} />
           ))}

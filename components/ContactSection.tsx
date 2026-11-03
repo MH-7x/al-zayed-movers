@@ -1,8 +1,9 @@
-import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { Check, Clock, MapPin, Phone } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { CallButton, WhatsAppButton } from "@/components/ui/ContactButtons";
-import { buttonVariants } from "@/components/ui/button";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/components/services/constants";
+import BackgroundImage from "@/public/شركة-الزايد-نقل-اثاث-دبي.jpg";
 
 export interface ContactSectionProps {
   title?: string;
@@ -16,7 +17,21 @@ export interface ContactSectionProps {
   as?: "h1" | "h2";
 }
 
-/** Navy contact band: copy + actions at the start, info card (with map) at the end. */
+const trust = [
+  "معاينة مجانية",
+  "بدون دفعة مقدمة",
+  "تأمين شامل",
+  "خبرة +12 عاماً",
+];
+
+const infoIcon =
+  "grid size-12 shrink-0 place-items-center rounded-full bg-brand-soft text-brand";
+
+/**
+ * Navy contact band shown at the bottom of every page: the fleet photo sits under a heavy navy wash,
+ * copy + actions + trust points at the start, a white info card (address, phone, hours) at the end.
+ * Stacks on mobile (actions go full width); two columns from lg.
+ */
 export function ContactSection({
   title = "تواصل معنا الآن — الزايد نقل اثاث دبي",
   description = "جاهز للانتقال؟ تواصل مع الزايد نقل اثاث دبي واحصل على عرض سعر مجاني خلال دقائق.",
@@ -26,77 +41,137 @@ export function ContactSection({
   as: Heading = "h2",
 }: ContactSectionProps) {
   return (
-    <Section id="contact" tone="navy">
-      <div className="grid items-start gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
+    <Section
+      id="contact"
+      tone="navy"
+      className="relative isolate overflow-hidden"
+    >
+      <Image
+        src={BackgroundImage}
+        alt=""
+        fill
+        placeholder="blur"
+        sizes="100vw"
+        className="-z-20 object-cover"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-linear-to-l from-secondary/95 via-secondary/90 to-navy-950/95"
+      />
+
+      <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
         <div className={rev ? "lg:order-2" : ""}>
-          <p className="mb-2 text-sm font-bold text-primary">خدمة عملاء سريعة ومباشرة</p>
-          <Heading className="mb-4 text-3xl text-white">{title}</Heading>
-          <p className="text-white/85">{description}</p>
-          <p className="mt-3 text-white/85">
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-bold text-white backdrop-blur-sm">
+            <span
+              aria-hidden="true"
+              className="size-2 rounded-full bg-primary"
+            />
+            خدمة عملاء سريعة ومباشرة
+          </p>
+          <Heading className="mb-4 text-3xl text-white md:text-4xl">
+            {title}
+          </Heading>
+          <p className="max-w-xl text-lg text-white/90">{description}</p>
+          <p className="mt-3 max-w-xl text-white/80">
             نقدم خدمات نقل الاثاث في دبي و أبوظبي والشارقة وعجمان ورأس الخيمة
             والفجيرة وأم القيوين والعين. تواصل معنا على الرقم{" "}
             <bdi className="ltr-isolate">0556461731</bdi>
           </p>
-          <div className="mt-6 flex flex-wrap gap-3 max-sm:[&>a]:w-full">
-            <WhatsAppButton message={whatsappMessage}>{whatsappLabel}</WhatsAppButton>
-            <CallButton variant="outlineLight">اتصال فوري</CallButton>
-            <a
-              href="https://maps.app.goo.gl/7LnAPhkv2uQi1sAD6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={buttonVariants({ variant: "outlineLight" })}
-            >
-              <ExternalLink aria-hidden="true" />
-              <span>موقعنا على الخريطة</span>
-            </a>
+
+          <div className="mt-7 flex flex-wrap gap-3 max-sm:[&>a]:w-full">
+            <WhatsAppButton size="lg" message={whatsappMessage}>
+              {whatsappLabel}
+            </WhatsAppButton>
+            <CallButton size="lg" variant="outlineLight">
+              اتصال فوري
+            </CallButton>
           </div>
+
+          <ul className="mt-8 grid max-w-xl grid-cols-2 gap-x-4 gap-y-3 border-t border-white/15 pt-6">
+            {trust.map((item) => (
+              <li
+                key={item}
+                className="flex items-center gap-2.5 text-sm font-bold text-white md:text-base"
+              >
+                <span className="grid size-6 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
+                  <Check
+                    className="size-3.5"
+                    strokeWidth={3}
+                    aria-hidden="true"
+                  />
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="overflow-hidden rounded-lg bg-card text-foreground shadow-md">
-          <div className="relative aspect-video w-full bg-muted">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.552660857166!2d55.33738229999999!3d25.251987800000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d45216441a9%3A0x67473b5b7917568c!2z2KfZhNiy2KfZitivINmG2YLZhCDYp9ir2KfYqyDYr9io2Yo!5e0!3m2!1sen!2sae!4v1787226739846!5m2!1sen!2sae"
-              className="absolute inset-0 h-full w-full"
-              allowFullScreen
-              loading="lazy"
-              title="الزايد نقل اثاث دبي on Google Maps"
-              referrerPolicy="strict-origin-when-cross-origin"
-            />
+        <div className="overflow-hidden rounded-lg bg-card text-foreground shadow-xl">
+          <div className="border-b border-border bg-muted px-6 py-4">
+            <p className="text-lg font-extrabold text-secondary">
+              بيانات التواصل
+            </p>
           </div>
-          <ul className="space-y-5 p-6">
-            <li className="flex items-start gap-3.5">
-              <MapPin className="mt-1 size-6 shrink-0 text-brand" strokeWidth={1.6} aria-hidden="true" />
-              <div>
-                <span className="block text-sm font-bold text-muted-foreground">العنوان الرسمي</span>
+          <ul className="divide-y divide-border">
+            <li className="flex items-start gap-4 p-6">
+              <span className={infoIcon}>
+                <MapPin
+                  className="size-6"
+                  strokeWidth={1.6}
+                  aria-hidden="true"
+                />
+              </span>
+              <div className="min-w-0">
+                <span className="block text-sm font-bold text-muted-foreground">
+                  العنوان الرسمي
+                </span>
                 <address className="font-bold text-secondary not-italic">
-                  <bdi className="ltr-isolate">
-                    B17 Owned by Al Nasr Sports Club - Office No. 1 - Oud Metha - Dubai
+                  <bdi>
+                    B17 Owned by Al Nasr Sports Club - Office No. 1 - Oud Metha
+                    - Dubai
                   </bdi>
                 </address>
               </div>
             </li>
-            <li className="flex items-start gap-3.5">
-              <Phone className="mt-1 size-6 shrink-0 text-brand" strokeWidth={1.6} aria-hidden="true" />
+            <li className="flex items-start gap-4 p-6">
+              <span className={infoIcon}>
+                <Phone
+                  className="size-6"
+                  strokeWidth={1.6}
+                  aria-hidden="true"
+                />
+              </span>
               <div>
-                <span className="block text-sm font-bold text-muted-foreground">اتصل الآن</span>
+                <span className="block text-sm font-bold text-muted-foreground">
+                  اتصل الآن
+                </span>
                 <a
                   href={PHONE_TEL}
-                  className="inline-flex min-h-11 items-center text-2xl font-extrabold text-secondary hover:text-brand"
+                  className="inline-flex min-h-11 items-center text-2xl font-extrabold text-secondary hover:text-brand md:text-3xl"
                 >
                   <bdi className="ltr-isolate">{PHONE_DISPLAY}</bdi>
                 </a>
               </div>
             </li>
-            <li className="flex items-start gap-3.5">
-              <Clock className="mt-1 size-6 shrink-0 text-brand" strokeWidth={1.6} aria-hidden="true" />
+            <li className="flex items-start gap-4 p-6">
+              <span className={infoIcon}>
+                <Clock
+                  className="size-6"
+                  strokeWidth={1.6}
+                  aria-hidden="true"
+                />
+              </span>
               <div>
-                <span className="block text-sm font-bold text-muted-foreground">ساعات العمل</span>
+                <span className="block text-sm font-bold text-muted-foreground">
+                  ساعات العمل
+                </span>
                 <p className="font-bold text-secondary">
                   متاحين 7 أيام في الأسبوع على مدار الساعة open 24/7
                 </p>
               </div>
             </li>
           </ul>
+          <span aria-hidden="true" className="block h-1.5 bg-primary" />
         </div>
       </div>
     </Section>

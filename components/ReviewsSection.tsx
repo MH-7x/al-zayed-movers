@@ -1,6 +1,5 @@
 import Image from "next/image";
 import ReviewsSlider from "./utils/ReviewsSlider";
-import { buttonVariants } from "./ui/button";
 import { Section, SectionHeading } from "@/components/ui/Section";
 
 const badges = [
@@ -9,7 +8,11 @@ const badges = [
   { src: "/trip-advior-badge.png", alt: "trip advisor badge" },
 ];
 
-export function ReviewsSection({ tone = "alt" }: { tone?: "alt" | "auto" | "default" }) {
+export function ReviewsSection({
+  tone = "alt",
+}: {
+  tone?: "alt" | "auto" | "default";
+}) {
   return (
     <Section id="reviews" tone={tone}>
       <SectionHeading
@@ -17,24 +20,25 @@ export function ReviewsSection({ tone = "alt" }: { tone?: "alt" | "auto" | "defa
         description="سمعتنا هي رأسمالنا الحقيقي. نحن شركة نقل اثاث موثوقة في دبي لأننا نفي بوعودنا دائماً."
       />
       <div className="mb-8 flex flex-wrap items-center gap-4">
-        <a
-          href="https://search.google.com/local/reviews?placeid=ChIJjeNo41ppXz4R34OmlNqaUBU"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={buttonVariants({ variant: "outline" })}
-        >
-          ⭐⭐⭐⭐⭐ شاهد تقييمات عملائنا على Google
-        </a>
         <ul className="flex flex-wrap items-center gap-3">
           {badges.map((b) => (
-            <li key={b.src} className="rounded-md border border-border bg-card p-2 shadow-xs">
+            <li
+              key={b.src}
+              className="rounded-md border border-border bg-card p-2 shadow-xs"
+            >
               {/* sources are 163×137 / 343×150 / 201×150 → shown contained in a 149×112 box */}
-              <Image src={b.src} alt={b.alt} width={149} height={112} className="h-28 w-37 object-contain" />
+              <Image
+                src={b.src}
+                alt={b.alt}
+                width={149}
+                height={112}
+                className="md:h-28 h-20 md:w-37 w-28 object-contain"
+              />
             </li>
           ))}
         </ul>
       </div>
-      <ReviewsSlider reviews={mockReviews} autoPlayInterval={5000} />
+      <ReviewsSlider reviews={mockReviews} />
     </Section>
   );
 }

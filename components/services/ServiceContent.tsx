@@ -8,29 +8,47 @@ import { cn } from "@/lib/utils";
 type Tone = "default" | "alt";
 
 /**
- * H2 band. `tone` and `after` are injected by ServicePageLayout (alternating white / grey bands;
- * `after` is the figure that belongs to this section).
+ * H2 section. `embedded` and `after` are injected by ServicePageLayout: `embedded` renders the
+ * section as a block inside the layout's content column (next to the sidebar) instead of a full-width
+ * band; `after` is the figure that belongs to this section. Standalone it is still a toned band.
  */
 export function ServiceSection({
   id,
   title,
   children,
   tone = "default",
+  embedded = false,
   after,
 }: {
   id?: string;
   title: string;
   children: React.ReactNode;
   tone?: Tone;
+  embedded?: boolean;
   after?: React.ReactNode;
 }) {
-  return (
-    <Section id={id} tone={tone}>
+  const body = (
+    <>
       <SectionHeading title={title} />
       <div className="space-y-5 [&>p]:max-w-[68ch] [&_strong]:font-bold [&_strong]:text-secondary">
         {children}
       </div>
       {after}
+    </>
+  );
+  if (embedded) {
+    return (
+      <section
+        id={id}
+        className="border-t border-border py-10 first:border-t-0 first:pt-0 md:py-12 md:first:pt-0"
+      >
+        {body}
+      </section>
+    );
+  }
+  return (
+    <Section id={id} tone={tone}>
+      {body}
     </Section>
   );
 }

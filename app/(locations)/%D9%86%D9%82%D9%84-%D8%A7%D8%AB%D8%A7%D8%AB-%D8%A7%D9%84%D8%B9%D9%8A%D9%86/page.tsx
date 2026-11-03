@@ -1,15 +1,4 @@
-import {
-  Boxes,
-  Building2,
-  Castle,
-  CircleHelp,
-  HouseIcon,
-  MapPinned,
-  Route,
-  ThermometerSun,
-  Warehouse,
-  Wrench,
-} from "lucide-react";
+import { CircleHelp, HouseIcon, MapPinned, Route, ThermometerSun } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import HeroImage from "@/public/img/نقل-اثاث-العين-امام-المنزل.jpg";
@@ -17,6 +6,7 @@ import QuoteImage from "@/public/img/معاينة-نقل-اثاث-فيلا-ال�
 import RoadImage from "@/public/img/نقل-اثاث-من-العين-الى-دبي.jpg";
 import AreasImage from "@/public/img/نقل-اثاث-الجيمي-العين.jpg";
 import { Services } from "@/components/Services";
+import { serviceImages } from "@/components/services/service-images";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
 import { FAQSection } from "@/components/utils/FaqsSection";
 import { AlAinFaqs } from "@/lib/faqsData";
@@ -56,8 +46,6 @@ export const AlAinPage = () => {
         image={HeroImage}
         imageAlt="شاحنة الزايد نقل اثاث أمام منزل في العين مع جبل حفيت في الخلفية"
         title="نقل اثاث العين مع الزايد: فك وتغليف ونقل وتركيب لفلل ومنازل ومكاتب العين"
-        whatsappLabel="اطلب عرض سعر عبر واتساب"
-        callLabel="اتصل الآن:"
       >
         <p>
           الزايد نقل اثاث شركة مرخصة ومؤمّنة، نقدّم خدمة نقل اثاث العين للفلل
@@ -621,7 +609,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Castle className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.villas,
   },
   {
     title: "نقل اثاث المنازل والشقق في العين",
@@ -640,7 +628,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <HouseIcon className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.house,
   },
   {
     title: "نقل اثاث المكاتب والشركات في العين",
@@ -664,7 +652,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Building2 className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.offices,
   },
   {
     title: "تغليف الاثاث قبل النقل",
@@ -684,7 +672,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Boxes className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.packing,
   },
   {
     title: "فك وتركيب الاثاث وغرف النوم",
@@ -708,7 +696,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Wrench className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.assembly,
   },
   {
     title: "تخزين الاثاث",
@@ -726,6 +714,6 @@ const services = [
         </p>
       </>
     ),
-    icon: <Warehouse className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.storage,
   },
 ];

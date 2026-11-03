@@ -3,20 +3,9 @@ import SurveyImage from "@/public/img/معاينة-نقل-اثاث-شقة-ابو
 import AreasImage from "@/public/img/مناطق-نقل-اثاث-ابوظبي-مدينة-خليفة.jpg";
 import FleetImage from "@/public/img/شاحنات-ومعدات-نقل-اثاث-ابوظبي.jpg";
 import { ImageBanner } from "@/components/location/ImageBanner";
-import {
-  HouseIcon,
-  Boxes,
-  Wrench,
-  Castle,
-  Building2,
-  Warehouse,
-  Tv,
-  Truck,
-  ThermometerSnowflake,
-  Navigation,
-  ArrowLeft,
-} from "lucide-react";
+import { Truck, ThermometerSnowflake, Navigation, ArrowLeft } from "lucide-react";
 import { Services } from "@/components/Services";
+import { serviceImages } from "@/components/services/service-images";
 import Link from "next/link";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
 import { FAQSection } from "@/components/utils/FaqsSection";
@@ -47,7 +36,6 @@ const AbuDhabiPage = () => {
         image={HeroImage}
         imageAlt="الزايد نقل اثاث ابوظبي"
         title="نقل اثاث ابوظبي - افضل شركة نقل اثاث"
-        whatsappLabel="أحصل على عرض سعر مجاني"
         hoursText="مفتوح 24/7"
       >
         <p>
@@ -672,7 +660,7 @@ const experience = [
         </p>
       </>
     ),
-    icon: <Wrench className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.assembly,
   },
   {
     title: "تغليف الاثاث باحترافية",
@@ -700,7 +688,7 @@ const experience = [
         </p>
       </>
     ),
-    icon: <Boxes className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.packing,
   },
   {
     title: "نقل اثاث الشقق والاستوديوهات",
@@ -720,7 +708,7 @@ const experience = [
         </p>
       </>
     ),
-    icon: <HouseIcon className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.apartments,
   },
   {
     title: "نقل اثاث الفلل في ابوظبي",
@@ -741,7 +729,7 @@ const experience = [
         </p>
       </>
     ),
-    icon: <Castle className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.villas,
   },
   {
     title: "نقل اثاث المكاتب والشركات",
@@ -761,7 +749,7 @@ const experience = [
         </p>
       </>
     ),
-    icon: <Building2 className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.offices,
   },
   {
     title: "نقل الأجهزة الكهربائية والإلكترونيات",
@@ -781,7 +769,7 @@ const experience = [
         </p>
       </>
     ),
-    icon: <Tv className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.packing,
   },
   {
     title: "تخزين الاثاث في ابوظبي",
@@ -800,6 +788,6 @@ const experience = [
         </p>
       </>
     ),
-    icon: <Warehouse className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.storage,
   },
 ];

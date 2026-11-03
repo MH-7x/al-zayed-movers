@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/components/utils/Navbar";
 import Footer from "@/components/utils/Footer";
 import FloatingContact from "@/components/utils/FloatingContact";
 
@@ -38,7 +37,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${almaraiFont.variable} ${almaraiFont.className} h-full antialiased`}
     >
       <body className="relative">
-        <Navbar />
         {children}
         <Footer />
         <FloatingContact />

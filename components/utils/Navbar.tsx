@@ -1,9 +1,5 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ChevronDown, MapPin, Menu, Phone, X } from "lucide-react";
 import { locationItems, serviceItems } from "@/lib/utils";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/components/services/constants";
@@ -34,10 +30,8 @@ const dubaiAreaItems = [
   { title: "نقل اثاث جميرا", href: "/مناطق-دبي/نقل-اثاث-جميرا" },
 ];
 
-type MenuId = "services" | "locations" | "areas" | "mobile";
-
 const menus: {
-  id: Exclude<MenuId, "mobile">;
+  id: "services" | "locations" | "areas";
   label: string;
   items: { title: string; href: string }[];
 }[] = [
@@ -49,46 +43,26 @@ const menus: {
 const linkCls =
   "inline-flex min-h-11 items-center rounded-md px-3 text-sm font-bold text-secondary transition-colors hover:text-brand";
 
+const NAV_TOGGLE = "nav-toggle";
+
+/**
+ * Server component, no client JS.
+ *  - Desktop dropdowns open on hover and on keyboard focus (`group-hover` / `group-focus-within`).
+ *  - The mobile panel is driven by a visually-hidden checkbox read through `group-has-[#nav-toggle:checked]`;
+ *    its groups are native <details>.
+ * `app/template.tsx` re-mounts the navbar on every navigation, which resets the checkbox, so the
+ * mobile panel closes after a link is followed.
+ */
 export default function Navbar() {
-  const pathname = usePathname();
-  // The open menu is remembered together with the path it was opened on, so navigating
-  // closes it without an effect.
-  const [state, setState] = useState<{ id: MenuId | null; path: string }>({
-    id: null,
-    path: pathname,
-  });
-  const open = state.path === pathname ? state.id : null;
-  const rootRef = useRef<HTMLElement>(null);
-
-  const toggle = (id: MenuId) =>
-    setState({ id: open === id ? null : id, path: pathname });
-  const close = () => setState({ id: null, path: pathname });
-
-  useEffect(() => {
-    if (!open) return;
-    const onDown = (e: MouseEvent | TouchEvent) => {
-      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
-        setState((s) => ({ ...s, id: null }));
-      }
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setState((s) => ({ ...s, id: null }));
-    };
-    document.addEventListener("mousedown", onDown);
-    document.addEventListener("touchstart", onDown);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onDown);
-      document.removeEventListener("touchstart", onDown);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
   return (
-    <header
-      ref={rootRef}
-      className="sticky top-0 z-50 w-full border-b border-border bg-background text-foreground"
-    >
+    <header className="group/nav sticky top-0 z-50 w-full border-b border-border bg-background text-foreground">
+      <input
+        id={NAV_TOGGLE}
+        type="checkbox"
+        className="sr-only"
+        aria-label="القائمة"
+      />
+
       {/* 1. Utility bar (md+) */}
       <div className="hidden bg-secondary text-xs text-white md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 lg:px-8">
@@ -117,7 +91,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 2. Main bar — gutter at EVERY breakpoint (was px-0 from md up) */}
+      {/* 2. Main bar */}
       <div className="mx-auto flex min-h-[72px] max-w-7xl items-center gap-4 px-4 md:px-6 lg:px-8">
         <Link
           href="/"
@@ -140,30 +114,27 @@ export default function Navbar() {
           className="hidden items-center gap-1 lg:flex"
         >
           {menus.map((m) => (
-            <div key={m.id} className="relative">
+            <div key={m.id} className="group/menu relative">
               <button
                 type="button"
-                aria-expanded={open === m.id}
-                aria-controls={`menu-${m.id}`}
-                onClick={() => toggle(m.id)}
-                className={`${linkCls} cursor-pointer gap-1.5 ${open === m.id ? "text-brand" : ""}`}
+                className={`${linkCls} cursor-pointer gap-1.5 group-focus-within/menu:text-brand group-hover/menu:text-brand`}
               >
                 {m.label}
                 <ChevronDown
-                  className={`size-4 transition-transform motion-reduce:transition-none ${open === m.id ? "rotate-180" : ""}`}
+                  className="size-4 transition-transform group-focus-within/menu:rotate-180 group-hover/menu:rotate-180 motion-reduce:transition-none"
                   aria-hidden="true"
                 />
               </button>
-              {open === m.id && (
+              {/* top-full with no gap (the pt-1 belongs to the hover target) so the pointer can travel to the list */}
+              <div className="invisible absolute start-0 top-full z-50 pt-1 opacity-0 transition-opacity group-focus-within/menu:visible group-focus-within/menu:opacity-100 group-hover/menu:visible group-hover/menu:opacity-100 motion-reduce:transition-none">
                 <ul
                   id={`menu-${m.id}`}
-                  className="absolute start-0 top-full z-50 mt-1 max-h-[70vh] w-72 overflow-y-auto rounded-lg border border-border bg-card p-2 shadow-md"
+                  className="max-h-[70vh] w-72 overflow-y-auto rounded-lg border border-border bg-card p-2 shadow-md"
                 >
                   {m.items.map((item) => (
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        onClick={close}
                         className="flex min-h-11 items-center rounded-md px-3 text-sm text-foreground hover:bg-muted hover:text-brand"
                       >
                         {item.title}
@@ -171,7 +142,7 @@ export default function Navbar() {
                     </li>
                   ))}
                 </ul>
-              )}
+              </div>
             </div>
           ))}
           <Link href="/من-نحن" className={linkCls}>
@@ -189,78 +160,69 @@ export default function Navbar() {
           طلب تسعيرة
         </Link>
 
-        {/* Mobile / tablet toggle (<lg) */}
-        <button
-          type="button"
-          aria-expanded={open === "mobile"}
-          aria-controls="mobile-menu"
-          aria-label="القائمة"
-          onClick={() => toggle("mobile")}
-          className="grid size-11 shrink-0 cursor-pointer place-items-center rounded-lg border border-border text-secondary hover:bg-muted lg:hidden"
+        {/* Mobile / tablet toggle (<lg): a label for the hidden checkbox */}
+        <label
+          htmlFor={NAV_TOGGLE}
+          className="grid size-11 shrink-0 cursor-pointer place-items-center rounded-lg border border-border text-secondary hover:bg-muted group-has-[#nav-toggle:focus-visible]/nav:outline-3 group-has-[#nav-toggle:focus-visible]/nav:outline-offset-3 group-has-[#nav-toggle:focus-visible]/nav:outline-ring lg:hidden"
         >
-          {open === "mobile" ? (
-            <X className="size-6" aria-hidden="true" />
-          ) : (
-            <Menu className="size-6" aria-hidden="true" />
-          )}
-        </button>
+          <span className="sr-only">القائمة</span>
+          <Menu
+            className="size-6 group-has-[#nav-toggle:checked]/nav:hidden"
+            aria-hidden="true"
+          />
+          <X
+            className="hidden size-6 group-has-[#nav-toggle:checked]/nav:block"
+            aria-hidden="true"
+          />
+        </label>
       </div>
 
       {/* Mobile panel — sits directly under the header, no hard-coded offsets */}
-      {open === "mobile" && (
-        <div
-          id="mobile-menu"
-          className="absolute inset-x-0 top-full max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-border bg-background px-4 pt-2 pb-8 shadow-md md:px-6 lg:hidden"
-        >
-          <nav aria-label="القائمة الرئيسية" className="mx-auto max-w-3xl">
-            {menus.map((m) => (
-              <details key={m.id} className="group border-b border-border">
-                <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-extrabold text-secondary">
-                  {m.label}
-                  <ChevronDown
-                    className="size-5 transition-transform group-open:rotate-180 motion-reduce:transition-none"
-                    aria-hidden="true"
-                  />
-                </summary>
-                <ul className="pb-2 ps-3">
-                  {m.items.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        onClick={close}
-                        className="flex min-h-11 items-center text-sm text-muted-foreground hover:text-brand"
-                      >
-                        {item.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            ))}
-            <Link
-              href="/من-نحن"
-              onClick={close}
-              className="flex min-h-12 items-center border-b border-border font-extrabold text-secondary"
-            >
-              من نحن
-            </Link>
-            <Link
-              href="/اتصل-بنا"
-              onClick={close}
-              className="flex min-h-12 items-center border-b border-border font-extrabold text-secondary"
-            >
-              اتصل بنا
-            </Link>
-            <Link
-              href="/اتصل-بنا"
-              onClick={close}
-              className={`${buttonVariants()} mt-4 w-full`}
-            >
-              طلب تسعيرة
-            </Link>
-          </nav>
-        </div>
-      )}
+      <div
+        id="mobile-menu"
+        className="absolute inset-x-0 top-full hidden max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-border bg-background px-4 pt-2 pb-8 shadow-md md:px-6 max-lg:group-has-[#nav-toggle:checked]/nav:block"
+      >
+        <nav aria-label="القائمة الرئيسية" className="mx-auto max-w-3xl">
+          {menus.map((m) => (
+            <details key={m.id} className="group border-b border-border">
+              <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between font-extrabold text-secondary">
+                {m.label}
+                <ChevronDown
+                  className="size-5 transition-transform group-open:rotate-180 motion-reduce:transition-none"
+                  aria-hidden="true"
+                />
+              </summary>
+              <ul className="pb-2 ps-3">
+                {m.items.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="flex min-h-11 items-center text-sm text-muted-foreground hover:text-brand"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))}
+          <Link
+            href="/من-نحن"
+            className="flex min-h-12 items-center border-b border-border font-extrabold text-secondary"
+          >
+            من نحن
+          </Link>
+          <Link
+            href="/اتصل-بنا"
+            className="flex min-h-12 items-center border-b border-border font-extrabold text-secondary"
+          >
+            اتصل بنا
+          </Link>
+          <Link href="/اتصل-بنا" className={`${buttonVariants()} mt-4 w-full`}>
+            طلب تسعيرة
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }

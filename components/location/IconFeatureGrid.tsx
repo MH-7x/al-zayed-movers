@@ -27,9 +27,11 @@ export function IconFeatureGrid({ items }: { items: IconFeature[] }) {
             width={64}
             height={64}
             sizes="64px"
-            className="row-span-2 size-14 rounded-md border border-border object-contain lg:mb-4 lg:size-16"
+            className="row-span-2 size-14 object-contain lg:mb-4 lg:size-16"
           />
-          {f.title && <h3 className="text-xl leading-snug lg:mb-2">{f.title}</h3>}
+          {f.title && (
+            <h3 className="text-xl leading-snug lg:mb-2">{f.title}</h3>
+          )}
           <p className="text-sm">{f.description}</p>
         </li>
       ))}

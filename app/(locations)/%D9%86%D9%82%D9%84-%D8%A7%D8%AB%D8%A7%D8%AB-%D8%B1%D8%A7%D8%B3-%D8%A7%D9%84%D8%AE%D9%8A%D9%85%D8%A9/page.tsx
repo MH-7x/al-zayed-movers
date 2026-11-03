@@ -1,10 +1,4 @@
-import {
-  Boxes,
-  Building2,
-  Castle,
-  CircleHelp,
-  HouseIcon,
-} from "lucide-react";
+import { CircleHelp } from "lucide-react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import HeroImage from "@/public/img/نقل-اثاث-راس-الخيمة-امام-المنزل.jpg";
@@ -12,6 +6,7 @@ import QuoteImage from "@/public/img/معاينة-نقل-اثاث-فيلا-را�
 import RouteImage from "@/public/img/نقل-اثاث-دبي-راس-الخيمة-طريق-الامارات.jpg";
 import AreasImage from "@/public/img/نقل-اثاث-ميناء-العرب-راس-الخيمة.jpg";
 import { Services } from "@/components/Services";
+import { serviceImages } from "@/components/services/service-images";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
 import { FAQSection } from "@/components/utils/FaqsSection";
 import { RasAlKhaimahFaqs } from "@/lib/faqsData";
@@ -48,8 +43,6 @@ export const RasAlKhaimahPage = () => {
         image={HeroImage}
         imageAlt="شاحنة الزايد نقل اثاث أمام منزل في رأس الخيمة مع جبل جيس في الخلفية"
         title="نقل اثاث راس الخيمة: نقل آمن داخل الإمارة ومن دبي إليها"
-        whatsappLabel="اطلب عرض سعر على واتساب"
-        callLabel="اتصل الآن"
       >
         <p>
           تنتقل إلى شقة في أبراج جلفار؟ أو تترك فيلتك في دبي لتسكن في ميناء
@@ -498,7 +491,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Castle className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.villas,
   },
   {
     title: "نقل اثاث الشقق والأبراج في رأس الخيمة",
@@ -517,7 +510,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <HouseIcon className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.apartments,
   },
   {
     title: "نقل اثاث المكاتب والشركات في راس الخيمة",
@@ -536,7 +529,7 @@ const services = [
         </p>
       </>
     ),
-    icon: <Building2 className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.offices,
   },
   {
     title: "الفك والتركيب والتغليف والتخزين",
@@ -565,6 +558,6 @@ const services = [
         </p>
       </>
     ),
-    icon: <Boxes className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.packing,
   },
 ];

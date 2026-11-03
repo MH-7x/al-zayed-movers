@@ -1,14 +1,9 @@
-import {
-  BoxesIcon,
-  Building2,
-  Castle,
-  HouseIcon,
-} from "lucide-react";
 import HeroImage from "@/public/img/نقل-اثاث-عجمان-كورنيش.jpg";
 import QuoteImage from "@/public/img/عرض-سعر-نقل-اثاث-عجمان.jpg";
 import AreasImage from "@/public/img/مناطق-نقل-اثاث-عجمان.jpg";
 import CostImage from "@/public/img/تكلفة-نقل-اثاث-عجمان-تحميل.jpg";
 import { Services } from "@/components/Services";
+import { serviceImages } from "@/components/services/service-images";
 import { LocProcessSection } from "@/components/utils/LocProcessSection";
 import { ImageBanner } from "@/components/location/ImageBanner";
 import { QuoteImageSection } from "@/components/location/QuoteImageSection";
@@ -31,7 +26,6 @@ export const AjmanPage = () => {
         image={HeroImage}
         imageAlt="شاحنة الزايد نقل اثاث أمام أبراج كورنيش عجمان"
         title="نقل اثاث عجمان مع الزايد نقل اثاث"
-        whatsappLabel="أحصل على عرض سعر مجاني"
       >
         <p>
           تحتاج إلى نقل اثاث عجمان بسرعة وأمان؟ الزايد نقل اثاث شركة نقل اثاث
@@ -310,7 +304,7 @@ const services = [
         </p>{" "}
       </>
     ),
-    icon: <HouseIcon className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.house,
   },
   {
     title: "نقل اثاث الفلل في عجمان",
@@ -324,7 +318,7 @@ const services = [
         </p>{" "}
       </>
     ),
-    icon: <Castle className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.villas,
   },
   {
     title: "نقل اثاث المكاتب والشركات في عجمان",
@@ -338,7 +332,7 @@ const services = [
         </p>{" "}
       </>
     ),
-    icon: <Building2 className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.offices,
   },
   {
     title: "تغليف وتخزين الأثاث في عجمان",
@@ -352,7 +346,7 @@ const services = [
         </p>{" "}
       </>
     ),
-    icon: <BoxesIcon className="text-primary" strokeWidth={1} size={60} />,
+    image: serviceImages.packing,
   },
 ];
 // NOTE: This array has 6 items, but the approved Section 5 content plan listed 5 points.

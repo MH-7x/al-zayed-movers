@@ -1,4 +1,10 @@
-import { Children, cloneElement, isValidElement, type ReactElement, type ReactNode } from "react";
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { Section } from "@/components/ui/Section";
 import { ServiceHero, type ServiceHeroProps } from "./ServiceHero";
 import { ServiceSidebar } from "./ServiceSidebar";
@@ -7,7 +13,7 @@ import { CtaBanner, ServiceFigure, ServiceSection } from "./ServiceContent";
 interface ServicePageLayoutProps {
   /** Path of the page, used to highlight it in the "other services" navigation. */
   currentHref: string;
-  hero: Omit<ServiceHeroProps, "children" | "whatsappText"> & {
+  hero: Omit<ServiceHeroProps, "children"> & {
     intro: React.ReactNode;
   };
   /** Pre-filled WhatsApp message for the hero, sidebar and CTA buttons. */
@@ -22,12 +28,12 @@ type SectionEl = ReactElement<React.ComponentProps<typeof ServiceSection>>;
 
 /**
  * Direction A service template.
- *   Hero → price table first → services (+figure) → why → steps (+figure) → areas
- *   → closing CTA + "other services" band → (below: reviews, FAQ, contact).
+ *   Hero → [content column | sidebar] → (below: reviews, FAQ, contact).
+ * The content column holds the price table first → services (+figure) → why → steps (+figure)
+ * → areas → closing CTA. The sidebar (quote card + other services) is the second grid column, which
+ * in RTL is the physical left, sticky from lg up and stacked under the content below that.
  * Pages keep authoring their content as before; this layout (1) moves the section with
- * id="prices" to the front, (2) attaches each ServiceFigure to the section before it,
- * (3) alternates white / grey bands, ending on grey so the white aside band, then grey reviews, white FAQ
- * and the navy contact band keep alternating.
+ * id="prices" to the front and (2) attaches each ServiceFigure to the section before it.
  */
 export function ServicePageLayout({
   currentHref,
@@ -55,26 +61,30 @@ export function ServicePageLayout({
 
   const ordered = sections
     .map((el, i) => ({ el, figure: figures.get(i) }))
-    .sort((a, b) => Number(b.el.props.id === "prices") - Number(a.el.props.id === "prices"));
-
-  const n = ordered.length;
+    .sort(
+      (a, b) =>
+        Number(b.el.props.id === "prices") - Number(a.el.props.id === "prices"),
+    );
 
   return (
     <main>
-      <ServiceHero {...heroProps} whatsappText={whatsappText}>
-        {intro}
-      </ServiceHero>
+      <ServiceHero {...heroProps}>{intro}</ServiceHero>
 
-      {ordered.map(({ el, figure }, i) =>
-        cloneElement(el, {
-          key: el.props.title,
-          tone: (n - 1 - i) % 2 === 0 ? "alt" : "default",
-          after: figure,
-        }),
-      )}
-
-      <Section containerClassName="space-y-6">
-        {cta as ReactNode}
+      <Section containerClassName="grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_24rem]">
+        <div className="min-w-0">
+          {ordered.map(({ el, figure }) =>
+            cloneElement(el, {
+              key: el.props.title,
+              embedded: true,
+              after: figure,
+            }),
+          )}
+          {cta && (
+            <div className="border-t border-border pt-10 md:pt-12">
+              {cta as ReactNode}
+            </div>
+          )}
+        </div>
         <ServiceSidebar currentHref={currentHref} whatsappText={whatsappText} />
       </Section>
 

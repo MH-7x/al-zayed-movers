@@ -1,20 +1,15 @@
-import {
-  Boxes,
-  Building2Icon,
-  Castle,
-  HouseIcon,
-  Truck,
-  Warehouse,
-  Wrench,
-} from "lucide-react";
-import React, { ReactNode } from "react";
+import Image, { type StaticImageData } from "next/image";
+import type { ReactNode } from "react";
 
 import { Section, SectionHeading } from "@/components/ui/Section";
+import { serviceImages } from "@/components/services/service-images";
+import { cn } from "@/lib/utils";
 
 interface ExperienceItem {
   title: string;
   description: ReactNode;
-  icon?: ReactNode;
+  /** photo of the service, shown at the top of its card */
+  image?: StaticImageData;
 }
 
 interface Experience1Props {
@@ -50,7 +45,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <HouseIcon className="text-brand" strokeWidth={1.6} size={26} />,
+      image: serviceImages.house,
     },
     {
       title: "نقل اثاث الفلل والقصور",
@@ -69,7 +64,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <Castle className="text-brand" strokeWidth={1.6} size={26} />,
+      image: serviceImages.villas,
     },
     {
       title: "نقل اثاث المكاتب والشركات في دبي",
@@ -87,9 +82,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: (
-        <Building2Icon className="text-brand" strokeWidth={1.6} size={26} />
-      ),
+      image: serviceImages.offices,
     },
     {
       title: "تغليف وتعبئة الاثاث",
@@ -108,7 +101,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <Boxes className="text-brand" strokeWidth={1.6} size={26} />,
+      image: serviceImages.packing,
     },
     {
       title: "فك وتركيب الاثاث في دبي",
@@ -125,7 +118,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <Wrench className="text-brand" strokeWidth={1.6} size={26} />,
+      image: serviceImages.assembly,
     },
     {
       title: "تخزين الاثاث في دبي ",
@@ -142,7 +135,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <Warehouse className="text-brand" strokeWidth={1.6} size={26} />,
+      image: serviceImages.storage,
     },
     {
       title: "نقل عفش دبي ",
@@ -159,7 +152,7 @@ export const Services = ({
           </p>
         </>
       ),
-      icon: <Truck className="text-brand" strokeWidth={1.6} size={26} />,
+      image: serviceImages.fleet,
     },
   ],
   className,
@@ -170,24 +163,53 @@ export const Services = ({
 }: Experience1Props) => {
   // `nums` / `className` are kept for API compatibility with the emirate pages.
   void nums;
+  const items = experience.slice(0, 7);
   return (
     <Section id="services" tone={tone} className={className}>
-      <SectionHeading title={heading ?? "خدمات نقل الاثاث في دبي"} description={desc} />
-      <div className="grid gap-4 md:grid-cols-2">
-        {experience.slice(0, 7).map((exp, index) => (
-          <article
-            key={index}
-            className="rounded-md border border-border border-t-[3px] border-t-secondary bg-card p-6 shadow-sm"
-          >
-            {exp.icon && (
-              <div className="mb-4 grid size-12 place-items-center rounded-md bg-brand-soft [&>svg]:size-6.5 [&>svg]:text-brand [&>svg]:[stroke-width:1.6]">
-                {exp.icon}
+      <SectionHeading
+        title={heading ?? "خدمات نقل الاثاث في دبي"}
+        description={desc}
+      />
+      <div className="grid gap-4 md:grid-cols-2 md:gap-6">
+        {items.map((exp, index) => {
+          // an odd last card spans both columns and lays its photo beside the text
+          const wide = items.length % 2 === 1 && index === items.length - 1;
+          return (
+            <article
+              key={index}
+              className={cn(
+                "flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm",
+                wide && "md:col-span-2 md:flex-row",
+              )}
+            >
+              {exp.image && (
+                <div
+                  className={cn(
+                    "relative aspect-2/1 shrink-0 overflow-hidden",
+                    wide && "md:aspect-auto md:w-1/2",
+                  )}
+                >
+                  <Image
+                    src={exp.image}
+                    alt={exp.title}
+                    fill
+                    placeholder="blur"
+                    sizes="(min-width: 1024px) 570px, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-1 bg-primary"
+                  />
+                </div>
+              )}
+              <div className="p-6">
+                <h3 className="mb-2 text-xl leading-snug">{exp.title}</h3>
+                <div className="space-y-3 text-sm">{exp.description}</div>
               </div>
-            )}
-            <h3 className="mb-2 text-xl leading-snug">{exp.title}</h3>
-            <div className="space-y-3 text-sm">{exp.description}</div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </Section>
   );

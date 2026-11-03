@@ -1,15 +1,12 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { Check, ChevronLeft } from "lucide-react";
-import { CallButton, WhatsAppButton } from "@/components/ui/ContactButtons";
 import { containerCls } from "@/components/ui/Section";
-import { PHONE_DISPLAY } from "./constants";
 
 export interface ServiceHeroProps {
   title: string;
   image: StaticImageData;
   imageAlt: string;
-  whatsappText: string;
   children: React.ReactNode;
 }
 
@@ -20,79 +17,86 @@ const highlights = [
   "خبرة +12 عاماً",
 ];
 
-const crumb =
-  "inline-flex min-h-11 items-center text-sm text-muted-foreground";
+const crumb = "inline-flex min-h-11 items-center text-sm text-white/85";
 
 /**
- * Service hero (Direction A). The photo is shown as a photo (no navy wash over it).
- * Mobile: photo (2:1) → H1 → CTAs → proof → intro paragraphs; ≥1024: copy at the start,
- * photo (4:3) at the end, intro below. The source is 1000×495, so the slot is never upscaled.
+ * Service hero. The photo is the background (navy wash for legibility), breadcrumbs sit at its top,
+ * the H1 is centred and the four trust points are glass chips at the bottom. The card is capped at
+ * the page container (≤1200px) so the 1000×495 sources are never stretched much past their size.
+ * The intro paragraphs follow below the card.
  */
 export function ServiceHero({
   title,
   image,
   imageAlt,
-  whatsappText,
   children,
 }: ServiceHeroProps) {
   return (
-    <section className="bg-linear-to-b from-navy-50 to-background pt-2 pb-12 md:pb-16 lg:pb-20">
+    <section className="bg-linear-to-b from-navy-50 to-background pt-3 pb-12 md:pb-16 lg:pt-6 lg:pb-20">
       <div className={containerCls}>
-        <nav aria-label="مسار التنقل">
-          <ol className="flex flex-wrap items-center">
-            <li className="flex items-center">
-              <Link href="/" className={`${crumb} hover:text-brand`}>
-                الرئيسية
-              </Link>
-              <ChevronLeft className="mx-1 size-3.5 text-muted-foreground" aria-hidden />
-            </li>
-            <li className="flex items-center">
-              <span className={crumb}>خدماتنا</span>
-              <ChevronLeft className="mx-1 size-3.5 text-muted-foreground" aria-hidden />
-            </li>
-            <li>
-              <span aria-current="page" className={`${crumb} font-bold text-secondary`}>
-                {title}
-              </span>
-            </li>
-          </ol>
-        </nav>
+        <div className="relative isolate flex min-h-96 flex-col justify-between gap-6 overflow-hidden rounded-lg px-4 pt-2 pb-5 shadow-md md:min-h-112 md:px-8 md:pb-8 lg:min-h-120">
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            preload
+            placeholder="blur"
+            sizes="(min-width: 1280px) 1140px, 100vw"
+            className="-z-20 object-cover"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-linear-to-b from-navy-950/75 via-navy-950/55 to-navy-950/80"
+          />
 
-        <div className="mt-2 grid items-center gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-          <div className="flex flex-col">
-            <h1 className="mb-4">{title}</h1>
-            <div className="mb-6 flex flex-wrap gap-3 max-sm:[&>a]:w-full">
-              <WhatsAppButton message={whatsappText}>اطلب عرض سعر مجاني</WhatsAppButton>
-              <CallButton>{PHONE_DISPLAY}</CallButton>
-            </div>
-            <ul className="grid grid-cols-2 overflow-hidden rounded-lg border border-border bg-card">
-              {highlights.map((item, i) => (
-                <li
-                  key={item}
-                  className={`flex min-h-11 items-center gap-2.5 p-3 text-sm font-bold text-secondary ${
-                    i % 2 === 0 ? "border-e" : ""
-                  } ${i < 2 ? "border-b" : ""}`}
+          <nav aria-label="مسار التنقل">
+            <ol className="flex flex-wrap items-center">
+              <li className="flex items-center">
+                <Link href="/" className={`${crumb} hover:text-primary`}>
+                  الرئيسية
+                </Link>
+                <ChevronLeft
+                  className="mx-1 size-3.5 text-white/70"
+                  aria-hidden
+                />
+              </li>
+              <li className="flex items-center">
+                <span className={crumb}>خدماتنا</span>
+                <ChevronLeft
+                  className="mx-1 size-3.5 text-white/70"
+                  aria-hidden
+                />
+              </li>
+              <li>
+                <span
+                  aria-current="page"
+                  className={`${crumb} font-bold text-white`}
                 >
-                  <span className="grid size-6 shrink-0 place-items-center rounded-full bg-brand-soft text-brand">
-                    <Check className="size-3.5" strokeWidth={3} aria-hidden />
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+                  {title}
+                </span>
+              </li>
+            </ol>
+          </nav>
 
-          <div className="relative order-first aspect-2/1 overflow-hidden rounded-lg border border-border shadow-md lg:order-none lg:aspect-4/3">
-            <Image
-              src={image}
-              alt={imageAlt}
-              fill
-              preload
-              placeholder="blur"
-              sizes="(min-width: 1024px) 540px, 100vw"
-              className="object-cover"
-            />
-          </div>
+          <h1 className="mx-auto max-w-3xl text-center text-3xl text-white drop-shadow-sm md:text-4xl lg:text-5xl">
+            {title}
+          </h1>
+
+          <ul className="mx-auto grid w-full max-w-3xl grid-cols-2 gap-2 sm:grid-cols-4 md:gap-3">
+            {highlights.map((item) => (
+              <li
+                key={item}
+                className="flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/15 px-3 py-1.5 text-center text-sm font-bold text-white backdrop-blur-sm"
+              >
+                <Check
+                  className="size-4 shrink-0 text-primary"
+                  strokeWidth={3}
+                  aria-hidden
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="mt-8 max-w-3xl space-y-3 border-s-[3px] border-primary ps-4 text-lg [&_a]:font-bold [&_a]:text-brand [&_a]:underline [&_a]:underline-offset-4">
