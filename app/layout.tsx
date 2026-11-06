@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "@/components/utils/Footer";
 import { Metadata } from "next";
 import StickyContactBar from "./StickyContactBar";
+import GTM from "@/components/GTM";
 
 const almaraiFont = localFont({
   src: [
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <StickyContactBar />
         <Footer />
+        <GTM />
       </body>
     </html>
   );
