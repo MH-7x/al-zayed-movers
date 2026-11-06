@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "stamp": "node scripts/stamp-lastmod.mjs",
+    "predev": "node scripts/stamp-lastmod.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/stamp-lastmod.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

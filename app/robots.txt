@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /server/
+Disallow: /private/
+Disallow: /admin/
+
+Host: https://alzayedmoversuae.com
+Sitemap: https://alzayedmoversuae.com/sitemap.xml

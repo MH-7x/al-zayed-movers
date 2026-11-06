@@ -1,0 +1,107 @@
+[
+  {
+    "path": "/",
+    "group": "root",
+    "image": "/الزايد-نقل-اثاث-دبي.jpg",
+    "hash": "5c7bf0fbb2dc2ba51dc7ec15d985f8dfc327629da10f969170993d2746a07b18",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D8%A7%D8%AA%D8%B5%D9%84-%D8%A8%D9%86%D8%A7",
+    "group": "company",
+    "image": "/الزايد-نقل-اثاث-دبي.jpg",
+    "hash": "ae5deaeedd8616b834f0413f462c93a083f5e84ad12ed64a6abc4a611844035b",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D8%AA%D8%AE%D8%B2%D9%8A%D9%86-%D8%A7%D8%AB%D8%A7%D8%AB-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
+    "group": "services",
+    "image": "/img/تخزين-اثاث-في-دبي.jpg",
+    "hash": "d11aa6478eae4ea0465f1c7701988f6505fae03365bab3a8bc7c9637ba906a10",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D8%AA%D8%BA%D9%84%D9%8A%D9%81-%D8%A7%D8%AB%D8%A7%D8%AB-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
+    "group": "services",
+    "image": "/img/تغليف-اثاث-في-دبي.jpg",
+    "hash": "63b04077c92d08598f8237d0d2ac8e529ca5e52278181fe54a981bfe4e00421f",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%81%D9%83-%D9%88%D8%AA%D8%B1%D9%83%D9%8A%D8%A8-%D8%A7%D8%AB%D8%A7%D8%AB-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
+    "group": "services",
+    "image": "/img/فك-وتركيب-اثاث-في-دبي.jpg",
+    "hash": "5642c347c5c093a2f82d300feb6c52df66adc893811c11841e5a41c0152dcee3",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%85%D9%86-%D9%86%D8%AD%D9%86",
+    "group": "company",
+    "image": "/img/اسطول-شاحنات-الزايد-نقل-اثاث.jpg",
+    "hash": "32ec4a56d531c23364a89ba26daa7c888b7b09fb94b08e3df8963ad2b2abee80",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%86%D9%82%D9%84-%D8%A3%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
+    "group": "locations",
+    "image": "/img/نقل-اثاث-الشارقة-كورنيش-المجاز.jpg",
+    "hash": "589b51261cb905f2493faa6e90698ff8fea65a5b1dba5fb0e302aa9cefdb8697",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D8%A8%D9%88%D8%B8%D8%A8%D9%8A",
+    "group": "locations",
+    "image": "/نقل-اثاث-ابوظبي.jpg",
+    "hash": "9e047dd6a217ea3917cd79538ec351c7857407078cfe85a1a7c3b8f03f7fa3ef",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D8%B4%D9%82%D9%82-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
+    "group": "services",
+    "image": "/img/نقل-اثاث-الشقق-في-دبي.jpg",
+    "hash": "00f58479a9ffb0f1eb4bdcb3eb23e8b67a15b841ec183663d5c7ebb5ad917dc7",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D8%B9%D9%8A%D9%86",
+    "group": "locations",
+    "image": "/img/نقل-اثاث-العين-امام-المنزل.jpg",
+    "hash": "03ed0832649ec8c4686f179e0377d47b0833e61ca5215820ebda4184edd27b7f",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D9%81%D9%84%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
+    "group": "services",
+    "image": "/img/نقل-اثاث-الفلل-في-دبي.jpg",
+    "hash": "9cef3d923c2a92b54183adcb368742784ed6fb955d28a9bd9382ccd7271c5026",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D9%85%D9%83%D8%A7%D8%AA%D8%A8-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
+    "group": "services",
+    "image": "/img/نقل-اثاث-المكاتب-في-دبي.jpg",
+    "hash": "3fea1e63805d7398b8338891e8cf870cc0e06aec75185df9181310715296ede0",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D9%85%D9%86%D8%B2%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
+    "group": "services",
+    "image": "/img/نقل-اثاث-المنزل-في-دبي.jpg",
+    "hash": "fa2e1b290fb7530ca6463322a063c3d8b2f01a6d39a033aa57b0027a65f09d98",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%B1%D8%A7%D8%B3-%D8%A7%D9%84%D8%AE%D9%8A%D9%85%D8%A9",
+    "group": "locations",
+    "image": "/img/نقل-اثاث-راس-الخيمة-امام-المنزل.jpg",
+    "hash": "b477bf16213223fc68c6d5fcb027237cc937142c79a01115cf7c37ed117e81dc",
+    "lastmod": "2026-11-06"
+  },
+  {
+    "path": "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%B9%D8%AC%D9%85%D8%A7%D9%86",
+    "group": "locations",
+    "image": "/img/نقل-اثاث-عجمان-كورنيش.jpg",
+    "hash": "af6e2929c281feecb580e079a17b287a1d2536d465123bc5941e675ff588531e",
+    "lastmod": "2026-11-06"
+  }
+]

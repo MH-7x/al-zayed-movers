@@ -23,10 +23,10 @@ import TruckImage from "@/public/شركة-الزايد-نقل-اثاث-دبي.jp
 import PackingImage from "@/public/فك-وتغليف-اثاث-احترافي-الزايد-دبي.jpg";
 import JsonLd from "@/components/JsonLd";
 import { buildPageSchema } from "@/lib/schema";
-
+    
 export const metadata: Metadata = MetadataTemplate({
   title: "نقل اثاث الفلل في دبي | فريق كامل وأوناش رفع - الزايد",
-  desc:
+  desc:  
     "نقل اثاث الفلل في دبي بفريق من 6 إلى 10 عمال وأوناش رفع للقطع الكبيرة، مع الفك والتغليف والتركيب في يوم واحد. من 2500 درهم. واتساب 055 646 1731.",
   path: "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D9%81%D9%84%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
   image: {
