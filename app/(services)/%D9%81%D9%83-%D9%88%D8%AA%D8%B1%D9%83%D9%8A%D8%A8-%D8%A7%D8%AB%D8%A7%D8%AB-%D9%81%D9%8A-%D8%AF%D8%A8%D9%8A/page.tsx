@@ -19,19 +19,19 @@ import {
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
 import HeroImage from "@/public/img/فك-وتركيب-اثاث-في-دبي.jpg";
-import PackingImage from "@/public/فك-وتغليف-اثاث-احترافي-الزايد-دبي.jpg";
-import SurveyImage from "@/public/معاينة-مجانية-نقل-اثاث-الزايد-دبي.jpg";
+import PackingImage from "@/public/فك-وتغليف-اثاث-احترافي-الأمين-دبي.jpg";
+import SurveyImage from "@/public/معاينة-مجانية-نقل-اثاث-الأمين-دبي.jpg";
 import JsonLd from "@/components/JsonLd";
 import { buildPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = MetadataTemplate({
-  title: "فك وتركيب اثاث في دبي | نجار تركيب اثاث ايكيا - الزايد",
+  title: "فك وتركيب اثاث في دبي | نجار تركيب اثاث ايكيا - الأمين",
   desc:
     "فك وتركيب اثاث في دبي على يد نجارين متخصصين: غرف النوم والخزائن وأثاث ايكيا، وتثبيت الشاشات والستائر. من 150 درهم. واتساب 055 646 1731.",
   path: "/%D9%81%D9%83-%D9%88%D8%AA%D8%B1%D9%83%D9%8A%D8%A8-%D8%A7%D8%AB%D8%A7%D8%AB-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
   image: {
     path: "/img/فك-وتركيب-اثاث-في-دبي.jpg",
-    alt: "فريق الزايد نقل اثاث يفك ويركب اثاث غرفة نوم في دبي",
+    alt: "فريق الأمين نقل اثاث يفك ويركب اثاث غرفة نوم في دبي",
   },
 });
 
@@ -40,7 +40,7 @@ const whatsappText = "مرحباً، أرغب في عرض سعر لخدمة فك
 export default function AssemblyPage() {
   const schema = buildPageSchema({
     page: "assembly",
-    name: "فك وتركيب اثاث في دبي | نجار تركيب اثاث ايكيا - الزايد",
+    name: "فك وتركيب اثاث في دبي | نجار تركيب اثاث ايكيا - الأمين",
     description: "فك وتركيب اثاث في دبي على يد نجارين متخصصين: غرف النوم والخزائن وأثاث ايكيا، وتثبيت الشاشات والستائر. من 150 درهم. واتساب 055 646 1731.",
     image: "/img/فك-وتركيب-اثاث-في-دبي.jpg",
     imageWidth: 1000,
@@ -55,7 +55,7 @@ export default function AssemblyPage() {
         hero={{
           title: "فك وتركيب اثاث في دبي",
           image: HeroImage,
-          imageAlt: "فريق الزايد نقل اثاث يفك ويركب اثاث غرفة نوم في دبي",
+          imageAlt: "فريق الأمين نقل اثاث يفك ويركب اثاث غرفة نوم في دبي",
           intro: (
             <>
               <p>
@@ -114,7 +114,7 @@ export default function AssemblyPage() {
 
         <ServiceFigure
           src={PackingImage}
-          alt="نجار الزايد نقل اثاث يفك سرير خشبي ويرقّم قطعه قبل النقل في دبي"
+          alt="نجار الأمين نقل اثاث يفك سرير خشبي ويرقّم قطعه قبل النقل في دبي"
         />
 
         <ServiceSection title="لماذا تختارنا لفك وتركيب الاثاث؟">
@@ -173,7 +173,7 @@ export default function AssemblyPage() {
 
         <ServiceFigure
           src={SurveyImage}
-          alt="مشرف الزايد نقل اثاث يراجع قائمة القطع المطلوب تركيبها مع العميلة"
+          alt="مشرف الأمين نقل اثاث يراجع قائمة القطع المطلوب تركيبها مع العميلة"
         />
 
         <ServiceSection id="prices" title="أسعار فك وتركيب الاثاث في دبي">

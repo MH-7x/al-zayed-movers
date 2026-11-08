@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- *  الزايد نقل اثاث دبي — Al Zayed Furniture Removers
+ *  الأمين نقل اثاث دبي — Al Ameen Furniture Removers
  *  Site-wide JSON-LD schema graph  •  Next.js App Router  •  TypeScript
  * ----------------------------------------------------------------------------
  *  HOW IT WORKS
@@ -19,7 +19,7 @@
 
 /** No trailing slash. Must match your canonical tags byte-for-byte. */
 export const SITE_URL = (
-  process.env.SITE_URL ?? "https://alzayedmoversuae.com"
+  process.env.SITE_URL ?? "https://alameenmovers.ae"
 ).replace(/\/$/, "");
 
 const ORG_ID = `${SITE_URL}/#organization`;
@@ -33,11 +33,11 @@ const LOGO_ID = `${SITE_URL}/#logo`;
  * ACTION: uncomment each line on the day that profile goes live.
  */
 const SAME_AS: string[] = [
-  "https://www.facebook.com/alzayedmoversuae",
-  "https://www.instagram.com/alzayedmoversuae",
-  // "https://www.youtube.com/@alzayedmoversuae",
-  "https://www.pinterest.com/alzayedmoversuae",
-  // "https://x.com/alzayedmovers",
+  "https://www.facebook.com/alameenmovers",
+  "https://www.instagram.com/alameenmovers",
+  // "https://www.youtube.com/@alameenmovers",
+  "https://www.pinterest.com/alameenmovers",
+  // "https://x.com/alameenmovers",
 ];
 
 /**
@@ -226,14 +226,14 @@ function absoluteImage(src: string): string {
 const organizationNode = {
   "@type": "MovingCompany",
   "@id": ORG_ID,
-  name: "شركة الزايد نقل اثاث",
-  legalName: "الزايد نقل اثاث",
-  alternateName: ["Al Zayed Furniture Removers", "Al Zayed Movers "],
+  name: "شركة الأمين نقل اثاث",
+  legalName: "الأمين نقل اثاث",
+  alternateName: ["Al Ameen Furniture Removers", "Al Ameen Movers "],
   url: SITE_URL,
   logo: { "@id": LOGO_ID },
   image: { "@id": LOGO_ID },
   telephone: "+971556461731",
-  email: "alzayedmovers@gmail.com",
+  email: "alameenmovers.ae@gmail.com",
   foundingDate: "2013",
   priceRange: "AED 400+",
   currenciesAccepted: "AED",
@@ -305,7 +305,7 @@ const logoNode = {
   "@id": LOGO_ID,
   url: `${SITE_URL}/logo-sqaure.png`,
   contentUrl: `${SITE_URL}/logo-sqaure.png`,
-  caption: "الزايد نقل اثاث دبي",
+  caption: "الأمين نقل اثاث دبي",
   inLanguage: "ar-AE",
 };
 
@@ -318,7 +318,7 @@ const webSiteNode = {
   "@type": "WebSite",
   "@id": WEBSITE_ID,
   url: SITE_URL,
-  name: "الزايد نقل اثاث دبي",
+  name: "الأمين نقل اثاث دبي",
   publisher: { "@id": ORG_ID },
   inLanguage: "ar-AE",
 };

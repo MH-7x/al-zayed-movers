@@ -22,7 +22,7 @@ export function HomeHero() {
         <div className="grid items-center gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div className="flex flex-col">
             <h1 className="mt-2 mb-4 lg:mb-4">
-              <span className="block text-brand">الزايد نقل اثاث دبي - </span>{" "}
+              <span className="block text-brand">الأمين نقل اثاث دبي - </span>{" "}
               فك وتغليف وتركيب بضمان شامل
             </h1>
             <div className="order-2 mb-6 flex flex-wrap gap-3 max-sm:[&>a]:w-full lg:order-3 lg:mb-0">
@@ -38,8 +38,8 @@ export function HomeHero() {
 
           <div className="relative order-first aspect-4/3 overflow-hidden rounded-lg border border-border shadow-md lg:order-none lg:aspect-5/4">
             <Image
-              src="/الزايد-نقل-اثاث-دبي.jpg"
-              alt="الزايد نقل اثاث دبي"
+              src="/الأمين-نقل-اثاث-دبي.jpg"
+              alt="الأمين نقل اثاث دبي"
               fill
               preload
               sizes="(min-width: 1024px) 540px, 100vw"

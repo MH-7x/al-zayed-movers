@@ -19,19 +19,19 @@ import {
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
 import HeroImage from "@/public/img/نقل-اثاث-المكاتب-في-دبي.jpg";
-import AssemblyImage from "@/public/تركيب-وتنظيف-اثاث-بعد-النقل-الزايد-دبي.jpg";
-import SurveyImage from "@/public/معاينة-مجانية-نقل-اثاث-الزايد-دبي.jpg";
+import AssemblyImage from "@/public/تركيب-وتنظيف-اثاث-بعد-النقل-الأمين-دبي.jpg";
+import SurveyImage from "@/public/معاينة-مجانية-نقل-اثاث-الأمين-دبي.jpg";
 import JsonLd from "@/components/JsonLd";
 import { buildPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = MetadataTemplate({
-  title: "نقل اثاث المكاتب في دبي | نقل مكاتب وشركات - الزايد",
+  title: "نقل اثاث المكاتب في دبي | نقل مكاتب وشركات - الأمين",
   desc:
     "نقل اثاث المكاتب والشركات في دبي خارج ساعات الدوام، مع نقل آمن للكمبيوتر والسيرفرات وفك وتركيب المكاتب. من 1000 درهم. واتساب 055 646 1731.",
   path: "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D9%85%D9%83%D8%A7%D8%AA%D8%A8-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
   image: {
     path: "/img/نقل-اثاث-المكاتب-في-دبي.jpg",
-    alt: "فريق الزايد نقل اثاث يفك مكاتب ومحطات عمل في مكتب بدبي",
+    alt: "فريق الأمين نقل اثاث يفك مكاتب ومحطات عمل في مكتب بدبي",
   },
 });
 
@@ -40,7 +40,7 @@ const whatsappText = "مرحباً، أرغب في زيارة ميدانية و�
 export default function OfficeMovingPage() {
   const schema = buildPageSchema({
     page: "officeMoving",
-    name: "نقل اثاث المكاتب في دبي | نقل مكاتب وشركات - الزايد",
+    name: "نقل اثاث المكاتب في دبي | نقل مكاتب وشركات - الأمين",
     description: "نقل اثاث المكاتب والشركات في دبي خارج ساعات الدوام، مع نقل آمن للكمبيوتر والسيرفرات وفك وتركيب المكاتب. من 1000 درهم. واتساب 055 646 1731.",
     image: "/img/نقل-اثاث-المكاتب-في-دبي.jpg",
     imageWidth: 1000,
@@ -55,7 +55,7 @@ export default function OfficeMovingPage() {
         hero={{
           title: "نقل اثاث المكاتب في دبي",
           image: HeroImage,
-          imageAlt: "فريق الزايد نقل اثاث يفك مكاتب ومحطات عمل في مكتب بدبي",
+          imageAlt: "فريق الأمين نقل اثاث يفك مكاتب ومحطات عمل في مكتب بدبي",
           intro: (
             <>
               <p>
@@ -64,7 +64,7 @@ export default function OfficeMovingPage() {
                 مساءً، ويجد مكاتبه جاهزة في الموقع الجديد في الصباح التالي.
               </p>
               <p>
-                في الزايد نقل اثاث دبي ننقل المكاتب الصغيرة والشركات المتوسطة
+                في الأمين نقل اثاث دبي ننقل المكاتب الصغيرة والشركات المتوسطة
                 والعيادات والمعارض. ونعمل ضمن اشتراطات الأبراج التجارية في الخليج
                 التجاري وأبراج بحيرات جميرا ومركز دبي المالي العالمي، ضمن خدمات{" "}
                 <Link href="/">نقل اثاث دبي</Link> المتكاملة.
@@ -120,7 +120,7 @@ export default function OfficeMovingPage() {
 
         <ServiceFigure
           src={AssemblyImage}
-          alt="فريق الزايد نقل اثاث يفك ويركب محطات العمل وأثاث المكتب في دبي"
+          alt="فريق الأمين نقل اثاث يفك ويركب محطات العمل وأثاث المكتب في دبي"
         />
 
         <ServiceSection title="لماذا تختارنا لنقل اثاث المكاتب؟">
@@ -183,7 +183,7 @@ export default function OfficeMovingPage() {
 
         <ServiceFigure
           src={SurveyImage}
-          alt="مشرف الزايد نقل اثاث يراجع خطة النقل مع العميلة أثناء المعاينة"
+          alt="مشرف الأمين نقل اثاث يراجع خطة النقل مع العميلة أثناء المعاينة"
         />
 
         <ServiceSection id="prices" title="أسعار نقل اثاث المكاتب في دبي">

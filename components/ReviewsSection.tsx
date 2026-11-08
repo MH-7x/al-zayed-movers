@@ -16,7 +16,7 @@ export function ReviewsSection({
   return (
     <Section id="reviews" tone={tone}>
       <SectionHeading
-        title="ماذا يقول سكان دبي عن الزايد نقل اثاث دبي ؟"
+        title="ماذا يقول سكان دبي عن الأمين نقل اثاث دبي ؟"
         description="سمعتنا هي رأسمالنا الحقيقي. نحن شركة نقل اثاث موثوقة في دبي لأننا نفي بوعودنا دائماً."
       />
       <div className="mb-8 flex flex-wrap items-center gap-4">

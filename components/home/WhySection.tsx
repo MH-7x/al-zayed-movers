@@ -44,7 +44,7 @@ const features = [
 export function WhySection() {
   return (
     <Section id="why" tone="alt">
-      <SectionHeading title="لماذا الزايد نقل اثاث من افضل شركات نقل الاثاث في دبي؟" />
+      <SectionHeading title="لماذا الأمين نقل اثاث من افضل شركات نقل الاثاث في دبي؟" />
       <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {features.map((f) => (
           <li

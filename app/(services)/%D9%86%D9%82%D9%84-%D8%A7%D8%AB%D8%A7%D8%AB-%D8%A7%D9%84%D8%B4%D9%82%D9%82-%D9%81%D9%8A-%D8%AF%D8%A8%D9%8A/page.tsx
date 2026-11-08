@@ -18,19 +18,19 @@ import {
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
 import HeroImage from "@/public/img/نقل-اثاث-الشقق-في-دبي.jpg";
-import LoadingImage from "@/public/تحميل-ونقل-اثاث-امن-شاحنة-الزايد-دبي.jpg";
-import AssemblyImage from "@/public/تركيب-وتنظيف-اثاث-بعد-النقل-الزايد-دبي.jpg";
+import LoadingImage from "@/public/تحميل-ونقل-اثاث-امن-شاحنة-الأمين-دبي.jpg";
+import AssemblyImage from "@/public/تركيب-وتنظيف-اثاث-بعد-النقل-الأمين-دبي.jpg";
 import JsonLd from "@/components/JsonLd";
 import { buildPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = MetadataTemplate({
-  title: "نقل اثاث الشقق في دبي | حجز مصعد وتصريح انتقال - الزايد",
+  title: "نقل اثاث الشقق في دبي | حجز مصعد وتصريح انتقال - الأمين",
   desc:
     "نقل اثاث الشقق في دبي من الاستوديو إلى ثلاث غرف، مع حجز مصعد الخدمة وتصريح الانتقال. أسعار من 400 درهم بدون دفعة مقدمة. واتساب 055 646 1731.",
   path: "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D8%B4%D9%82%D9%82-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
   image: {
     path: "/img/نقل-اثاث-الشقق-في-دبي.jpg",
-    alt: "فريق الزايد نقل اثاث يدخل مدخل برج سكني في دبي",
+    alt: "فريق الأمين نقل اثاث يدخل مدخل برج سكني في دبي",
   },
 });
 
@@ -39,7 +39,7 @@ const whatsappText = "مرحباً، أرغب في عرض سعر لخدمة نق
 export default function ApartmentMovingPage() {
   const schema = buildPageSchema({
     page: "apartmentMoving",
-    name: "نقل اثاث الشقق في دبي | حجز مصعد وتصريح انتقال - الزايد",
+    name: "نقل اثاث الشقق في دبي | حجز مصعد وتصريح انتقال - الأمين",
     description: "نقل اثاث الشقق في دبي من الاستوديو إلى ثلاث غرف، مع حجز مصعد الخدمة وتصريح الانتقال. أسعار من 400 درهم بدون دفعة مقدمة. واتساب 055 646 1731.",
     image: "/img/نقل-اثاث-الشقق-في-دبي.jpg",
     imageWidth: 1000,
@@ -54,7 +54,7 @@ export default function ApartmentMovingPage() {
         hero={{
           title: "نقل اثاث الشقق في دبي",
           image: HeroImage,
-          imageAlt: "فريق الزايد نقل اثاث يدخل مدخل برج سكني في دبي",
+          imageAlt: "فريق الأمين نقل اثاث يدخل مدخل برج سكني في دبي",
           intro: (
             <>
               <p>
@@ -64,7 +64,7 @@ export default function ApartmentMovingPage() {
                 التفاصيل قد يؤجل النقل أياماً.
               </p>
               <p>
-                في الزايد نقل اثاث دبي نتعامل مع هذه الإجراءات يومياً في أبراج
+                في الأمين نقل اثاث دبي نتعامل مع هذه الإجراءات يومياً في أبراج
                 مارينا والخليج التجاري وقرية جميرا الدائرية، وفي بنايات ديرة وبر
                 دبي القديمة. ننقل شقق الاستوديو والغرفة والصالة حتى الشقق العائلية
                 بثلاث غرف، ضمن خدمة{" "}
@@ -120,7 +120,7 @@ export default function ApartmentMovingPage() {
 
         <ServiceFigure
           src={LoadingImage}
-          alt="تحميل أثاث شقة في شاحنة الزايد نقل اثاث المغلقة في دبي"
+          alt="تحميل أثاث شقة في شاحنة الأمين نقل اثاث المغلقة في دبي"
         />
 
         <ServiceSection title="لماذا تختارنا لنقل اثاث الشقق؟">
@@ -179,7 +179,7 @@ export default function ApartmentMovingPage() {
 
         <ServiceFigure
           src={AssemblyImage}
-          alt="فريق الزايد نقل اثاث يركب أثاث شقة في برج بدبي"
+          alt="فريق الأمين نقل اثاث يركب أثاث شقة في برج بدبي"
         />
 
         <ServiceSection id="prices" title="أسعار نقل اثاث الشقق في دبي">

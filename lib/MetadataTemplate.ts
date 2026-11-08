@@ -18,7 +18,7 @@ interface MetadataArgs {
 
 const siteUrl = process.env.SITE_URL?.replace(/\/$/, "");
 
-const DEFAULT_OG_IMAGE = "/الزايد-نقل-اثاث-دبي.jpg";
+const DEFAULT_OG_IMAGE = "/الأمين-نقل-اثاث-دبي.jpg";
 export function MetadataTemplate({
   title,
   desc,
@@ -41,7 +41,7 @@ export function MetadataTemplate({
       title,
       description: desc,
       url: canonical,
-      siteName: "شركة الزايد نقل اثاث",
+      siteName: "شركة الأمين نقل اثاث",
       locale: "ar_AE",
       type: "website",
       images: [ogImage],

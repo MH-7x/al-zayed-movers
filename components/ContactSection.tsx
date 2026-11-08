@@ -3,7 +3,7 @@ import { Check, Clock, MapPin, Phone } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { CallButton, WhatsAppButton } from "@/components/ui/ContactButtons";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/components/services/constants";
-import BackgroundImage from "@/public/شركة-الزايد-نقل-اثاث-دبي.jpg";
+import BackgroundImage from "@/public/شركة-الأمين-نقل-اثاث-دبي.jpg";
 
 export interface ContactSectionProps {
   title?: string;
@@ -33,8 +33,8 @@ const infoIcon =
  * Stacks on mobile (actions go full width); two columns from lg.
  */
 export function ContactSection({
-  title = "تواصل معنا الآن — الزايد نقل اثاث دبي",
-  description = "جاهز للانتقال؟ تواصل مع الزايد نقل اثاث دبي واحصل على عرض سعر مجاني خلال دقائق.",
+  title = "تواصل معنا الآن — الأمين نقل اثاث دبي",
+  description = "جاهز للانتقال؟ تواصل مع الأمين نقل اثاث دبي واحصل على عرض سعر مجاني خلال دقائق.",
   rev = false,
   whatsappLabel = "احصل على عرض سعر مجاني",
   whatsappMessage,

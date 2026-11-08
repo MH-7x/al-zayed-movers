@@ -19,19 +19,19 @@ import {
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
 import HeroImage from "@/public/img/تغليف-اثاث-في-دبي.jpg";
-import SurveyImage from "@/public/معاينة-مجانية-نقل-اثاث-الزايد-دبي.jpg";
-import LoadingImage from "@/public/تحميل-ونقل-اثاث-امن-شاحنة-الزايد-دبي.jpg";
+import SurveyImage from "@/public/معاينة-مجانية-نقل-اثاث-الأمين-دبي.jpg";
+import LoadingImage from "@/public/تحميل-ونقل-اثاث-امن-شاحنة-الأمين-دبي.jpg";
 import JsonLd from "@/components/JsonLd";
 import { buildPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = MetadataTemplate({
-  title: "تغليف اثاث في دبي | خدمة تغليف وتعبئة الاثاث - الزايد",
+  title: "تغليف اثاث في دبي | خدمة تغليف وتعبئة الاثاث - الأمين",
   desc:
     "تغليف اثاث في دبي بكراتين مقواة وبابل رول وفوم، مع ترقيم كل صندوق وتغليف خاص للزجاج والانتيكات، ونقل كرتون. من 250 درهم. واتساب 055 646 1731.",
   path: "/%D8%AA%D8%BA%D9%84%D9%8A%D9%81-%D8%A7%D8%AB%D8%A7%D8%AB-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
   image: {
     path: "/img/تغليف-اثاث-في-دبي.jpg",
-    alt: "فريق الزايد يغلف الاثاث بالفقاعات والصناديق في دبي",
+    alt: "فريق الأمين يغلف الاثاث بالفقاعات والصناديق في دبي",
   },
 });
 
@@ -50,7 +50,7 @@ const materials = [
 export default function PackingPage() {
   const schema = buildPageSchema({
     page: "packing",
-    name: "تغليف اثاث في دبي | خدمة تغليف وتعبئة الاثاث - الزايد",
+    name: "تغليف اثاث في دبي | خدمة تغليف وتعبئة الاثاث - الأمين",
     description: "تغليف اثاث في دبي بكراتين مقواة وبابل رول وفوم، مع ترقيم كل صندوق وتغليف خاص للزجاج والانتيكات، ونقل كرتون. من 250 درهم. واتساب 055 646 1731.",
     image: "/img/تغليف-اثاث-في-دبي.jpg",
     imageWidth: 1000,
@@ -65,7 +65,7 @@ export default function PackingPage() {
         hero={{
           title: "تغليف اثاث في دبي",
           image: HeroImage,
-          imageAlt: "فريق الزايد يغلف الاثاث بالفقاعات والصناديق في دبي",
+          imageAlt: "فريق الأمين يغلف الاثاث بالفقاعات والصناديق في دبي",
           intro: (
             <>
               <p>
@@ -126,7 +126,7 @@ export default function PackingPage() {
 
         <ServiceFigure
           src={SurveyImage}
-          alt="مشرف الزايد نقل اثاث يقدّر كمية الكراتين ومواد التغليف داخل المنزل"
+          alt="مشرف الأمين نقل اثاث يقدّر كمية الكراتين ومواد التغليف داخل المنزل"
         />
 
         <ServiceSection title="لماذا تختارنا لتغليف الاثاث؟">
@@ -185,7 +185,7 @@ export default function PackingPage() {
 
         <ServiceFigure
           src={LoadingImage}
-          alt="أثاث مغلف بالنايلون والبطانيات داخل شاحنة الزايد نقل اثاث في دبي"
+          alt="أثاث مغلف بالنايلون والبطانيات داخل شاحنة الأمين نقل اثاث في دبي"
         />
 
         <ServiceSection id="prices" title="أسعار تغليف الاثاث في دبي">

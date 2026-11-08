@@ -20,19 +20,19 @@ import {
 } from "@/components/services/ServiceContent";
 import { ServicePageLayout } from "@/components/services/ServicePageLayout";
 import HeroImage from "@/public/img/نقل-اثاث-المنزل-في-دبي.jpg";
-import LoadingImage from "@/public/تحميل-ونقل-اثاث-امن-شاحنة-الزايد-دبي.jpg";
-import PackingImage from "@/public/فك-وتغليف-اثاث-احترافي-الزايد-دبي.jpg";
+import LoadingImage from "@/public/تحميل-ونقل-اثاث-امن-شاحنة-الأمين-دبي.jpg";
+import PackingImage from "@/public/فك-وتغليف-اثاث-احترافي-الأمين-دبي.jpg";
 import JsonLd from "@/components/JsonLd";
 import { buildPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = MetadataTemplate({
-  title: "نقل اثاث المنزل في دبي | نقل منازل وعفش بالساعة - الزايد",
+  title: "نقل اثاث المنزل في دبي | نقل منازل وعفش بالساعة - الأمين",
   desc:
     "نقل اثاث المنزل في دبي مع الفك والتغليف والتركيب، تأمين شامل بدون دفعة مقدمة. أسعار من 400 درهم أو 150 درهم بالساعة. واتساب 055 646 1731.",
   path: "/%D9%86%D9%82%D9%84-%D8%A7%D8%AB%D8%A7%D8%AB-%D8%A7%D9%84%D9%85%D9%86%D8%B2%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A",
   image: {
     path: "/img/نقل-اثاث-المنزل-في-دبي.jpg",
-    alt: "شاحنة الزايد نقل اثاث أمام منزل في دبي",
+    alt: "شاحنة الأمين نقل اثاث أمام منزل في دبي",
   },
 });
 
@@ -41,7 +41,7 @@ const whatsappText = "مرحباً، أرغب في عرض سعر لخدمة نق
 export default function HouseMovingPage() {
   const schema = buildPageSchema({
     page: "houseMoving",
-    name: "نقل اثاث المنزل في دبي | نقل منازل وعفش بالساعة - الزايد",
+    name: "نقل اثاث المنزل في دبي | نقل منازل وعفش بالساعة - الأمين",
     description: "نقل اثاث المنزل في دبي مع الفك والتغليف والتركيب، تأمين شامل بدون دفعة مقدمة. أسعار من 400 درهم أو 150 درهم بالساعة. واتساب 055 646 1731.",
     image: "/img/نقل-اثاث-المنزل-في-دبي.jpg",
     imageWidth: 1000,
@@ -56,14 +56,14 @@ export default function HouseMovingPage() {
         hero={{
           title: "نقل اثاث المنزل في دبي",
           image: HeroImage,
-          imageAlt: "شاحنة الزايد نقل اثاث أمام منزل في دبي",
+          imageAlt: "شاحنة الأمين نقل اثاث أمام منزل في دبي",
           intro: (
             <>
               <p>
                 نقل المنزل من أكثر الأيام إرهاقاً لأي أسرة. فالمهمة لا تقتصر على
                 تحميل الأثاث في شاحنة، بل تشمل فك غرف النوم، وتغليف أدوات المطبخ،
                 وحجز المصعد مع إدارة المبنى، ثم إعادة كل قطعة إلى مكانها في البيت
-                الجديد. في الزايد نقل اثاث دبي نتولى هذه المهام كلها بفريق واحد
+                الجديد. في الأمين نقل اثاث دبي نتولى هذه المهام كلها بفريق واحد
                 ثابت، لتنتقل أسرتك دون أن تحمل همّ أي تفصيلة.
               </p>
               <p>
@@ -130,7 +130,7 @@ export default function HouseMovingPage() {
 
         <ServiceFigure
           src={LoadingImage}
-          alt="عمال الزايد نقل اثاث يحملون أثاث المنزل في شاحنة مغلقة في دبي"
+          alt="عمال الأمين نقل اثاث يحملون أثاث المنزل في شاحنة مغلقة في دبي"
         />
 
         <ServiceSection title="لماذا تختارنا لنقل اثاث المنزل؟">
@@ -197,7 +197,7 @@ export default function HouseMovingPage() {
 
         <ServiceFigure
           src={PackingImage}
-          alt="فريق الزايد نقل اثاث أثناء فك وتغليف اثاث المنزل في دبي"
+          alt="فريق الأمين نقل اثاث أثناء فك وتغليف اثاث المنزل في دبي"
         />
 
         <ServiceSection id="prices" title="أسعار نقل اثاث المنزل في دبي">

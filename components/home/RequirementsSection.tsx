@@ -26,8 +26,8 @@ export function RequirementsSection() {
       {/* source 1100×614 → 16:10 mobile, 16:7 ≥768 (≤1076px wide: never upscaled) */}
       <div className="relative mb-8 aspect-16/10 overflow-hidden rounded-lg md:aspect-16/7">
         <Image
-          src="/شركة-الزايد-نقل-اثاث-دبي.jpg"
-          alt="شركة الزايد نقل اثاث دبي"
+          src="/شركة-الأمين-نقل-اثاث-دبي.jpg"
+          alt="شركة الأمين نقل اثاث دبي"
           fill
           sizes="(min-width: 1280px) 1076px, 100vw"
           className="object-cover"

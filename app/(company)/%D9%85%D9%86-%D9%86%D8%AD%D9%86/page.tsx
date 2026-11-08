@@ -29,12 +29,12 @@ import {
   Building,
 } from "lucide-react";
 import { AboutPhoto } from "@/components/about/AboutPhoto";
-import TeamPhoto from "@/public/img/فريق-الزايد-نقل-اثاث-دبي.jpg";
-import StoryPhoto from "@/public/img/قصة-الزايد-نقل-اثاث.jpg";
-import MovingDayPhoto from "@/public/img/يوم-نقل-الاثاث-الزايد.jpg";
-import FleetPhoto from "@/public/img/اسطول-شاحنات-الزايد-نقل-اثاث.jpg";
-import CrewPhoto from "@/public/img/عامل-نقل-اثاث-الزايد-بطاقة-تعريف.jpg";
-import CarpenterPhoto from "@/public/img/نجار-فك-وتركيب-اثاث-الزايد.jpg";
+import TeamPhoto from "@/public/img/فريق-الأمين-نقل-اثاث-دبي.jpg";
+import StoryPhoto from "@/public/img/قصة-الأمين-نقل-اثاث.jpg";
+import MovingDayPhoto from "@/public/img/يوم-نقل-الاثاث-الأمين.jpg";
+import FleetPhoto from "@/public/img/اسطول-شاحنات-الأمين-نقل-اثاث.jpg";
+import CrewPhoto from "@/public/img/عامل-نقل-اثاث-الأمين-بطاقة-تعريف.jpg";
+import CarpenterPhoto from "@/public/img/نجار-فك-وتركيب-اثاث-الأمين.jpg";
 import { SectionHeading } from "@/components/location/SectionHeading";
 import { LocationSection } from "@/components/location/LocationSection";
 import { QuoteActions } from "@/components/location/QuoteActions";
@@ -46,13 +46,12 @@ import JsonLd from "@/components/JsonLd";
 import { buildPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = MetadataTemplate({
-  title: "من نحن | الزايد نقل اثاث دبي ",
-  desc:
-    "الزايد نقل اثاث دبي، شركة مرخصة بخبرة أكثر من 12 سنة. سعر ثابت، تأمين وضمان مكتوب، وبدون دفعة مقدمة. اطلب عرض سعر فوري عبر الواتساب.",
+  title: "من نحن | الأمين نقل اثاث دبي ",
+  desc: "الأمين نقل اثاث دبي، شركة مرخصة بخبرة أكثر من 12 سنة. سعر ثابت، تأمين وضمان مكتوب، وبدون دفعة مقدمة. اطلب عرض سعر فوري عبر الواتساب.",
   path: "/%D9%85%D9%86-%D9%86%D8%AD%D9%86",
   image: {
-    path: "/img/اسطول-شاحنات-الزايد-نقل-اثاث.jpg",
-    alt: "أسطول شاحنات الزايد نقل اثاث المغلقة والمكيفة",
+    path: "/img/اسطول-شاحنات-الأمين-نقل-اثاث.jpg",
+    alt: "أسطول شاحنات الأمين نقل اثاث المغلقة والمكيفة",
   },
 });
 
@@ -229,9 +228,10 @@ const truckSizes = ["1.5 طن", "3 طن", "7 طن"];
 export default function AboutPage() {
   const schema = buildPageSchema({
     page: "about",
-    name: "من نحن | الزايد نقل اثاث دبي ",
-    description: "الزايد نقل اثاث دبي، شركة مرخصة بخبرة أكثر من 12 سنة. سعر ثابت، تأمين وضمان مكتوب، وبدون دفعة مقدمة. اطلب عرض سعر فوري عبر الواتساب.",
-    image: "/img/فريق-الزايد-نقل-اثاث-دبي.jpg",
+    name: "من نحن | الأمين نقل اثاث دبي ",
+    description:
+      "الأمين نقل اثاث دبي، شركة مرخصة بخبرة أكثر من 12 سنة. سعر ثابت، تأمين وضمان مكتوب، وبدون دفعة مقدمة. اطلب عرض سعر فوري عبر الواتساب.",
+    image: "/img/فريق-الأمين-نقل-اثاث-دبي.jpg",
     imageWidth: 700,
     imageHeight: 869,
   });
@@ -271,7 +271,7 @@ export default function AboutPage() {
             </div>
             <AboutPhoto
               src={TeamPhoto}
-              alt="فريق الزايد نقل اثاث بالزي الموحد أمام شاحنة الشركة"
+              alt="فريق الأمين نقل اثاث بالزي الموحد أمام شاحنة الشركة"
               aspect="aspect-4/5"
               sizes="(min-width: 1024px) 480px, (min-width: 448px) 448px, 100vw"
               preload
@@ -280,11 +280,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ───────── الزايد في سطور ───────── */}
+      {/* ───────── الأمين في سطور ───────── */}
       <section className="relative z-10 -mt-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl rounded-3xl bg-card p-6 shadow-xl ring-1 ring-border md:p-10">
           <h2 className="mb-8 text-center text-2xl font-extrabold md:text-3xl">
-            الزايد في سطور
+            الأمين في سطور
           </h2>
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {quickFacts.map(({ icon: Icon, text }) => (
@@ -334,7 +334,7 @@ export default function AboutPage() {
           <div className="lg:col-span-6">
             <AboutPhoto
               src={StoryPhoto}
-              alt="مؤسس الزايد نقل اثاث مع الفريق أثناء العمل"
+              alt="مؤسس الأمين نقل اثاث مع الفريق أثناء العمل"
               aspect="aspect-4/3"
               sizes="(min-width: 1024px) 540px, 100vw"
             />
@@ -420,7 +420,7 @@ export default function AboutPage() {
               </h2>
               <AboutPhoto
                 src={MovingDayPhoto}
-                alt="فريق الزايد يحمل كنبة مغلفة إلى داخل المبنى"
+                alt="فريق الأمين يحمل كنبة مغلفة إلى داخل المبنى"
                 aspect="aspect-4/5"
                 sizes="(min-width: 1024px) 460px, 100vw"
                 className="mt-8 hidden lg:block"
@@ -537,7 +537,7 @@ export default function AboutPage() {
           </div>
           <AboutPhoto
             src={FleetPhoto}
-            alt="أسطول شاحنات الزايد نقل اثاث المغلقة والمكيفة"
+            alt="أسطول شاحنات الأمين نقل اثاث المغلقة والمكيفة"
             aspect="aspect-16/10"
             sizes="(min-width: 1024px) 520px, 100vw"
           />
@@ -550,13 +550,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 gap-4 lg:col-span-5">
             <AboutPhoto
               src={CrewPhoto}
-              alt="أحد أفراد فريق الزايد نقل اثاث بالزي الموحد وبطاقة التعريف"
+              alt="أحد أفراد فريق الأمين نقل اثاث بالزي الموحد وبطاقة التعريف"
               aspect="aspect-3/4"
               sizes="(min-width: 1024px) 230px, 45vw"
             />
             <AboutPhoto
               src={CarpenterPhoto}
-              alt="نجار الزايد نقل اثاث مع أدوات التركيب"
+              alt="نجار الأمين نقل اثاث مع أدوات التركيب"
               aspect="aspect-3/4"
               sizes="(min-width: 1024px) 230px, 45vw"
               className="mt-8"
@@ -595,27 +595,10 @@ export default function AboutPage() {
           </div>
           <div className="mt-6 space-y-5 leading-loose text-muted-foreground md:text-lg">
             <p>
-              مقرنا في عود ميثاء بدبي، ونغطي أغلب مناطق المدينة، منها:{" "}
-              دبي مارينا
-              ،{" "}
-              وسط مدينة دبي
-              ،{" "}
-              أبراج بحيرات جميرا
-              ،{" "}
-              الخليج التجاري
-              ،{" "}
-              قرية جميرا الدائرية
-              ،{" "}
-              نخلة جميرا
-              ،{" "}
-              البرشاء
-              ،{" "}
-              ديرة
-              ،{" "}
-              بر دبي
-              ، و
-              جميرا
-              .
+              مقرنا في عود ميثاء بدبي، ونغطي أغلب مناطق المدينة، منها: دبي
+              مارينا ، وسط مدينة دبي ، أبراج بحيرات جميرا ، الخليج التجاري ،{" "}
+              قرية جميرا الدائرية ، نخلة جميرا ، البرشاء ، ديرة ، بر دبي ، و
+              جميرا .
             </p>
             <p>
               وخدمتنا تصل إلى باقي الإمارات:{" "}
@@ -634,11 +617,7 @@ export default function AboutPage() {
               <Link href="/نقل-اثاث-راس-الخيمة" className={linkClass}>
                 رأس الخيمة
               </Link>
-              ،{" "}
-              الفجيرة
-              ،{" "}
-              أم القيوين
-              ، و
+              ، الفجيرة ، أم القيوين ، و
               <Link href="/نقل-اثاث-العين" className={linkClass}>
                 العين
               </Link>

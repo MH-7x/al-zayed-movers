@@ -6,7 +6,7 @@ import manifest from "@/lib/sitemap-manifest.json";
 // changes when that page's content (or a component it imports) changes.
 
 const SITE_URL = (
-  process.env.SITE_URL ?? "https://alzayedmoversuae.com"
+  process.env.SITE_URL ?? "https://alameenmovers.ae"
 ).replace(/\/$/, "");
 
 type Group = "root" | "locations" | "services" | "company";

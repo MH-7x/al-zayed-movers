@@ -5,7 +5,7 @@ import offices from "@/public/img/نقل-اثاث-المكاتب-في-دبي.jpg
 import packing from "@/public/img/تغليف-اثاث-في-دبي.jpg";
 import assembly from "@/public/img/فك-وتركيب-اثاث-في-دبي.jpg";
 import storage from "@/public/img/تخزين-اثاث-في-دبي.jpg";
-import fleet from "@/public/img/اسطول-شاحنات-الزايد-نقل-اثاث.jpg";
+import fleet from "@/public/img/اسطول-شاحنات-الأمين-نقل-اثاث.jpg";
 import { SERVICE_HREF } from "./constants";
 
 /** One real photo per service. Shared by the service cards and the "other services" navigation. */

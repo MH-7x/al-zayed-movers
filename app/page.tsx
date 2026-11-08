@@ -18,13 +18,12 @@ import { buildPageSchema } from "@/lib/schema";
 /** Direction A order: proof first, price before detail, one decision band per section. */
 
 export const metadata: Metadata = MetadataTemplate({
-  title: "الزايد نقل اثاث دبي | افضل شركة نقل اثاث في دبي",
-  desc:
-    "الزايد نقل اثاث دبي، شركة نقل اثاث في دبي بخبرة 12 سنة. تغليف وفك وتركيب، سعر ثابت، تأمين شامل، وبدون دفعة مقدمة. واتساب 055 6461731 لعرض سعر فوري.",
+  title: "الأمين نقل اثاث دبي | افضل شركة نقل اثاث في دبي",
+  desc: "الأمين نقل اثاث دبي، شركة نقل اثاث في دبي بخبرة 12 سنة. تغليف وفك وتركيب، سعر ثابت، تأمين شامل، وبدون دفعة مقدمة. واتساب 055 6461731 لعرض سعر فوري.",
   path: "/",
   image: {
-    path: "/الزايد-نقل-اثاث-دبي.jpg",
-    alt: "الزايد نقل اثاث دبي",
+    path: "/الأمين-نقل-اثاث-دبي.jpg",
+    alt: "الأمين نقل اثاث دبي",
   },
 });
 
@@ -33,7 +32,7 @@ export default function Home() {
     page: "home",
     name: String(metadata.title),
     description: String(metadata.description),
-    image: "/الزايد-نقل-اثاث-دبي.jpg",
+    image: "/الأمين-نقل-اثاث-دبي.jpg",
     imageWidth: 824,
     imageHeight: 618,
   });
@@ -55,8 +54,8 @@ export default function Home() {
         faqs={dubaiFaqs}
       />
       <ContactSection
-        title="تواصل معنا الآن — الزايد نقل اثاث دبي"
-        description="جاهز للانتقال؟ تواصل مع الزايد نقل اثاث دبي واحصل على عرض سعر مجاني خلال دقائق."
+        title="تواصل معنا الآن — الأمين نقل اثاث دبي"
+        description="جاهز للانتقال؟ تواصل مع الأمين نقل اثاث دبي واحصل على عرض سعر مجاني خلال دقائق."
       />
     </main>
   );

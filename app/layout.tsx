@@ -26,7 +26,7 @@ const almaraiFont = localFont({
 });
 
 export const metadata: Metadata = {
-  applicationName: "شركة الزايد نقل اثاث",
+  applicationName: "شركة الأمين نقل اثاث",
   robots: {
     "max-image-preview": "large",
     follow: true,
