@@ -41,7 +41,7 @@ export function HomeHero() {
               src="/الأمين-نقل-اثاث-دبي.jpg"
               alt="الأمين نقل اثاث دبي"
               fill
-              preload
+              priority
               sizes="(min-width: 1024px) 540px, 100vw"
               className="object-cover"
             />
