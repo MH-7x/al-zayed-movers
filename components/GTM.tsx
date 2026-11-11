@@ -3,7 +3,7 @@
 
 import Script from "next/script";
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-PQCG9M4K";
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-NK8BFBSG";
 
 const GTM: React.FC = () => {
   return (
