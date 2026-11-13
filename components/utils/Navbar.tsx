@@ -87,7 +87,7 @@ export default function Navbar() {
                   rel="noopener noreferrer"
                   className={topLinkCls}
                 >
-                  واتساب : 0556461731
+                  واتساب : 0567878464
                 </a>
               </li>
               <li>

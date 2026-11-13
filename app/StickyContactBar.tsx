@@ -32,15 +32,15 @@ export function StickyContactBar() {
       inert={hidden}
     >
       <a
-        href={`tel:${+971556461731}`}
-        aria-label={`Call 055 6461731`}
-        title={`Call 055 6461731`}
+        href={`tel:${+971567878464}`}
+        aria-label={`Call 056 7878464`}
+        title={`Call 056 7878464`}
         className="flex size-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg sm:size-16"
       >
         <Phone className="size-6 shrink-0 sm:size-7" aria-hidden="true" />
       </a>
       <a
-        href={`https://wa.me/971556461731?text=Hello%20`}
+        href={`https://wa.me/971567878464?text=Hello%20`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"

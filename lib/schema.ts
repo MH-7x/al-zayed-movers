@@ -232,7 +232,7 @@ const organizationNode = {
   url: SITE_URL,
   logo: { "@id": LOGO_ID },
   image: { "@id": LOGO_ID },
-  telephone: "+971556461731",
+  telephone: "+971567878464",
   email: "alameenmovers.ae@gmail.com",
   foundingDate: "2013",
   priceRange: "AED 400+",
@@ -269,7 +269,7 @@ const organizationNode = {
   ],
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+971556461731",
+    telephone: "+971567878464",
     contactType: "customer service",
     areaServed: "AE",
     availableLanguage: ["ar", "en"],

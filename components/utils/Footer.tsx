@@ -68,7 +68,7 @@ export default function Footer() {
             ، ولديها خبرة تزيد عن 12 سنوات في خدمات نقل. تغطي خدماتنا دولة
             الإمارات العربية المتحدة، بما في ذلك أبوظبي والشارقة وعجمان ورأس
             الخيمة والفجيرة وأم القيوين والعين. تواصل معنا على الرقم{" "}
-            <bdi className="ltr-isolate">0556461731</bdi>
+            <bdi className="ltr-isolate">0567878464</bdi>
           </p>
           <div className="flex flex-wrap items-center gap-x-4 text-sm">
             <span className="inline-flex min-h-11 items-center text-white/80">
@@ -183,7 +183,7 @@ export default function Footer() {
                 href={PHONE_TEL}
                 className="inline-flex min-h-11 items-center font-bold hover:text-primary"
               >
-                <bdi className="ltr-isolate">0556461731</bdi>
+                <bdi className="ltr-isolate">0567878464</bdi>
               </a>
             </li>
             <li>

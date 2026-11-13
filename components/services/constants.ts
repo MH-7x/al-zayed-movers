@@ -1,7 +1,7 @@
 // Single source of truth for contact details. Import from here instead of hard-coding the number.
-export const PHONE_DISPLAY = "055 6461731";
-export const PHONE_TEL = "tel:+971556461731";
-const WHATSAPP_NUMBER = "971556461731";
+export const PHONE_DISPLAY = "056 7878464";
+export const PHONE_TEL = "tel:+971567878464";
+const WHATSAPP_NUMBER = "971567878464";
 
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 

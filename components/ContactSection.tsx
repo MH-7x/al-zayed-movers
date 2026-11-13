@@ -75,7 +75,7 @@ export function ContactSection({
           <p className="mt-3 max-w-xl text-white/80">
             نقدم خدمات نقل الاثاث في دبي و أبوظبي والشارقة وعجمان ورأس الخيمة
             والفجيرة وأم القيوين والعين. تواصل معنا على الرقم{" "}
-            <bdi className="ltr-isolate">0556461731</bdi>
+            <bdi className="ltr-isolate">0567878464</bdi>
           </p>
 
           <div className="mt-7 flex flex-wrap gap-3 max-sm:[&>a]:w-full">
