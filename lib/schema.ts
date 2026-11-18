@@ -33,8 +33,8 @@ const LOGO_ID = `${SITE_URL}/#logo`;
  * ACTION: uncomment each line on the day that profile goes live.
  */
 const SAME_AS: string[] = [
-  "https://www.facebook.com/alameenmovers",
-  "https://www.instagram.com/alameenmovers",
+  "https://www.facebook.com/alameenmovers.ae",
+  "https://www.instagram.com/alameenmovers.ae",
   // "https://www.youtube.com/@alameenmovers",
   "https://www.pinterest.com/alameenmovers",
   // "https://x.com/alameenmovers",
